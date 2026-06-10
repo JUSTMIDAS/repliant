@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hemjay.Dev</title>
+      <lnk rel="stylesheet" href="animate.css"></lnk>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bad+Script&family=Dancing+Script:wght@400..700&family=Marck+Script&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Force hardware compositing directly on the scrolling layer */
+        html {
+            scroll-behavior: smooth !important;
+            will-change: scroll-position;
+        }
+        
+        /* Optimized marquee rules */
+        @keyframes scroll-left {
+            from { transform: translateX(0); }
+            to { transform: translateX(calc(-50% - 0.75rem)); }
+        }
+        .custom-scroll-left {
+            display: flex;
+            width: max-content;
+            animation: scroll-left 30s linear infinite;
+        }
+        .custom-scroll-left:hover {
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+
+<body class="will-change-transform">
+    <div class="container" id="hom e">
+        <div class="icons">
+            <div class="icon" style="top: 10%; left: 10%;"><i class="fas fa-lightbulb"></i></div>
+            <div class="icon" style="top: 20%; left: 70%;"><i class="fas fa-smile"></i></div>
+            <div class="icon" style="top: 30%; left: 30%;"><i class="fas fa-bolt"></i></div>
+            <div class="icon" style="top: 40%; left: 80%;"><i class="fas fa-paper-plane"></i></div>
+            <div class="icon" style="top: 50%; left: 20%;"><i class="fas fa-lightbulb"></i></div>
+            <div class="icon" style="top: 60%; left: 60%;"><i class="fas fa-smile"></i></div>
+            <div class="icon" style="top: 70%; left: 40%;"><i class="fas fa-paper-plane"></i></div>
+            <div class="icon" style="top: 80%; left: 90%;"><i class="fas fa-bolt"></i></div>
+            <div class="icon" style="top: 15%; left: 25%;"><i class="fas fa-code"></i></div>
+            <div class="icon" style="top: 25%; left: 85%;"><i class="fas fa-laptop"></i></div>
+            <div class="icon" style="top: 35%; left: 15%;"><i class="fas fa-cogs"></i></div>
+            <div class="icon" style="top: 45%; left: 75%;"><i class="fas fa-rocket"></i></div>
+            <div class="icon" style="top: 55%; left: 35%;"><i class="fas fa-cloud"></i></div>
+            <div class="icon" style="top: 65%; left: 95%;"><i class="fas fa-database"></i></div>
+            <div class="icon" style="top: 75%; left: 20%;"><i class="fas fa-terminal"></i></div>
+            <div class="icon" style="top: 85%; left: 50%;"><i class="fas fa-globe"></i></div>
+        </div>
+    </div>
+
+  <header class="z-50 h-24 bg-slate-950/40 backdrop-blur-md sticky top-0 w-full p-4 border-b border-cyan-500/10 flex items-center justify-center">
+    <nav class="nav-menu w-full max-w-7xl flex flex-wrap items-center justify-between px-6 text-sm text-white font-bold">
+        
+        <div class="flex items-center gap-4">
+            <!-- Updated Logo to match theme -->
+            <div class="nav-logo text-2xl font-black tracking-widest text-cyan-400">Mj</div>
+            
+            <button class="theme-toggle text-cyan-400 text-lg hover:scale-110 transition-transform" type="button" onclick="toggleTheme()" aria-label="Toggle theme">
+                <i class="fas fa-moon"></i>
+            </button>
+            
+            <button class="icon-toggle-button text-xs bg-cyan-400/10 text-cyan-400 px-3 py-1 rounded-full hover:bg-cyan-400 hover:text-slate-950 transition-all" type="button" onclick="toggleIcons()">
+                Toggle icons
+            </button>
+        </div>
+
+        <!-- Hamburger Icon color updated -->
+        <button id="menuToggle" class="hamburger md:hidden text-cyan-400 text-xl focus:outline-none" type="button" aria-label="Open navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Navigation Links shifted to white/cyan typography -->
+        <div id="navLinks" class="hidden w-full md:w-auto md:flex items-center gap-8 text-slate-200 uppercase tracking-wider text-xs mt-4 md:mt-0">
+            <a href="#services" class="block py-2 md:py-0 hover:text-cyan-400 transition-colors">Services</a>
+            
+            <div class="relative group py-2 md:py-0">
+                <a href="#projects" class="hover:text-cyan-400 transition-colors flex items-center gap-1">
+                    Projects <i class="fas fa-chevron-down text-[10px] text-cyan-400"></i>
+                </a>
+                <!-- Dropdown card styled with theme container colors -->
+                <div class="md:absolute top-full left-0 mt-2 w-40 bg-slate-900 border border-cyan-500/20 text-slate-200 rounded-xl shadow-2xl hidden group-hover:flex flex-col p-2 gap-1 relative z-20">
+                    <a href="#projects" class="hover:bg-cyan-500/10 hover:text-cyan-400 px-3 py-2 rounded-lg transition-colors">Projects</a>
+                    <a href="projects.html#testimonials" class="hover:bg-cyan-500/10 hover:text-cyan-400 px-3 py-2 rounded-lg transition-colors">Testimonials</a>
+                </div>
+            </div>
+
+            <a href="#contact" class="block py-2 md:py-0 hover:text-cyan-400 transition-colors">Contact</a>
+
+            <div class="relative group py-2 md:py-0">
+                <span class="cursor-pointer hover:text-cyan-400 transition-colors flex items-center gap-1">
+                    Timeline <i class="fas fa-chevron-down text-[10px] text-cyan-400"></i>
+                </span>
+                <!-- Dropdown card styled with theme container colors -->
+                <div class="md:absolute top-full left-0 mt-2 w-40 bg-slate-900 border border-cyan-500/20 text-slate-200 rounded-xl shadow-2xl hidden group-hover:flex flex-col p-2 gap-1 relative z-20">
+                    <a href="timeline.html#education" class="hover:bg-cyan-500/10 hover:text-cyan-400 px-3 py-2 rounded-lg transition-colors">Education</a>
+                    <a href="timeline.html#experience" class="hover:bg-cyan-500/10 hover:text-cyan-400 px-3 py-2 rounded-lg transition-colors">Experience</a>
+                </div>
+            </div>
+        </div>
+
+    </nav>
+</header>
+
+    <main>
+
+ <section id="education" class="timeline-section education-timeline p-6 md:p-12 lg:p-16 bg-slate-950 text-slate-100 relative overflow-hidden" style="isolation: isolate;">
+    
+   
+
+    <!-- Section Titles -->
+    <div class="relative z-10 max-w-5xl mx-auto mb-16 text-left">
+        <h2 class="section-title text-slate-500 font-bold tracking-widest text-xs uppercase mb-2">MY JOURNEY</h2>
+        <h1 class="section-heading text-cyan-400 text-3xl lg:text-4xl font-black tracking-wide uppercase">EDUCATION</h1>
+    </div>
+
+    <!-- Left-Aligned Timeline Track -->
+    <div class="timeline relative z-10 max-w-3xl mx-auto pl-8 border-l-2 border-slate-900/80 space-y-12" style="contain: layout;">
+        
+        <!-- Item 1: KWASU -->
+        <div class="timeline-item relative before:absolute before:-left-[41px] before:top-2 before:w-4 before:h-4 before:rounded-full before:bg-cyan-400 before:ring-4 before:ring-slate-950" data-year="2025">
+            <div class="timeline-marker hidden"></div>
+            <div class="timeline-content bg-slate-900/30 p-6 rounded-2xl border border-cyan-500/5 backdrop-blur-md hover:border-cyan-500/20 transition-colors duration-300">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                    <h3 class="text-lg lg:text-xl font-bold text-white tracking-wide">Bachelor of Science in Computer Science</h3>
+                    <p class="timeline-date w-max text-[10px] font-black text-cyan-400 bg-cyan-400/10 border border-cyan-400/20 px-3 py-1 rounded-full uppercase tracking-widest">2025</p>
+                </div>
+                <p class="timeline-institution text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">KWARA STATE UNIVERSITY MALETE</p>
+                <p class="text-slate-300 text-sm leading-relaxed">Graduated with honors. Focused on web development, data structures, and software engineering principles.</p>
+            </div>
+        </div>
+
+        <!-- Item 2: Certifications -->
+        <div class="timeline-item relative before:absolute before:-left-[41px] before:top-2 before:w-4 before:h-4 before:rounded-full before:bg-cyan-400 before:ring-4 before:ring-slate-950" data-year="2021">
+            <div class="timeline-marker hidden"></div>
+            <div class="timeline-content bg-slate-900/30 p-6 rounded-2xl border border-cyan-500/5 backdrop-blur-md hover:border-cyan-500/20 transition-colors duration-300">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                    <h3 class="text-lg lg:text-xl font-bold text-white tracking-wide">Advanced Web Development Certification</h3>
+                    <p class="timeline-date w-max text-[10px] font-black text-cyan-400 bg-cyan-400/10 border border-cyan-400/20 px-3 py-1 rounded-full uppercase tracking-widest">2021</p>
+                </div>
+                <p class="timeline-institution text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Udemy & Coursera</p>
+                <p class="text-slate-300 text-sm leading-relaxed">Completed comprehensive courses in React, Node.js, and full-stack development. Hands-on projects included e-commerce platforms and real-time applications.</p>
+            </div>
+        </div>
+
+        <!-- Item 3: Google Cloud -->
+        <div class="timeline-item relative before:absolute before:-left-[41px] before:top-2 before:w-4 before:h-4 before:rounded-full before:bg-cyan-400 before:ring-4 before:ring-slate-950" data-year="2020">
+            <div class="timeline-marker hidden"></div>
+            <div class="timeline-content bg-slate-900/30 p-6 rounded-2xl border border-cyan-500/5 backdrop-blur-md hover:border-cyan-500/20 transition-colors duration-300">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                    <h3 class="text-lg lg:text-xl font-bold text-white tracking-wide">Google Cloud Skills Boost</h3>
+                    <p class="timeline-date w-max text-[10px] font-black text-cyan-400 bg-cyan-400/10 border border-cyan-400/20 px-3 py-1 rounded-full uppercase tracking-widest">2020</p>
+                </div>
+                <p class="timeline-institution text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Google Cloud Platform</p>
+                <p class="text-slate-300 text-sm leading-relaxed">Completed training in cloud deployment, containerization with Docker, and AWS services for scalable applications.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+ <section id="education" class="timeline-section education-timeline p-6 md:p-12 lg:p-16 bg-slate-950 text-slate-100 relative overflow-hidden" style="isolation: isolate;">
+    
+   
+
+    <!-- Section Titles -->
+    <div class="relative z-10 max-w-5xl mx-auto mb-16 text-left">
+        <h2 class="section-title text-slate-500 font-bold tracking-widest text-xs uppercase mb-2">MY JOURNEY</h2>
+        <h1 class="section-heading text-cyan-400 text-3xl lg:text-4xl font-black tracking-wide uppercase">EDUCATION</h1>
+    </div>
+
+    <!-- Left-Aligned Timeline Track -->
+    <div class="timeline relative z-10 max-w-3xl mx-auto pl-8 border-l-2 border-slate-900/80 space-y-12" style="contain: layout;">
+        
+        <!-- Item 1: KWASU -->
+        <div class="timeline-item relative before:absolute before:-left-[41px] before:top-2 before:w-4 before:h-4 before:rounded-full before:bg-cyan-400 before:ring-4 before:ring-slate-950" data-year="2025">
+            <div class="timeline-marker hidden"></div>
+            <div class="timeline-content bg-slate-900/30 p-6 rounded-2xl border border-cyan-500/5 backdrop-blur-md hover:border-cyan-500/20 transition-colors duration-300">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                    <h3 class="text-lg lg:text-xl font-bold text-white tracking-wide">Bachelor of Science in Computer Science</h3>
+                    <p class="timeline-date w-max text-[10px] font-black text-cyan-400 bg-cyan-400/10 border border-cyan-400/20 px-3 py-1 rounded-full uppercase tracking-widest">2025</p>
+                </div>
+                <p class="timeline-institution text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">KWARA STATE UNIVERSITY MALETE</p>
+                <p class="text-slate-300 text-sm leading-relaxed">Graduated with honors. Focused on web development, data structures, and software engineering principles.</p>
+            </div>
+        </div>
+
+        <!-- Item 2: Certifications -->
+        <div class="timeline-item relative before:absolute before:-left-[41px] before:top-2 before:w-4 before:h-4 before:rounded-full before:bg-cyan-400 before:ring-4 before:ring-slate-950" data-year="2021">
+            <div class="timeline-marker hidden"></div>
+            <div class="timeline-content bg-slate-900/30 p-6 rounded-2xl border border-cyan-500/5 backdrop-blur-md hover:border-cyan-500/20 transition-colors duration-300">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                    <h3 class="text-lg lg:text-xl font-bold text-white tracking-wide">Advanced Web Development Certification</h3>
+                    <p class="timeline-date w-max text-[10px] font-black text-cyan-400 bg-cyan-400/10 border border-cyan-400/20 px-3 py-1 rounded-full uppercase tracking-widest">2021</p>
+                </div>
+                <p class="timeline-institution text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Udemy & Coursera</p>
+                <p class="text-slate-300 text-sm leading-relaxed">Completed comprehensive courses in React, Node.js, and full-stack development. Hands-on projects included e-commerce platforms and real-time applications.</p>
+            </div>
+        </div>
+
+        <!-- Item 3: Google Cloud -->
+        <div class="timeline-item relative before:absolute before:-left-[41px] before:top-2 before:w-4 before:h-4 before:rounded-full before:bg-cyan-400 before:ring-4 before:ring-slate-950" data-year="2020">
+            <div class="timeline-marker hidden"></div>
+            <div class="timeline-content bg-slate-900/30 p-6 rounded-2xl border border-cyan-500/5 backdrop-blur-md hover:border-cyan-500/20 transition-colors duration-300">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                    <h3 class="text-lg lg:text-xl font-bold text-white tracking-wide">Google Cloud Skills Boost</h3>
+                    <p class="timeline-date w-max text-[10px] font-black text-cyan-400 bg-cyan-400/10 border border-cyan-400/20 px-3 py-1 rounded-full uppercase tracking-widest">2020</p>
+                </div>
+                <p class="timeline-institution text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Google Cloud Platform</p>
+                <p class="text-slate-300 text-sm leading-relaxed">Completed training in cloud deployment, containerization with Docker, and AWS services for scalable applications.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+ <section id="education" class="timeline-section education-timeline p-6 md:p-12 lg:p-16 bg-slate-950 text-slate-100 relative overflow-hidden" style="isolation: isolate;">
+    
+   
+
+    <!-- Section Titles -->
+    <div class="relative z-10 max-w-5xl mx-auto mb-16 text-left">
+        <h2 class="section-title text-slate-500 font-bold tracking-widest text-xs uppercase mb-2">MY JOURNEY</h2>
+        <h1 class="section-heading text-cyan-400 text-3xl lg:text-4xl font-black tracking-wide uppercase">EDUCATION</h1>
+    </div>
+
+    <!-- Left-Aligned Timeline Track -->
+    <div class="timeline relative z-10 max-w-3xl mx-auto pl-8 border-l-2 border-slate-900/80 space-y-12" style="contain: layout;">
+        
+        <!-- Item 1: KWASU -->
+        <div class="timeline-item relative before:absolute before:-left-[41px] before:top-2 before:w-4 before:h-4 before:rounded-full before:bg-cyan-400 before:ring-4 before:ring-slate-950" data-year="2025">
+            <div class="timeline-marker hidden"></div>
+            <div class="timeline-content bg-slate-900/30 p-6 rounded-2xl border border-cyan-500/5 backdrop-blur-md hover:border-cyan-500/20 transition-colors duration-300">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                    <h3 class="text-lg lg:text-xl font-bold text-white tracking-wide">Bachelor of Science in Computer Science</h3>
+                    <p class="timeline-date w-max text-[10px] font-black text-cyan-400 bg-cyan-400/10 border border-cyan-400/20 px-3 py-1 rounded-full uppercase tracking-widest">2025</p>
+                </div>
+                <p class="timeline-institution text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">KWARA STATE UNIVERSITY MALETE</p>
+                <p class="text-slate-300 text-sm leading-relaxed">Graduated with honors. Focused on web development, data structures, and software engineering principles.</p>
+            </div>
+        </div>
+
+        <!-- Item 2: Certifications -->
+        <div class="timeline-item relative before:absolute before:-left-[41px] before:top-2 before:w-4 before:h-4 before:rounded-full before:bg-cyan-400 before:ring-4 before:ring-slate-950" data-year="2021">
+            <div class="timeline-marker hidden"></div>
+            <div class="timeline-content bg-slate-900/30 p-6 rounded-2xl border border-cyan-500/5 backdrop-blur-md hover:border-cyan-500/20 transition-colors duration-300">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                    <h3 class="text-lg lg:text-xl font-bold text-white tracking-wide">Advanced Web Development Certification</h3>
+                    <p class="timeline-date w-max text-[10px] font-black text-cyan-400 bg-cyan-400/10 border border-cyan-400/20 px-3 py-1 rounded-full uppercase tracking-widest">2021</p>
+                </div>
+                <p class="timeline-institution text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Udemy & Coursera</p>
+                <p class="text-slate-300 text-sm leading-relaxed">Completed comprehensive courses in React, Node.js, and full-stack development. Hands-on projects included e-commerce platforms and real-time applications.</p>
+            </div>
+        </div>
+
+        <!-- Item 3: Google Cloud -->
+        <div class="timeline-item relative before:absolute before:-left-[41px] before:top-2 before:w-4 before:h-4 before:rounded-full before:bg-cyan-400 before:ring-4 before:ring-slate-950" data-year="2020">
+            <div class="timeline-marker hidden"></div>
+            <div class="timeline-content bg-slate-900/30 p-6 rounded-2xl border border-cyan-500/5 backdrop-blur-md hover:border-cyan-500/20 transition-colors duration-300">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                    <h3 class="text-lg lg:text-xl font-bold text-white tracking-wide">Google Cloud Skills Boost</h3>
+                    <p class="timeline-date w-max text-[10px] font-black text-cyan-400 bg-cyan-400/10 border border-cyan-400/20 px-3 py-1 rounded-full uppercase tracking-widest">2020</p>
+                </div>
+                <p class="timeline-institution text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Google Cloud Platform</p>
+                <p class="text-slate-300 text-sm leading-relaxed">Completed training in cloud deployment, containerization with Docker, and AWS services for scalable applications.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+ <section id="education" class="timeline-section education-timeline p-6 md:p-12 lg:p-16 bg-slate-950 text-slate-100 relative overflow-hidden" style="isolation: isolate;">
+    
+   
+
+    <!-- Section Titles -->
+    <div class="relative z-10 max-w-5xl mx-auto mb-16 text-left">
+        <h2 class="section-title text-slate-500 font-bold tracking-widest text-xs uppercase mb-2">MY JOURNEY</h2>
+        <h1 class="section-heading text-cyan-400 text-3xl lg:text-4xl font-black tracking-wide uppercase">EDUCATION</h1>
+    </div>
+
+    <!-- Left-Aligned Timeline Track -->
+    <div class="timeline relative z-10 max-w-3xl mx-auto pl-8 border-l-2 border-slate-900/80 space-y-12" style="contain: layout;">
+        
+        <!-- Item 1: KWASU -->
+        <div class="timeline-item relative before:absolute before:-left-[41px] before:top-2 before:w-4 before:h-4 before:rounded-full before:bg-cyan-400 before:ring-4 before:ring-slate-950" data-year="2025">
+            <div class="timeline-marker hidden"></div>
+            <div class="timeline-content bg-slate-900/30 p-6 rounded-2xl border border-cyan-500/5 backdrop-blur-md hover:border-cyan-500/20 transition-colors duration-300">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                    <h3 class="text-lg lg:text-xl font-bold text-white tracking-wide">Bachelor of Science in Computer Science</h3>
+                    <p class="timeline-date w-max text-[10px] font-black text-cyan-400 bg-cyan-400/10 border border-cyan-400/20 px-3 py-1 rounded-full uppercase tracking-widest">2025</p>
+                </div>
+                <p class="timeline-institution text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">KWARA STATE UNIVERSITY MALETE</p>
+                <p class="text-slate-300 text-sm leading-relaxed">Graduated with honors. Focused on web development, data structures, and software engineering principles.</p>
+            </div>
+        </div>
+
+        <!-- Item 2: Certifications -->
+        <div class="timeline-item relative before:absolute before:-left-[41px] before:top-2 before:w-4 before:h-4 before:rounded-full before:bg-cyan-400 before:ring-4 before:ring-slate-950" data-year="2021">
+            <div class="timeline-marker hidden"></div>
+            <div class="timeline-content bg-slate-900/30 p-6 rounded-2xl border border-cyan-500/5 backdrop-blur-md hover:border-cyan-500/20 transition-colors duration-300">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                    <h3 class="text-lg lg:text-xl font-bold text-white tracking-wide">Advanced Web Development Certification</h3>
+                    <p class="timeline-date w-max text-[10px] font-black text-cyan-400 bg-cyan-400/10 border border-cyan-400/20 px-3 py-1 rounded-full uppercase tracking-widest">2021</p>
+                </div>
+                <p class="timeline-institution text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Udemy & Coursera</p>
+                <p class="text-slate-300 text-sm leading-relaxed">Completed comprehensive courses in React, Node.js, and full-stack development. Hands-on projects included e-commerce platforms and real-time applications.</p>
+            </div>
+        </div>
+
+        <!-- Item 3: Google Cloud -->
+        <div class="timeline-item relative before:absolute before:-left-[41px] before:top-2 before:w-4 before:h-4 before:rounded-full before:bg-cyan-400 before:ring-4 before:ring-slate-950" data-year="2020">
+            <div class="timeline-marker hidden"></div>
+            <div class="timeline-content bg-slate-900/30 p-6 rounded-2xl border border-cyan-500/5 backdrop-blur-md hover:border-cyan-500/20 transition-colors duration-300">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                    <h3 class="text-lg lg:text-xl font-bold text-white tracking-wide">Google Cloud Skills Boost</h3>
+                    <p class="timeline-date w-max text-[10px] font-black text-cyan-400 bg-cyan-400/10 border border-cyan-400/20 px-3 py-1 rounded-full uppercase tracking-widest">2020</p>
+                </div>
+                <p class="timeline-institution text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Google Cloud Platform</p>
+                <p class="text-slate-300 text-sm leading-relaxed">Completed training in cloud deployment, containerization with Docker, and AWS services for scalable applications.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+ <section id="education" class="timeline-section education-timeline p-6 md:p-12 lg:p-16 bg-slate-950 text-slate-100 relative overflow-hidden" style="isolation: isolate;">
+    
+   
+
+    <!-- Section Titles -->
+    <div class="relative z-10 max-w-5xl mx-auto mb-16 text-left">
+        <h2 class="section-title text-slate-500 font-bold tracking-widest text-xs uppercase mb-2">MY JOURNEY</h2>
+        <h1 class="section-heading text-cyan-400 text-3xl lg:text-4xl font-black tracking-wide uppercase">EDUCATION</h1>
+    </div>
+
+    <!-- Left-Aligned Timeline Track -->
+    <div class="timeline relative z-10 max-w-3xl mx-auto pl-8 border-l-2 border-slate-900/80 space-y-12" style="contain: layout;">
+        
+        <!-- Item 1: KWASU -->
+        <div class="timeline-item relative before:absolute before:-left-[41px] before:top-2 before:w-4 before:h-4 before:rounded-full before:bg-cyan-400 before:ring-4 before:ring-slate-950" data-year="2025">
+            <div class="timeline-marker hidden"></div>
+            <div class="timeline-content bg-slate-900/30 p-6 rounded-2xl border border-cyan-500/5 backdrop-blur-md hover:border-cyan-500/20 transition-colors duration-300">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                    <h3 class="text-lg lg:text-xl font-bold text-white tracking-wide">Bachelor of Science in Computer Science</h3>
+                    <p class="timeline-date w-max text-[10px] font-black text-cyan-400 bg-cyan-400/10 border border-cyan-400/20 px-3 py-1 rounded-full uppercase tracking-widest">2025</p>
+                </div>
+                <p class="timeline-institution text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">KWARA STATE UNIVERSITY MALETE</p>
+                <p class="text-slate-300 text-sm leading-relaxed">Graduated with honors. Focused on web development, data structures, and software engineering principles.</p>
+            </div>
+        </div>
+
+        <!-- Item 2: Certifications -->
+        <div class="timeline-item relative before:absolute before:-left-[41px] before:top-2 before:w-4 before:h-4 before:rounded-full before:bg-cyan-400 before:ring-4 before:ring-slate-950" data-year="2021">
+            <div class="timeline-marker hidden"></div>
+            <div class="timeline-content bg-slate-900/30 p-6 rounded-2xl border border-cyan-500/5 backdrop-blur-md hover:border-cyan-500/20 transition-colors duration-300">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                    <h3 class="text-lg lg:text-xl font-bold text-white tracking-wide">Advanced Web Development Certification</h3>
+                    <p class="timeline-date w-max text-[10px] font-black text-cyan-400 bg-cyan-400/10 border border-cyan-400/20 px-3 py-1 rounded-full uppercase tracking-widest">2021</p>
+                </div>
+                <p class="timeline-institution text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Udemy & Coursera</p>
+                <p class="text-slate-300 text-sm leading-relaxed">Completed comprehensive courses in React, Node.js, and full-stack development. Hands-on projects included e-commerce platforms and real-time applications.</p>
+            </div>
+        </div>
+
+        <!-- Item 3: Google Cloud -->
+        <div class="timeline-item relative before:absolute before:-left-[41px] before:top-2 before:w-4 before:h-4 before:rounded-full before:bg-cyan-400 before:ring-4 before:ring-slate-950" data-year="2020">
+            <div class="timeline-marker hidden"></div>
+            <div class="timeline-content bg-slate-900/30 p-6 rounded-2xl border border-cyan-500/5 backdrop-blur-md hover:border-cyan-500/20 transition-colors duration-300">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                    <h3 class="text-lg lg:text-xl font-bold text-white tracking-wide">Google Cloud Skills Boost</h3>
+                    <p class="timeline-date w-max text-[10px] font-black text-cyan-400 bg-cyan-400/10 border border-cyan-400/20 px-3 py-1 rounded-full uppercase tracking-widest">2020</p>
+                </div>
+                <p class="timeline-institution text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Google Cloud Platform</p>
+                <p class="text-slate-300 text-sm leading-relaxed">Completed training in cloud deployment, containerization with Docker, and AWS services for scalable applications.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+ <section id="education" class="timeline-section education-timeline p-6 md:p-12 lg:p-16 bg-slate-950 text-slate-100 relative overflow-hidden" style="isolation: isolate;">
+    
+   
+
+    <!-- Section Titles -->
+    <div class="relative z-10 max-w-5xl mx-auto mb-16 text-left">
+        <h2 class="section-title text-slate-500 font-bold tracking-widest text-xs uppercase mb-2">MY JOURNEY</h2>
+        <h1 class="section-heading text-cyan-400 text-3xl lg:text-4xl font-black tracking-wide uppercase">EDUCATION</h1>
+    </div>
+
+    <!-- Left-Aligned Timeline Track -->
+    <div class="timeline relative z-10 max-w-3xl mx-auto pl-8 border-l-2 border-slate-900/80 space-y-12" style="contain: layout;">
+        
+        <!-- Item 1: KWASU -->
+        <div class="timeline-item relative before:absolute before:-left-[41px] before:top-2 before:w-4 before:h-4 before:rounded-full before:bg-cyan-400 before:ring-4 before:ring-slate-950" data-year="2025">
+            <div class="timeline-marker hidden"></div>
+            <div class="timeline-content bg-slate-900/30 p-6 rounded-2xl border border-cyan-500/5 backdrop-blur-md hover:border-cyan-500/20 transition-colors duration-300">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                    <h3 class="text-lg lg:text-xl font-bold text-white tracking-wide">Bachelor of Science in Computer Science</h3>
+                    <p class="timeline-date w-max text-[10px] font-black text-cyan-400 bg-cyan-400/10 border border-cyan-400/20 px-3 py-1 rounded-full uppercase tracking-widest">2025</p>
+                </div>
+                <p class="timeline-institution text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">KWARA STATE UNIVERSITY MALETE</p>
+                <p class="text-slate-300 text-sm leading-relaxed">Graduated with honors. Focused on web development, data structures, and software engineering principles.</p>
+            </div>
+        </div>
+
+        <!-- Item 2: Certifications -->
+        <div class="timeline-item relative before:absolute before:-left-[41px] before:top-2 before:w-4 before:h-4 before:rounded-full before:bg-cyan-400 before:ring-4 before:ring-slate-950" data-year="2021">
+            <div class="timeline-marker hidden"></div>
+            <div class="timeline-content bg-slate-900/30 p-6 rounded-2xl border border-cyan-500/5 backdrop-blur-md hover:border-cyan-500/20 transition-colors duration-300">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                    <h3 class="text-lg lg:text-xl font-bold text-white tracking-wide">Advanced Web Development Certification</h3>
+                    <p class="timeline-date w-max text-[10px] font-black text-cyan-400 bg-cyan-400/10 border border-cyan-400/20 px-3 py-1 rounded-full uppercase tracking-widest">2021</p>
+                </div>
+                <p class="timeline-institution text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Udemy & Coursera</p>
+                <p class="text-slate-300 text-sm leading-relaxed">Completed comprehensive courses in React, Node.js, and full-stack development. Hands-on projects included e-commerce platforms and real-time applications.</p>
+            </div>
+        </div>
+
+        <!-- Item 3: Google Cloud -->
+        <div class="timeline-item relative before:absolute before:-left-[41px] before:top-2 before:w-4 before:h-4 before:rounded-full before:bg-cyan-400 before:ring-4 before:ring-slate-950" data-year="2020">
+            <div class="timeline-marker hidden"></div>
+            <div class="timeline-content bg-slate-900/30 p-6 rounded-2xl border border-cyan-500/5 backdrop-blur-md hover:border-cyan-500/20 transition-colors duration-300">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                    <h3 class="text-lg lg:text-xl font-bold text-white tracking-wide">Google Cloud Skills Boost</h3>
+                    <p class="timeline-date w-max text-[10px] font-black text-cyan-400 bg-cyan-400/10 border border-cyan-400/20 px-3 py-1 rounded-full uppercase tracking-widest">2020</p>
+                </div>
+                <p class="timeline-institution text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Google Cloud Platform</p>
+                <p class="text-slate-300 text-sm leading-relaxed">Completed training in cloud deployment, containerization with Docker, and AWS services for scalable applications.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+ <section id="education" class="timeline-section education-timeline p-6 md:p-12 lg:p-16 bg-slate-950 text-slate-100 relative overflow-hidden" style="isolation: isolate;">
+    
+   
+
+    <!-- Section Titles -->
+    <div class="relative z-10 max-w-5xl mx-auto mb-16 text-left">
+        <h2 class="section-title text-slate-500 font-bold tracking-widest text-xs uppercase mb-2">MY JOURNEY</h2>
+        <h1 class="section-heading text-cyan-400 text-3xl lg:text-4xl font-black tracking-wide uppercase">EDUCATION</h1>
+    </div>
+
+    <!-- Left-Aligned Timeline Track -->
+    <div class="timeline relative z-10 max-w-3xl mx-auto pl-8 border-l-2 border-slate-900/80 space-y-12" style="contain: layout;">
+        
+        <!-- Item 1: KWASU -->
+        <div class="timeline-item relative before:absolute before:-left-[41px] before:top-2 before:w-4 before:h-4 before:rounded-full before:bg-cyan-400 before:ring-4 before:ring-slate-950" data-year="2025">
+            <div class="timeline-marker hidden"></div>
+            <div class="timeline-content bg-slate-900/30 p-6 rounded-2xl border border-cyan-500/5 backdrop-blur-md hover:border-cyan-500/20 transition-colors duration-300">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                    <h3 class="text-lg lg:text-xl font-bold text-white tracking-wide">Bachelor of Science in Computer Science</h3>
+                    <p class="timeline-date w-max text-[10px] font-black text-cyan-400 bg-cyan-400/10 border border-cyan-400/20 px-3 py-1 rounded-full uppercase tracking-widest">2025</p>
+                </div>
+                <p class="timeline-institution text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">KWARA STATE UNIVERSITY MALETE</p>
+                <p class="text-slate-300 text-sm leading-relaxed">Graduated with honors. Focused on web development, data structures, and software engineering principles.</p>
+            </div>
+        </div>
+
+        <!-- Item 2: Certifications -->
+        <div class="timeline-item relative before:absolute before:-left-[41px] before:top-2 before:w-4 before:h-4 before:rounded-full before:bg-cyan-400 before:ring-4 before:ring-slate-950" data-year="2021">
+            <div class="timeline-marker hidden"></div>
+            <div class="timeline-content bg-slate-900/30 p-6 rounded-2xl border border-cyan-500/5 backdrop-blur-md hover:border-cyan-500/20 transition-colors duration-300">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                    <h3 class="text-lg lg:text-xl font-bold text-white tracking-wide">Advanced Web Development Certification</h3>
+                    <p class="timeline-date w-max text-[10px] font-black text-cyan-400 bg-cyan-400/10 border border-cyan-400/20 px-3 py-1 rounded-full uppercase tracking-widest">2021</p>
+                </div>
+                <p class="timeline-institution text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Udemy & Coursera</p>
+                <p class="text-slate-300 text-sm leading-relaxed">Completed comprehensive courses in React, Node.js, and full-stack development. Hands-on projects included e-commerce platforms and real-time applications.</p>
+            </div>
+        </div>
+
+        <!-- Item 3: Google Cloud -->
+        <div class="timeline-item relative before:absolute before:-left-[41px] before:top-2 before:w-4 before:h-4 before:rounded-full before:bg-cyan-400 before:ring-4 before:ring-slate-950" data-year="2020">
+            <div class="timeline-marker hidden"></div>
+            <div class="timeline-content bg-slate-900/30 p-6 rounded-2xl border border-cyan-500/5 backdrop-blur-md hover:border-cyan-500/20 transition-colors duration-300">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                    <h3 class="text-lg lg:text-xl font-bold text-white tracking-wide">Google Cloud Skills Boost</h3>
+                    <p class="timeline-date w-max text-[10px] font-black text-cyan-400 bg-cyan-400/10 border border-cyan-400/20 px-3 py-1 rounded-full uppercase tracking-widest">2020</p>
+                </div>
+                <p class="timeline-institution text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Google Cloud Platform</p>
+                <p class="text-slate-300 text-sm leading-relaxed">Completed training in cloud deployment, containerization with Docker, and AWS services for scalable applications.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+ <section id="education" class="timeline-section education-timeline p-6 md:p-12 lg:p-16 bg-slate-950 text-slate-100 relative overflow-hidden" style="isolation: isolate;">
+    
+   
+
+    <!-- Section Titles -->
+    <div class="relative z-10 max-w-5xl mx-auto mb-16 text-left">
+        <h2 class="section-title text-slate-500 font-bold tracking-widest text-xs uppercase mb-2">MY JOURNEY</h2>
+        <h1 class="section-heading text-cyan-400 text-3xl lg:text-4xl font-black tracking-wide uppercase">EDUCATION</h1>
+    </div>
+
+    <!-- Left-Aligned Timeline Track -->
+    <div class="timeline relative z-10 max-w-3xl mx-auto pl-8 border-l-2 border-slate-900/80 space-y-12" style="contain: layout;">
+        
+        <!-- Item 1: KWASU -->
+        <div class="timeline-item relative before:absolute before:-left-[41px] before:top-2 before:w-4 before:h-4 before:rounded-full before:bg-cyan-400 before:ring-4 before:ring-slate-950" data-year="2025">
+            <div class="timeline-marker hidden"></div>
+            <div class="timeline-content bg-slate-900/30 p-6 rounded-2xl border border-cyan-500/5 backdrop-blur-md hover:border-cyan-500/20 transition-colors duration-300">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                    <h3 class="text-lg lg:text-xl font-bold text-white tracking-wide">Bachelor of Science in Computer Science</h3>
+                    <p class="timeline-date w-max text-[10px] font-black text-cyan-400 bg-cyan-400/10 border border-cyan-400/20 px-3 py-1 rounded-full uppercase tracking-widest">2025</p>
+                </div>
+                <p class="timeline-institution text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">KWARA STATE UNIVERSITY MALETE</p>
+                <p class="text-slate-300 text-sm leading-relaxed">Graduated with honors. Focused on web development, data structures, and software engineering principles.</p>
+            </div>
+        </div>
+
+        <!-- Item 2: Certifications -->
+        <div class="timeline-item relative before:absolute before:-left-[41px] before:top-2 before:w-4 before:h-4 before:rounded-full before:bg-cyan-400 before:ring-4 before:ring-slate-950" data-year="2021">
+            <div class="timeline-marker hidden"></div>
+            <div class="timeline-content bg-slate-900/30 p-6 rounded-2xl border border-cyan-500/5 backdrop-blur-md hover:border-cyan-500/20 transition-colors duration-300">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                    <h3 class="text-lg lg:text-xl font-bold text-white tracking-wide">Advanced Web Development Certification</h3>
+                    <p class="timeline-date w-max text-[10px] font-black text-cyan-400 bg-cyan-400/10 border border-cyan-400/20 px-3 py-1 rounded-full uppercase tracking-widest">2021</p>
+                </div>
+                <p class="timeline-institution text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Udemy & Coursera</p>
+                <p class="text-slate-300 text-sm leading-relaxed">Completed comprehensive courses in React, Node.js, and full-stack development. Hands-on projects included e-commerce platforms and real-time applications.</p>
+            </div>
+        </div>
+
+        <!-- Item 3: Google Cloud -->
+        <div class="timeline-item relative before:absolute before:-left-[41px] before:top-2 before:w-4 before:h-4 before:rounded-full before:bg-cyan-400 before:ring-4 before:ring-slate-950" data-year="2020">
+            <div class="timeline-marker hidden"></div>
+            <div class="timeline-content bg-slate-900/30 p-6 rounded-2xl border border-cyan-500/5 backdrop-blur-md hover:border-cyan-500/20 transition-colors duration-300">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                    <h3 class="text-lg lg:text-xl font-bold text-white tracking-wide">Google Cloud Skills Boost</h3>
+                    <p class="timeline-date w-max text-[10px] font-black text-cyan-400 bg-cyan-400/10 border border-cyan-400/20 px-3 py-1 rounded-full uppercase tracking-widest">2020</p>
+                </div>
+                <p class="timeline-institution text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Google Cloud Platform</p>
+                <p class="text-slate-300 text-sm leading-relaxed">Completed training in cloud deployment, containerization with Docker, and AWS services for scalable applications.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+    <section id="work-history" class="timeline-section work-timeline">
+        <h2 class="section-title">PROFESSIONAL EXPERIENCE</h2>
+        <h1 class="section-heading">WORK HISTORY</h1>
+        <div class="timeline">
+            <div class="timeline-item" data-year="2023">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <h3>Senior Full Stack Developer</h3>
+                    <p class="timeline-date">2023 - Present</p>
+                    <p class="timeline-company">Tech Innovations LLC</p>
+                    <p>Led development of microservices architecture using Node.js and GraphQL. Mentored junior developers and improved application performance by 40%. Tech Stack: TypeScript, PostgreSQL, Docker, AWS.</p>
+                </div>
+            </div>
+            <div class="timeline-item" data-year="2022">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <h3>Full Stack Developer</h3>
+                    <p class="timeline-date">2022 - 2023</p>
+                    <p class="timeline-company">Digital Commerce Co.</p>
+                    <p>Developed responsive e-commerce platform serving 50K+ users. Implemented payment gateways and automated testing. Tech Stack: React, Node.js, MongoDB, Jest.</p>
+                </div>
+            </div>
+            <div class="timeline-item" data-year="2021">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <h3>Junior Web Developer</h3>
+                    <p class="timeline-date">2021 - 2022</p>
+                    <p class="timeline-company">StartUp Ventures</p>
+                    <p>Built and maintained front-end interfaces using React and vanilla JavaScript. Collaborated with design team to implement responsive designs. Tech Stack: HTML, CSS, JavaScript, React.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Hemjay. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
