@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hemjay.Dev</title>
-
     <link rel="stylesheet" href="./dist/output.css">
+
+
     <link rel="stylesheet" href="animate.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,19 +15,33 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Bad+Script&family=Dancing+Script:wght@400..700&family=Marck+Script&family=Tangerine:wght@400;700&display=swap"
         rel="stylesheet">
-         <style>
-            html{
-                scroll-behavior: smooth !important;
-            }
+    <style>
+        html {
+            scroll-behavior: smooth !important;
+        }
+
         /* Left Scroll Animation */
         @keyframes scroll-left {
-            from { transform: translateX(0); }
-            to { transform: translateX(calc(-50% - 0.75rem)); } /* Offsets matching gap-6 (1.5rem / 2) */
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(calc(-50% - 0.75rem));
+            }
+
+            /* Offsets matching gap-6 (1.5rem / 2) */
         }
+
         /* Right Scroll Animation */
         @keyframes scroll-right {
-            from { transform: translateX(calc(-50% - 0.75rem)); }
-            to { transform: translateX(0); }
+            from {
+                transform: translateX(calc(-50% - 0.75rem));
+            }
+
+            to {
+                transform: translateX(0);
+            }
         }
 
         .custom-scroll-left {
@@ -34,6 +49,7 @@
             width: max-content;
             animation: scroll-left 30s linear infinite;
         }
+
         .custom-scroll-right {
             display: flex;
             width: max-content;
@@ -49,746 +65,956 @@
         .animate-spin-slow {
             animation: spin 12s linear infinite;
         }
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        /* 1. Force Hardware GPU Acceleration on the Light Engines */
-.absolute.rounded-full {
-    will-change: transform, opacity;
-    transform: translateZ(0); /* Pushes rendering from CPU to GPU */
-    backface-visibility: hidden;
-}
 
-/* 2. Strip Performance-Heavy Filters on Mobile Devices */
-@media (max-width: 768px) {
-    /* Lower the opacity and kill animations on phone viewports to maximize speed */
-    .absolute.rounded-full {
-        animation: none !important;
-        opacity: 0.15 !important; /* Keeps a subtle glow without the render lag */
-    }
-    
-    /* Remove heavy glass blurs on mobile screens */
-    .backdrop-blur-md, .backdrop-blur-lg {
-        backdrop-filter: none !important;
-        background-color: rgba(15, 23, 42, 0.95) !important; /* Flat dark background fallback */
-    }
-}
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* 1. Force Hardware GPU Acceleration on the Light Engines */
+        .absolute.rounded-full {
+            will-change: transform, opacity;
+            transform: translateZ(0);
+            /* Pushes rendering from CPU to GPU */
+            backface-visibility: hidden;
+        }
+
+        /* 2. Strip Performance-Heavy Filters on Mobile Devices */
+        @media (max-width: 768px) {
+
+            /* Lower the opacity and kill animations on phone viewports to maximize speed */
+            .absolute.rounded-full {
+                animation: none !important;
+                opacity: 0.15 !important;
+                /* Keeps a subtle glow without the render lag */
+            }
+
+            /* Remove heavy glass blurs on mobile screens */
+            .backdrop-blur-md,
+            .backdrop-blur-lg {
+                backdrop-filter: none !important;
+                background-color: rgba(15, 23, 42, 0.95) !important;
+                /* Flat dark background fallback */
+            }
+        }
     </style>
 </head>
-<body class="bg-slate-950 w-screen will-change-transform overflow-x-hidden m-0">
+
+<body class="bg-slate-950 w-screen overflow-x-hidden m-0">
     <div class="container absolute" id="home">
-    <div class="icons">
-        <div class="icon" style="top: 10%; left: 10%; --x-move: 15px; --y-move: -20px; --duration: 6s;"><i class="fas fa-lightbulb text-red-500 font-bold"></i></div>
-        <div class="icon" style="top: 20%; left: 70%; --x-move: -25px; --y-move: 15px; --duration: 8s;"><i class="fas fa-smile text-green-500"></i></div>
-        <div class="icon" style="top: 30%; left: 30%; --x-move: 20px; --y-move: -10px; --duration: 5s;"><i class="fas fa-bolt text-orange-500"></i></div>
-        <div class="icon" style="top: 40%; left: 80%; --x-move: -15px; --y-move: -25px; --duration: 7s;"><i class="fas fa-paper-plane text-blue-500"></i></div>
-        <div class="icon" style="top: 50%; left: 20%; --x-move: 30px; --y-move: 20px; --duration: 9s;"><i class="fas fa-lightbulb text-violet-500"></i></div>
-        <div class="icon" style="top: 60%; left: 60%; --x-move: -20px; --y-move: -15px; --duration: 6s;"><i class="fas fa-smile text-white"></i></div>
-        <div class="icon" style="top: 70%; left: 40%; --x-move: 15px; --y-move: 25px; --duration: 8s;"><i class="fas fa-paper-plane text-pink-500"></i></div>
-        <div class="icon" style="top: 80%; left: 90%; --x-move: -10px; --y-move: -30px; --duration: 5s;"><i class="fas fa-bolt text-blue-900"></i></div>
-        <div class="icon" style="top: 15%; left: 25%; --x-move: 25px; --y-move: -15px; --duration: 7s;"><i class="fas fa-code"></i></div>
-        <div class="icon" style="top: 25%; left: 85%; --x-move: -20px; --y-move: 20px; --duration: 6s;"><i class="fas fa-laptop"></i></div>
-        <div class="icon" style="top: 35%; left: 15%; --x-move: 15px; --y-move: -25px; --duration: 8s;"><i class="fas fa-cogs"></i></div>
-        <div class="icon" style="top: 45%; left: 75%; --x-move: -30px; --y-move: 10px; --duration: 9s;"><i class="fas fa-rocket"></i></div>
-        <div class="icon" style="top: 55%; left: 35%; --x-move: 20px; --y-move: -20px; --duration: 5s;"><i class="fas fa-cloud"></i></div>
-        <div class="icon" style="top: 65%; left: 95%; --x-move: -15px; --y-move: 15px; --duration: 7s;"><i class="fas fa-database"></i></div>
-        <div class="icon" style="top: 75%; left: 20%; --x-move: 25px; --y-move: -25px; --duration: 8s;"><i class="fas fa-terminal"></i></div>
-        
-        <a href="https://www.google.com/search?q=osogbo" target="_blank" rel="noopener noreferrer" class="interactive-link">
-            <div class="icon" style="top: 85%; left: 50%; --x-move: 10px; --y-move: -15px; --duration: 6s;"><i class="fas fa-globe text-cyan-400"></i></div>
-        </a>
-    </div>
+        <div class="icons">
+            <div class="icon" style="top: 10%; left: 10%; --x-move: 15px; --y-move: -20px; --duration: 6s;"><i
+                    class="fas fa-lightbulb text-red-500 font-bold"></i></div>
+            <div class="icon" style="top: 20%; left: 70%; --x-move: -25px; --y-move: 15px; --duration: 8s;"><i
+                    class="fas fa-smile text-green-500"></i></div>
+            <div class="icon" style="top: 30%; left: 30%; --x-move: 20px; --y-move: -10px; --duration: 5s;"><i
+                    class="fas fa-bolt text-orange-500"></i></div>
+            <div class="icon" style="top: 40%; left: 80%; --x-move: -15px; --y-move: -25px; --duration: 7s;"><i
+                    class="fas fa-paper-plane text-blue-500"></i></div>
+            <div class="icon" style="top: 50%; left: 20%; --x-move: 30px; --y-move: 20px; --duration: 9s;"><i
+                    class="fas fa-lightbulb text-violet-500"></i></div>
+            <div class="icon" style="top: 60%; left: 60%; --x-move: -20px; --y-move: -15px; --duration: 6s;"><i
+                    class="fas fa-smile text-white"></i></div>
+            <div class="icon" style="top: 70%; left: 40%; --x-move: 15px; --y-move: 25px; --duration: 8s;"><i
+                    class="fas fa-paper-plane text-pink-500"></i></div>
+            <div class="icon" style="top: 80%; left: 90%; --x-move: -10px; --y-move: -30px; --duration: 5s;"><i
+                    class="fas fa-bolt text-blue-900"></i></div>
+            <div class="icon" style="top: 15%; left: 25%; --x-move: 25px; --y-move: -15px; --duration: 7s;"><i
+                    class="fas fa-code"></i></div>
+            <div class="icon" style="top: 25%; left: 85%; --x-move: -20px; --y-move: 20px; --duration: 6s;"><i
+                    class="fas fa-laptop"></i></div>
+            <div class="icon" style="top: 35%; left: 15%; --x-move: 15px; --y-move: -25px; --duration: 8s;"><i
+                    class="fas fa-cogs"></i></div>
+            <div class="icon" style="top: 45%; left: 75%; --x-move: -30px; --y-move: 10px; --duration: 9s;"><i
+                    class="fas fa-rocket"></i></div>
+            <div class="icon" style="top: 55%; left: 35%; --x-move: 20px; --y-move: -20px; --duration: 5s;"><i
+                    class="fas fa-cloud"></i></div>
+            <div class="icon" style="top: 65%; left: 95%; --x-move: -15px; --y-move: 15px; --duration: 7s;"><i
+                    class="fas fa-database"></i></div>
+            <div class="icon" style="top: 75%; left: 20%; --x-move: 25px; --y-move: -25px; --duration: 8s;"><i
+                    class="fas fa-terminal"></i></div>
 
-    <style>
-        .container {
-            position: fixed !important;
-            top: 0 !important;
-            left: 0 !important;
-            width: 100vw !important;
-            height: 100vh !important;
-            z-index: 10; /* Lower than dropdowns/modals but above flat backgrounds */
-            pointer-events: none;
-            background: transparent;
-            display: block !important;
-        }
-
-        .icons {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-        }
-
-        .icon {
-            position: absolute;
-            opacity: 0.25; /* Subtle backdrop appearance */
-            transition: opacity 0.3s ease, transform 0.3s ease;
-            transform-origin: center;
-            animation: float var(--duration, 6s) ease-in-out infinite;
-        }
-
-        /* Re-enable touch/click mechanics exclusively for links */
-        .interactive-link {
-            pointer-events: auto !important;
-            cursor: pointer;
-        }
-
-        .interactive-link .icon:hover {
-            opacity: 1 !important;
-            scale: 1.2;
-        }
-
-        .icon.disabled {
-            opacity: 0 !important;
-            animation: none !important;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translate(0, 0) scale(0.9);
-            }
-            50% {
-                transform: translate(var(--x-move, 10px), var(--y-move, -10px)) scale(1.05);
-            }
-            100% {
-                transform: translate(0, 0) scale(0.9);
-            }
-        }
-        #projects, .collision-zone, .absolute.rounded-full {
-    content-visibility: auto; /* Browser skips rendering them when off-screen */
-    transform: translate3d(0, 0, 0); /* Forces GPU isolation */
-    will-change: transform;
-}
-/* 1. Define a hardware-optimized pulse using transform scale */
-@keyframes hyperPulse {
-    0% {
-        transform: scale(0.9) translateZ(0);
-    }
-    50% {
-        transform: scale(1.1) translateZ(0);
-    }
-    100% {
-        transform: scale(0.9) translateZ(0);
-    }
-}
-
-/* 2. Apply this to your background lighting elements */
-.optimized-pulse-glow {
-    /* Instantly isolates the element onto its own GPU layer */
-    will-change: transform;
-    backface-visibility: hidden;
-    perspective: 1000px;
-    
-    /* Triggers the hardware-composited animation loop */
-    animation: hyperPulse 10s ease-in-out infinite;
-}
-    </style>
-     </div>
-
-<header class="z-50 h-24 bg-slate-950/40 backdrop-blur-md sticky top-0 w-full p-4 border-b border-cyan-500/10 flex items-center justify-center">
-    <nav class="nav-menu w-full max-w-7xl flex flex-wrap items-center justify-between px-6 text-sm text-white font-bold">
-        
-        <div class="flex items-center gap-4">
-            <!-- Updated Logo to match theme -->
-            <div class="nav-logo text-2xl font-black tracking-widest text-cyan-400">Mj</div>
-            
-            <button class="theme-toggle text-cyan-400 text-lg hover:scale-110 transition-transform" type="button" onclick="toggleTheme()" aria-label="Toggle theme">
-                <i class="fas fa-moon"></i>
-            </button>
-            
-            <button class="icon-toggle-button text-xs bg-cyan-400/10 text-cyan-400 px-3 py-1 rounded-full hover:bg-cyan-400 hover:text-slate-950 transition-all" type="button" onclick="toggleIcons()">
-                Toggle icons
-            </button>
-        </div>
-
-        <!-- Hamburger Icon color updated -->
-        <button id="menuToggle" class="hamburger md:hidden text-cyan-400 text-xl focus:outline-none" type="button" aria-label="Open navigation">
-            <i class="fas fa-bars"></i>
-        </button>
-
-        <!-- Navigation Links shifted to white/cyan typography -->
-        <div id="navLinks" class="hidden w-full md:w-auto md:flex items-center gap-8 text-slate-200 uppercase tracking-wider text-xs mt-4 md:mt-0">
-            <a href="#services" class="block py-2 md:py-0 hover:text-cyan-400 transition-colors">Services</a>
-            
-            <div class="relative group py-2 md:py-0">
-                <a href="#projects" class="hover:text-cyan-400 transition-colors flex items-center gap-1">
-                    Projects <i class="fas fa-chevron-down text-[10px] text-cyan-400"></i>
-                </a>
-                <!-- Dropdown card styled with theme container colors -->
-                <div class="md:absolute top-full left-0 mt-2 w-40 bg-slate-900 border border-cyan-500/20 text-slate-200 rounded-xl shadow-2xl hidden group-hover:flex flex-col p-2 gap-1 relative z-20">
-                    <a href="#projects" class="hover:bg-cyan-500/10 hover:text-cyan-400 px-3 py-2 rounded-lg transition-colors">Projects</a>
-                    <a href="projects.html#testimonials" class="hover:bg-cyan-500/10 hover:text-cyan-400 px-3 py-2 rounded-lg transition-colors">Testimonials</a>
-                </div>
-            </div>
-
-            <a href="#contact" class="block py-2 md:py-0 hover:text-cyan-400 transition-colors">Contact</a>
-
-            <div class="relative group py-2 md:py-0">
-                <span class="cursor-pointer hover:text-cyan-400 transition-colors flex items-center gap-1">
-                    Timeline <i class="fas fa-chevron-down text-[10px] text-cyan-400"></i>
-                </span>
-                <!-- Dropdown card styled with theme container colors -->
-                <div class="md:absolute top-full left-0 mt-2 w-40 bg-slate-900 border border-cyan-500/20 text-slate-200 rounded-xl shadow-2xl hidden group-hover:flex flex-col p-2 gap-1 relative z-20">
-                    <a href="timeline.html#education" class="hover:bg-cyan-500/10 hover:text-cyan-400 px-3 py-2 rounded-lg transition-colors">Education</a>
-                    <a href="timeline.html#experience" class="hover:bg-cyan-500/10 hover:text-cyan-400 px-3 py-2 rounded-lg transition-colors">Experience</a>
-                </div>
-            </div>
-        </div>
-
-    </nav>
-</header>
-
-<main >
-
-<section class="section-about min-height:[1000px] lg:h-screen flex flex-col lg:flex-row justify-center lg:justify-between items-center p-6 md:p-10 gap-10 bg-slate-950 relative overflow-hidden" id="about">
-    
-   <div style="will-change: filter; transform: translateZ(0); backface-visibility: hidden; " class=" absolute w-full h-[1000px] animate-pulse blur-[100px] ">
-    <!-- Electric Blue Light Engine -->
-    <div class="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] rounded-full bg-cyan-500 filter opacity-70 animate- pointer-events-none" style="animation-delay: 1s;"></div>
-    
-    <!-- Electric Orange Light Engine -->
-    <div class="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] rounded-full bg-orange-500 filter opacity-70 animate- pointer-events-none" style="animation-delay: 3s;"></div>
-    
-    <!-- The Collision Zone: High-vibrance intersecting layer creating a raw chemical glow -->
-    <div class="absolute inset-0 w-full h-full mix-blend-difference pointer-events-none">
-        <div class="absolute top-1/4 left-1/3 w-[450px] h-[450px] rounded-full bg-cyan-400 filter opacity-80"></div>
-        <div class="absolute bottom-1/4 right-1/3 w-[450px] h-[450px] rounded-full bg-orange-500 filter opacity-80"></div>
-    </div>
-  </div>
-
-    <!-- Glassmorphism Container over the glowing background -->
-    <div class="text w-full lg:w-1/2 bg-slate-900/40 backdrop-blur-xl border border-white/10 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] p-6 md:p-10 rounded-[32px] overflow-hidden relative z-10" id="animatedText">
-
-        <div class="font-black text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white mb-4 tracking-tight">
-            <span>H</span><span>E</span><span>M</span><span>J</span><span>A</span><span>Y</span>
-            <span class="question-mark text-orange-500 animate-pulse">?</span>
-        </div>
-
-        <div class="tracking-wide pl-1 md:pl-3">
-            <h4 class="text-sm md:text-base font-bold text-cyan-400 uppercase tracking-widest mb-3">Web Developer & Digital Artist</h4>
-            <p class="text-base leading-relaxed text-slate-300 mb-8 max-w-md">
-                Hello! I'm Hemjay, a full-stack developer based in Nigeria. I have a strong passion for developing highly interactive architectures and modern digital solutions.
-            </p>
-            
-            <a href="#contact" class="availability-btn hover:shadow-xl hover:shadow-cyan-500/20 hover:scale-[1.02] transition-all duration-300 text-slate-950 flex items-center justify-center gap-3 uppercase bg-cyan-400 hover:bg-cyan-300 px-6 py-3.5 rounded-xl w-full sm:w-fit font-bold shadow-md">
-                <span class="status-dot w-2.5 h-2.5 bg-orange-500 rounded-full shadow-[0_0_8px_#f97316] animate-pulse"></span>
-                <span class="text-xs tracking-widest">Available for work</span>
+            <a href="https://www.google.com/search?q=osogbo" target="_blank" rel="noopener noreferrer"
+                class="interactive-link">
+                <div class="icon" style="top: 85%; left: 50%; --x-move: 10px; --y-move: -15px; --duration: 6s;"><i
+                        class="fas fa-globe text-cyan-400"></i></div>
             </a>
         </div>
 
+        <style>
+            .container {
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                width: 100vw !important;
+                height: 100vh !important;
+                z-index: 10;
+                /* Lower than dropdowns/modals but above flat backgrounds */
+                pointer-events: none;
+                background: transparent;
+                display: block !important;
+            }
+
+            .icons {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+            }
+
+            .icon {
+                position: absolute;
+                opacity: 0.25;
+                /* Subtle backdrop appearance */
+                transition: opacity 0.3s ease, transform 0.3s ease;
+                transform-origin: center;
+                animation: float var(--duration, 6s) ease-in-out infinite;
+            }
+
+            /* Re-enable touch/click mechanics exclusively for links */
+            .interactive-link {
+                pointer-events: auto !important;
+                cursor: pointer;
+            }
+
+            .interactive-link .icon:hover {
+                opacity: 1 !important;
+                scale: 1.2;
+            }
+
+            .icon.disabled {
+                opacity: 0 !important;
+                animation: none !important;
+            }
+
+            @keyframes float {
+                0% {
+                    transform: translate(0, 0) scale(0.9);
+                }
+
+                50% {
+                    transform: translate(var(--x-move, 10px), var(--y-move, -10px)) scale(1.05);
+                }
+
+                100% {
+                    transform: translate(0, 0) scale(0.9);
+                }
+            }
+
+            #projects,
+            .collision-zone,
+            .absolute.rounded-full {
+                content-visibility: auto;
+                /* Browser skips rendering them when off-screen */
+                transform: translate3d(0, 0, 0);
+                /* Forces GPU isolation */
+                will-change: transform;
+            }
+
+            /* 1. Define a hardware-optimized pulse using transform scale */
+            @keyframes hyperPulse {
+                0% {
+                    transform: scale(0.9) translateZ(0);
+                }
+
+                50% {
+                    transform: scale(1.1) translateZ(0);
+                }
+
+                100% {
+                    transform: scale(0.9) translateZ(0);
+                }
+            }
+
+            /* 2. Apply this to your background lighting elements */
+            .optimized-pulse-glow {
+                /* Instantly isolates the element onto its own GPU layer */
+                will-change: transform;
+                backface-visibility: hidden;
+                perspective: 1000px;
+
+                /* Triggers the hardware-composited animation loop */
+                animation: hyperPulse 10s ease-in-out infinite;
+            }
+        </style>
     </div>
 
-    <div class="content w-full sm:w-3/4 md:w-2/3 lg:w-1/2 flex flex-col items-center justify-center gap-8 relative z-10">
-        <div class="blob-container w-full max-w-[340px] md:max-w-[400px] aspect-square drop-shadow-[0_25px_35px_rgba(0,0,0,0.4)]">
-            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-labelledby="t" class="w-full h-full">
-                <defs>
-                    <pattern id="imgFill" patternUnits="objectBoundingBox" width="1" height="1">
-                        <image href="" x="0" y="0" width="200" height="200" preserveAspectRatio="xMidYMid slice" />
-                    </pattern>
-                </defs>
-                <clipPath id="blobClip">
-                    <path d="M43.1,-68.5C56.2,-58.6,67.5,-47.3,72.3,-33.9C77.2,-20.5,75.5,-4.9,74.2,11.3C72.9,27.6,71.9,44.5,63.8,57.2C55.7,69.8,40.6,78.2,25.5,79.2C10.4,80.1,-4.7,73.6,-20.9,69.6C-37.1,65.5,-54.5,63.9,-66,54.8C-77.5,45.8,-83.2,29.3,-85.7,12.3C-88.3,-4.8,-87.7,-22.3,-79.6,-34.8C-71.5,-47.3,-55.8,-54.9,-41.3,-64.2C-26.7,-73.6,-13.4,-84.7,0.8,-86C15,-87.2,29.9,-78.5,43.1,-68.5Z" transform="translate(100 100)" />
-                </clipPath>
-                <image href="projectfolder/IMG_1185.jpeg" width="200" height="200" preserveAspectRatio="xMidYMid slice" clip-path="url(#blobClip)" />
-                <path class="blob" d="M43.1,-68.5C56.2,-58.6,67.5,-47.3,72.3,-33.9C77.2,-20.5,75.5,-4.9,74.2,11.3C72.9,27.6,71.9,44.5,63.8,57.2C55.7,69.8,40.6,78.2,25.5,79.2C10.4,80.1,-4.7,73.6,-20.9,69.6C-37.1,65.5,-54.5,63.9,-66,54.8C-77.5,45.8,-83.2,29.3,-85.7,12.3C-88.3,-4.8,-87.7,-22.3,-79.6,-34.8C-71.5,-47.3,-55.8,-54.9,-41.3,-64.2C-26.7,-73.6,-13.4,-84.7,0.8,-86C15,-87.2,29.9,-78.5,43.1,-68.5Z" transform="translate(100 100)" fill="url(#imgFill)" />
-                <path id="text" d="M43.1,-68.5C56.2,-58.6,67.5,-47.3,72.3,-33.9C77.2,-20.5,75.5,-4.9,74.2,11.3C72.9,27.6,71.9,44.5,63.8,57.2C55.7,69.8,40.6,78.2,25.5,79.2C10.4,80.1,-4.7,73.6,-20.9,69.6C-37.1,65.5,-54.5,63.9,-66,54.8C-77.5,45.8,-83.2,29.3,-85.7,12.3C-88.3,-4.8,-87.7,-22.3,-79.6,-34.8C-71.5,-47.3,-55.8,-54.9,-41.3,-64.2C-26.7,-73.6,-13.4,-84.7,0.8,-86C15,-87.2,29.9,-78.5,43.1,-68.5Z" transform="translate(100 100)" fill="none" stroke="none" pathLength="100" />
-                
-                <text class="text-content fill-orange-500 font-black tracking-widest text-[9px] uppercase">
-                    <textPath href="#text" startOffset="0%">
-                        • CREATIVE DEVELOPER • CREATIVE DEVELOPER • CREATIVE DEVELOPER •
-                        <animate attributeName="startOffset" from="0%" to="100%" dur="15s" repeatCount="indefinite" />
-                    </textPath>
-                </text>
-            </svg>
-        </div>
+    <header
+        class="z-50 h-24 bg-slate-950/40 backdrop-blur-md sticky top-0 w-full p-4 border-b border-cyan-500/10 flex items-center justify-center">
+        <nav
+            class="nav-menu w-full max-w-7xl flex flex-wrap items-center justify-between px-6 text-sm text-white font-bold">
 
-        <div class="w-full">
-            <ul class="social-links-list flex flex-wrap gap-6 md:gap-8 justify-center items-center text-xs font-bold tracking-widest uppercase text-slate-400">
-                <li><a href="https://github.com" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-400 transition-colors duration-300">GitHub</a></li>
-                <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-400 transition-colors duration-300">LinkedIn</a></li>
-                <li><a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="hover:text-orange-500 transition-colors duration-300">Twitter</a></li>
-                <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="hover:text-orange-500 transition-colors duration-300">Instagram</a></li>
-            </ul>
-        </div>
-    </div>
-</section>
+            <div class="flex items-center gap-4">
+                <!-- Updated Logo to match theme -->
+                <div class="nav-logo text-2xl font-black tracking-widest text-cyan-400">Mj</div>
 
- <section id="skills" class="relative p-6 overflow-hidden bg-slate-950 text-slate-100 w-full">
-    
- 
-    <!-- The Collision Zone: High-vibrance intersecting layer creating a raw chemical glow -->
-    <div class="absolute inset-0 w-full h-full mix-blend-difference pointer-events-none animate-pulse">
-        <div class="absolute top-1/4 left-1/3 w-[450px] h-[40px] rounded-full bg-cyan-400  opacity-80"></div>
-        <div class="absolute bottom-1/4 right-1/3 w-[40px] h-[450px] rounded-full bg-orange-500 opacity-80"></div>
-    </div>
-    
-    <!-- Grid Overlay -->
-    <div class="absolute inset-0 opacity-5 bg-[linear-gradient(to_right,#06b6d4_1px,transparent_1px),linear-gradient(to_bottom,#06b6d4_1px,transparent_1px)] bg-[size:3rem_3rem] pointer-events-none"></div>
-    
+                <button class="theme-toggle text-cyan-400 text-lg hover:scale-110 transition-transform" type="button"
+                    onclick="toggleTheme()" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
 
-
-    <div class="relative z-10 w-full mx-auto">
-        <!-- Section Titles -->
-        <h2 class="text-3xl font-bold text-slate-800 mb-2 tracking-widest">WHAT I DO</h2>
-        <h1 class="text-cyan-400 text-sm font-bold pl-3 mb-10 border-l-4 border-cyan-400 uppercase tracking-widest">Skills</h1>
-
-        <!-- Track Container (Now flat without 3D perspectives) -->
-        <div class="flex flex-col gap-6 w-full overflow-hidden py-4">
-            
-            <!-- Row 1: Scrolling Left -->
-            <div class="flex gap-6 custom-scroll-left">
-                <!-- Git Card -->
-                <div class="w-48 h-48 flex-shrink-0 bg-slate-900/60 backdrop-blur-md border border-cyan-500/10 rounded-xl flex flex-col items-center justify-center text-center p-4 shadow-xl transition-all duration-300 hover:scale-105 hover:border-cyan-400/40 hover:bg-slate-900/90">
-                    <i class="fab fa-github text-4xl text-slate-200 mb-3"></i>
-                    <h3 class="text-lg font-bold text-white">Git</h3>
-                    <p class="text-[10px] text-cyan-400/70 mt-1 tracking-wide">Version Control</p>
-                </div>
-
-                <!-- React Card -->
-                <div class="w-48 h-48 flex-shrink-0 bg-slate-900/60 backdrop-blur-md border border-cyan-500/10 rounded-xl flex flex-col items-center justify-center text-center p-4 shadow-xl transition-all duration-300 hover:scale-105 hover:border-cyan-400/40 hover:bg-slate-900/90">
-                    <i class="fab fa-react text-4xl text-cyan-400 mb-3 animate-spin-slow"></i>
-                    <h3 class="text-lg font-bold text-white">React</h3>
-                    <p class="text-[10px] text-cyan-400/70 mt-1 tracking-wide">Frontend Framework</p>
-                </div>
-
-                <!-- HTML5 Card -->
-                <div class="w-48 h-48 flex-shrink-0 bg-slate-900/60 backdrop-blur-md border border-cyan-500/10 rounded-xl flex flex-col items-center justify-center text-center p-4 shadow-xl transition-all duration-300 hover:scale-105 hover:border-orange-500/40 hover:bg-slate-900/90">
-                    <i class="fab fa-html5 text-4xl text-orange-500 mb-3"></i>
-                    <h3 class="text-lg font-bold text-white">HTML5</h3>
-                    <p class="text-[10px] text-orange-400/70 mt-1 tracking-wide">Semantic Structure</p>
-                </div>
-
-                <!-- Duplicates for seamless left looping -->
-                <div class="w-48 h-48 flex-shrink-0 bg-slate-900/60 backdrop-blur-md border border-cyan-500/10 rounded-xl flex flex-col items-center justify-center text-center p-4 shadow-xl transition-all duration-300 hover:scale-105 hover:border-cyan-400/40 hover:bg-slate-900/90">
-                    <i class="fab fa-github text-4xl text-slate-200 mb-3"></i>
-                    <h3 class="text-lg font-bold text-white">Git</h3>
-                </div>
-                <div class="w-48 h-48 flex-shrink-0 bg-slate-900/60 backdrop-blur-md border border-cyan-500/10 rounded-xl flex flex-col items-center justify-center text-center p-4 shadow-xl transition-all duration-300 hover:scale-105 hover:border-cyan-400/40 hover:bg-slate-900/90">
-                    <i class="fab fa-react text-4xl text-cyan-400 mb-3 animate-spin-slow"></i>
-                    <h3 class="text-lg font-bold text-white">React</h3>
-                </div>
-                <div class="w-48 h-48 flex-shrink-0 bg-slate-900/60 backdrop-blur-md border border-cyan-500/10 rounded-xl flex flex-col items-center justify-center text-center p-4 shadow-xl transition-all duration-300 hover:scale-105 hover:border-orange-500/40 hover:bg-slate-900/90">
-                    <i class="fab fa-html5 text-4xl text-orange-500 mb-3"></i>
-                    <h3 class="text-lg font-bold text-white">HTML5</h3>
-                </div>
+                <button
+                    class="icon-toggle-button text-xs bg-cyan-400/10 text-cyan-400 px-3 py-1 rounded-full hover:bg-cyan-400 hover:text-slate-950 transition-all"
+                    type="button" onclick="toggleIcons()">
+                    Toggle icons
+                </button>
             </div>
 
-            <!-- Row 2: Scrolling Right (Populate with your other tools/skills) -->
-            <div class="flex gap-6 custom-scroll-right">
-                <!-- CSS3 Card -->
-                <div class="w-48 h-48 flex-shrink-0 bg-slate-900/60 backdrop-blur-md border border-cyan-500/10 rounded-xl flex flex-col items-center justify-center text-center p-4 shadow-xl transition-all duration-300 hover:scale-105 hover:border-cyan-400/40 hover:bg-slate-900/90">
-                    <i class="fab fa-css3-alt text-4xl text-blue-500 mb-3"></i>
-                    <h3 class="text-lg font-bold text-white">CSS3</h3>
-                    <p class="text-[10px] text-cyan-400/70 mt-1 tracking-wide">Modern Styling</p>
-                </div>
+            <!-- Hamburger Icon color updated -->
+            <button id="menuToggle" class="hamburger md:hidden text-cyan-400 text-xl focus:outline-none" type="button"
+                aria-label="Open navigation">
+                <i class="fas fa-bars"></i>
+            </button>
 
-                <!-- JS Card -->
-                <div class="w-48 h-48 flex-shrink-0 bg-slate-900/60 backdrop-blur-md border border-cyan-500/10 rounded-xl flex flex-col items-center justify-center text-center p-4 shadow-xl transition-all duration-300 hover:scale-105 hover:border-orange-500/40 hover:bg-slate-900/90">
-                    <i class="fab fa-js text-4xl text-yellow-500 mb-3"></i>
-                    <h3 class="text-lg font-bold text-white">JavaScript</h3>
-                    <p class="text-[10px] text-orange-400/70 mt-1 tracking-wide">Dynamic Logic</p>
-                </div>
+            <!-- Navigation Links shifted to white/cyan typography -->
+            <div id="navLinks"
+                class="hidden w-full md:w-auto md:flex items-center gap-8 text-slate-200 uppercase tracking-wider text-xs mt-4 md:mt-0">
+                <a href="#services" class="block py-2 md:py-0 hover:text-cyan-400 transition-colors">Services</a>
 
-                <!-- Node Card -->
-                <div class="w-48 h-48 flex-shrink-0 bg-slate-900/60 backdrop-blur-md border border-cyan-500/10 rounded-xl flex flex-col items-center justify-center text-center p-4 shadow-xl transition-all duration-300 hover:scale-105 hover:border-cyan-400/40 hover:bg-slate-900/90">
-                    <i class="fab fa-node-js text-4xl text-green-500 mb-3"></i>
-                    <h3 class="text-lg font-bold text-white">Node.js</h3>
-                    <p class="text-[10px] text-cyan-400/70 mt-1 tracking-wide">Backend Runtime</p>
-                </div>
+                <div class="nav-group relative group py-2 md:py-0">
+                    <a href="#projects"
+                        class="cursor-pointer hover:text-cyan-400 transition-colors flex items-center gap-1 select-none">
+                        project <i class="fas fa-chevron-down text-[10px] text-cyan-400"></i>
+                    </a>
 
-                <!-- Duplicates for seamless right looping -->
-                <div class="w-48 h-48 flex-shrink-0 bg-slate-900/60 backdrop-blur-md border border-cyan-500/10 rounded-xl flex flex-col items-center justify-center text-center p-4 shadow-xl transition-all duration-300 hover:scale-105 hover:border-cyan-400/40 hover:bg-slate-900/90">
-                    <i class="fab fa-css3-alt text-4xl text-blue-500 mb-3"></i>
-                    <h3 class="text-lg font-bold text-white">CSS3</h3>
-                </div>
-                <div class="w-48 h-48 flex-shrink-0 bg-slate-900/60 backdrop-blur-md border border-cyan-500/10 rounded-xl flex flex-col items-center justify-center text-center p-4 shadow-xl transition-all duration-300 hover:scale-105 hover:border-orange-500/40 hover:bg-slate-900/90">
-                    <i class="fab fa-js text-4xl text-yellow-500 mb-3"></i>
-                    <h3 class="text-lg font-bold text-white">JavaScript</h3>
-                </div>
-                <div class="w-48 h-48 flex-shrink-0 bg-slate-900/60 backdrop-blur-md border border-cyan-500/10 rounded-xl flex flex-col items-center justify-center text-center p-4 shadow-xl transition-all duration-300 hover:scale-105 hover:border-cyan-400/40 hover:bg-slate-900/90">
-                    <i class="fab fa-node-js text-4xl text-green-500 mb-3"></i>
-                    <h3 class="text-lg font-bold text-white">Node.js</h3>
-                </div>
-            </div>
-        </div>
-
-        <!-- Action Button -->
-        <div class="text-center mt-10">
-            <a href="hemjay_cv.pdf" download class="inline-block bg-cyan-500 text-slate-950 px-8 py-3.5 rounded-xl font-bold text-sm uppercase hover:bg-cyan-400 transition-all shadow-lg shadow-cyan-500/10 tracking-wider">Download CV</a>
-        </div>
-    </div>
-
-   
-</section> 
-
-<section id="timeline-preview" class="relative p-8 lg:p-16 overflow-hidden bg-slate-950 text-slate-100">
-    <!-- Radiant Electric Orange Glow clashing from the side -->
-    <div class="absolute top-1/2 -left-40 w-96 h-96 bg-orange-600 rounded-full filter blur-[130px] opacity-15 pointer-events-none"></div>
-
-    <div class="relative z-10 max-w-5xl mx-auto">
-        <!-- Section Headers updated to theme colors -->
-        <h2 class="text-slate-800 font-black tracking-widest text-4xl mb-2 uppercase">My Background</h2>
-        <h1 class="text-cyan-400 text-sm font-bold tracking-widest uppercase mb-12 border-l-4 border-cyan-400 pl-3">Brief Bio</h1>
-
-        <!-- Content Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            
-            <!-- Education Card -->
-            <div class="bg-slate-900/60 backdrop-blur-md border border-cyan-500/10 p-8 rounded-2xl shadow-2xl transition-all duration-300 hover:scale-[1.02] hover:border-cyan-400/40 hover:bg-slate-900/90">
-                <div class="flex items-center gap-4 mb-5">
-                    <div class="w-11 h-11 bg-cyan-500/10 rounded-xl flex items-center justify-center text-cyan-400 text-lg border border-cyan-500/20">
-                        <i class="fas fa-graduation-cap"></i>
+                    <div
+                        class="nav-dropdown md:absolute top-full left-0 mt-2 w-40 bg-slate-900 border border-cyan-500/20 text-slate-200 rounded-xl shadow-2xl hidden group-hover:flex flex-col p-2 gap-1 z-20">
+                        <a href="projects.html"
+                            class="hover:bg-cyan-500/10 hover:text-cyan-400 px-3 py-2 rounded-lg transition-colors">projects</a>
+                        <a href="projects.html#testimonials"
+                            class="hover:bg-cyan-500/10 hover:text-cyan-400 px-3 py-2 rounded-lg transition-colors">testimonial</a>
                     </div>
-                    <h3 class="text-lg font-bold text-white tracking-wide">Education</h3>
                 </div>
-                <p class="text-slate-400 text-sm leading-relaxed mb-6">
-                    Graduate in Computer Science, specializing in core software systems, technical architectures, and scalable web frameworks.
-                </p>
-                <div class="text-cyan-400 font-mono text-xs uppercase tracking-widest font-bold">Kwara State University</div>
-            </div>
 
-            <!-- Experience Card -->
-            <div class="bg-slate-900/60 backdrop-blur-md border border-cyan-500/10 p-8 rounded-2xl shadow-2xl transition-all duration-300 hover:scale-[1.02] hover:border-orange-500/40 hover:bg-slate-900/90">
-                <div class="flex items-center gap-4 mb-5">
-                    <!-- Subtle orange variation for asymmetrical color accents -->
-                    <div class="w-11 h-11 bg-orange-500/10 rounded-xl flex items-center justify-center text-orange-500 text-lg border border-orange-500/20">
-                        <i class="fas fa-briefcase"></i>
+                <a href="#contact" class="block py-2 md:py-0 hover:text-cyan-400 transition-colors">Contact</a>
+
+                <div class="nav-group relative group py-2 md:py-0">
+                    <a href="#timeline-preview"
+                        class="cursor-pointer hover:text-cyan-400 transition-colors flex items-center gap-1 select-none">
+                        experience <i class="fas fa-chevron-down text-[10px] text-cyan-400"></i>
+                    </a>
+
+                    <div
+                        class="nav-dropdown md:absolute top-full left-50 mt-2 w-40 bg-slate-900 border border-cyan-500/20 text-slate-200 rounded-xl shadow-2xl hidden group-hover:flex flex-col p-2 gap-1 z-20">
+                        <a href="timeline.html#education"
+                            class="hover:bg-cyan-500/10 hover:text-cyan-400 px-3 py-2 rounded-lg transition-colors">Education</a>
+                        <a href="timeline.html#experience"
+                            class="hover:bg-cyan-500/10 hover:text-cyan-400 px-3 py-2 rounded-lg transition-colors">Experience</a>
                     </div>
-                    <h3 class="text-lg font-bold text-white tracking-wide">Experience</h3>
                 </div>
-                <p class="text-slate-400 text-sm leading-relaxed mb-6">
-                    Proven track record engineering responsive digital solutions, modular full-stack applications, and robust client content systems.
-                </p>
-                <div class="text-orange-500 font-mono text-xs uppercase tracking-widest font-bold">Full-Stack Web Developer</div>
+        </nav>
+    </header>
+
+    <main>
+
+        <section
+            class="section-about min-height:[1000px] lg:h-screen flex flex-col lg:flex-row justify-center lg:justify-between items-center p-6 md:p-10 gap-10 bg-slate-950 relative overflow-hidden"
+            id="about">
+
+            <div style="will-change: filter; transform: translateZ(0); backface-visibility: hidden; "
+                class=" absolute w-full h-[1000px] animate-pulse blur-[100px] ">
+                <!-- Electric Blue Light Engine -->
+                <div class="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] rounded-full bg-cyan-500 filter opacity-70 animate- pointer-events-none"
+                    style="animation-delay: 1s;"></div>
+
+                <!-- Electric Orange Light Engine -->
+                <div class="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] rounded-full bg-orange-500 filter opacity-70 animate- pointer-events-none"
+                    style="animation-delay: 3s;"></div>
+
+                <!-- The Collision Zone: High-vibrance intersecting layer creating a raw chemical glow -->
+                <div class="absolute inset-0 w-full h-full mix-blend-difference pointer-events-none">
+                    <div
+                        class="absolute top-1/4 left-1/3 w-[450px] h-[450px] rounded-full bg-cyan-400 filter opacity-80">
+                    </div>
+                    <div
+                        class="absolute bottom-1/4 right-1/3 w-[450px] h-[450px] rounded-full bg-orange-500 filter opacity-80">
+                    </div>
+                </div>
             </div>
 
-        </div>
+            <!-- Glassmorphism Container over the glowing background -->
+            <div class="text w-full lg:w-1/2 bg-slate-900/40 backdrop-blur-xl border border-white/10 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] p-6 md:p-10 rounded-[32px] overflow-hidden relative z-10"
+                id="animatedText">
 
-        <!-- Timeline Redirection Link -->
-        <div class="text-center mt-12">
-            <a href="timeline.html" class="inline-flex items-center gap-2 text-cyan-400 font-bold uppercase text-xs tracking-widest border-b border-cyan-500/30 pb-1 hover:text-cyan-300 hover:border-cyan-400 transition-all group">
-                Explore Full Interactive Timeline 
-                <i class="fas fa-arrow-right text-[10px] transition-transform group-hover:translate-x-1"></i>
-            </a>
-        </div>
-    </div>
-</section>
+                <div class="font-black text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white mb-4 tracking-tight">
+                    <span>H</span><span>E</span><span>M</span><span>J</span><span>A</span><span>Y</span>
+                    <span class="question-mark text-orange-500 animate-pulse">?</span>
+                </div>
 
-<section id="services" class="services-section p-8 lg:p-16 bg-slate-950 text-slate-100 relative overflow-hidden">
+                <div class="tracking-wide pl-1 md:pl-3">
+                    <h4 class="text-sm md:text-base font-bold text-cyan-400 uppercase tracking-widest mb-3">Web
+                        Developer & Digital Artist</h4>
+                    <p class="text-base leading-relaxed text-slate-300 mb-8 max-w-md">
+                        Hello! I'm Hemjay, a full-stack developer based in Nigeria. I have a strong passion for
+                        developing highly interactive architectures and modern digital solutions.
+                    </p>
 
-  
-    <!-- Electric Blue Light Engine -->
-    <div class="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] rounded-full bg-cyan-500 filter opacity-70 animate- pointer-events-none" style="animation-delay: 1s;"></div>
-    
-    <!-- Electric Orange Light Engine -->
-    <div class="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] rounded-full bg-orange-500 filter opacity-70 animate- pointer-events-none" style="animation-delay: 3s;"></div>
-    
-    <!-- The Collision Zone: High-vibrance intersecting layer creating a raw chemical glow -->
-    <div class="absolute inset-0 w-full h-full  pointer-events-none">
-        <div class="absolute top-1/4 left-1/3 w-[450px] h-[450px] rounded-full bg-cyan-400 filter  opacity-80"></div>
+                    <a href="#contact"
+                        class="availability-btn hover:shadow-xl hover:shadow-cyan-500/20 hover:scale-[1.02] transition-all duration-300 text-slate-950 flex items-center justify-center gap-3 uppercase bg-cyan-400 hover:bg-cyan-300 px-6 py-3.5 rounded-xl w-full sm:w-fit font-bold shadow-md">
+                        <span
+                            class="status-dot w-2.5 h-2.5 bg-orange-500 rounded-full shadow-[0_0_8px_#f97316] animate-pulse"></span>
+                        <span class="text-xs tracking-widest">Available for work</span>
+                    </a>
+                </div>
 
-        <div class="absolute bottom-1/4 right-1/3 w-[450px] h-[450px] rounded-full bg-orange-500 filter opacity-80"></div>
-    </div>
-   
-
-    <div class="relative z-10 max-w-5xl mx-auto">
-        <h2 class="text-slate-800 font-bold text-center tracking-widest text-xl uppercase mb-2">WHAT I OFFER</h2>
-        <h1 class="text-cyan-400 text-5xl font-black text-center mb-16 tracking-wide">SERVICES</h1>
-
-        <!-- Tabs Navigation -->
-        <div class="service-tabs flex w-full justify-center mb-12">
-            <div class="tab-buttons flex flex-wrap justify-center gap-3 bg-slate-900/80 p-2 rounded-2xl border border-cyan-500/10 backdrop-blur-md">
-                <button class="tab-button w-40 active bg-cyan-500 text-slate-950 px-5 py-3 rounded-xl flex items-center justify-center gap-2 transition-all text-xs font-bold uppercase tracking-wider" onclick="switchTab(event, 'web-dev')">
-                    <i class="fas fa-code"></i> Web Dev
-                </button>
-                <button class="tab-button w-40 text-slate-400 px-5 py-3 rounded-xl flex items-center justify-center gap-2 transition-all hover:bg-slate-800 hover:text-white text-xs font-bold uppercase tracking-wider" onclick="switchTab(event, 'design')">
-                    <i class="fas fa-palette"></i> Design
-                </button>
-                <button class="tab-button w-40 text-slate-400 px-5 py-3 rounded-xl flex items-center justify-center gap-2 transition-all hover:bg-slate-800 hover:text-white text-xs font-bold uppercase tracking-wider" onclick="switchTab(event, 'consulting')">
-                    <i class="fas fa-lightbulb"></i> Consulting
-                </button>
             </div>
-        </div>
 
-        <!-- Tab Contents Wrapper -->
-        <div class="relative max-w-3xl mx-auto">
+            <div class="content w-full sm:w-3/4 md:w-2/3 lg:w-1/2 flex flex-col items-center justify-center gap-8 relative z-10"
+                id="animatedBlob">
+                <div
+                    class="blob-container w-full max-w-[340px] md:max-w-[400px] aspect-square drop-shadow-[0_25px_35px_rgba(0,0,0,0.4)]">
+                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-labelledby="t"
+                        class="w-full h-full">
+                        <defs>
+                            <pattern id="imgFill" patternUnits="objectBoundingBox" width="1" height="1">
+                                <image href="" x="0" y="0" width="200" height="200"
+                                    preserveAspectRatio="xMidYMid slice" />
+                            </pattern>
+                        </defs>
+                        <clipPath id="blobClip">
+                            <path
+                                d="M43.1,-68.5C56.2,-58.6,67.5,-47.3,72.3,-33.9C77.2,-20.5,75.5,-4.9,74.2,11.3C72.9,27.6,71.9,44.5,63.8,57.2C55.7,69.8,40.6,78.2,25.5,79.2C10.4,80.1,-4.7,73.6,-20.9,69.6C-37.1,65.5,-54.5,63.9,-66,54.8C-77.5,45.8,-83.2,29.3,-85.7,12.3C-88.3,-4.8,-87.7,-22.3,-79.6,-34.8C-71.5,-47.3,-55.8,-54.9,-41.3,-64.2C-26.7,-73.6,-13.4,-84.7,0.8,-86C15,-87.2,29.9,-78.5,43.1,-68.5Z"
+                                transform="translate(100 100)" />
+                        </clipPath>
+                        <image href="projectfolder/IMG_1185.jpeg" width="200" height="200"
+                            preserveAspectRatio="xMidYMid slice" clip-path="url(#blobClip)" />
+                        <path class="blob"
+                            d="M43.1,-68.5C56.2,-58.6,67.5,-47.3,72.3,-33.9C77.2,-20.5,75.5,-4.9,74.2,11.3C72.9,27.6,71.9,44.5,63.8,57.2C55.7,69.8,40.6,78.2,25.5,79.2C10.4,80.1,-4.7,73.6,-20.9,69.6C-37.1,65.5,-54.5,63.9,-66,54.8C-77.5,45.8,-83.2,29.3,-85.7,12.3C-88.3,-4.8,-87.7,-22.3,-79.6,-34.8C-71.5,-47.3,-55.8,-54.9,-41.3,-64.2C-26.7,-73.6,-13.4,-84.7,0.8,-86C15,-87.2,29.9,-78.5,43.1,-68.5Z"
+                            transform="translate(100 100)" fill="url(#imgFill)" />
+                        <path id="text"
+                            d="M43.1,-68.5C56.2,-58.6,67.5,-47.3,72.3,-33.9C77.2,-20.5,75.5,-4.9,74.2,11.3C72.9,27.6,71.9,44.5,63.8,57.2C55.7,69.8,40.6,78.2,25.5,79.2C10.4,80.1,-4.7,73.6,-20.9,69.6C-37.1,65.5,-54.5,63.9,-66,54.8C-77.5,45.8,-83.2,29.3,-85.7,12.3C-88.3,-4.8,-87.7,-22.3,-79.6,-34.8C-71.5,-47.3,-55.8,-54.9,-41.3,-64.2C-26.7,-73.6,-13.4,-84.7,0.8,-86C15,-87.2,29.9,-78.5,43.1,-68.5Z"
+                            transform="translate(100 100)" fill="none" stroke="none" pathLength="100" />
+
+                        <text class="text-content fill-orange-500 font-black tracking-widest text-[9px] uppercase">
+                            <textPath href="#text" startOffset="0%">
+                                • CREATIVE DEVELOPER • CREATIVE DEVELOPER • CREATIVE DEVELOPER •
+                                <animate attributeName="startOffset" from="0%" to="100%" dur="15s"
+                                    repeatCount="indefinite" />
+                            </textPath>
+                        </text>
+                    </svg>
+                </div>
+
+                <div class="w-full">
+                    <ul
+                        class="social-links-list flex flex-wrap gap-6 md:gap-8 justify-center items-center text-xs font-bold tracking-widest uppercase text-slate-400">
+                        <li><a href="https://github.com" target="_blank" rel="noopener noreferrer"
+                                class="hover:text-cyan-400 transition-colors duration-300">GitHub</a></li>
+                        <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
+                                class="hover:text-cyan-400 transition-colors duration-300">LinkedIn</a></li>
+                        <li><a href="https://twitter.com" target="_blank" rel="noopener noreferrer"
+                                class="hover:text-orange-500 transition-colors duration-300">Twitter</a></li>
+                        <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
+                                class="hover:text-orange-500 transition-colors duration-300">Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+
+
+        <section id="skills" class="relative p-6 overflow-hidden bg-slate-950 text-slate-100 w-full">
             
-            <!-- Web Development Tab -->
-            <div id="web-dev" class="tab-content block animate-fadeIn">
-                <div class="bg-slate-900/50 p-8 lg:p-12 rounded-3xl border border-cyan-500/10 backdrop-blur-md shadow-2xl relative group hover:border-cyan-500/30 transition-colors">
-                    <h3 class="text-2xl font-bold text-white mb-4 flex items-center gap-3">
-                        <i class="fas fa-laptop text-cyan-400"></i> Web Development
-                    </h3>
-                    <p class="text-slate-300 leading-relaxed text-base">
-                        Build responsive, fast-loading websites and web applications using modern technologies. I specialize in creating user-friendly interfaces with React, Node.js, and database integration.
-                    </p>
+            <div class="absolute inset-0 w-full h-full mix-blend-difference pointer-events-none animate-pulse">
+                <div class="absolute top-1/4 left-1/3 w-[450px] h-[40px] rounded-full bg-cyan-400 opacity-80"></div>
+                <div class="absolute bottom-1/4 right-1/3 w-[40px] h-[450px] rounded-full bg-orange-500 opacity-80">
                 </div>
             </div>
 
-            <!-- Digital Design Tab -->
-            <div id="design" class="tab-content hidden animate-fadeIn">
-                <div class="bg-slate-900/50 p-8 lg:p-12 rounded-3xl border border-cyan-500/10 backdrop-blur-md shadow-2xl relative group hover:border-orange-500/30 transition-colors">
-                    <h3 class="text-2xl font-bold text-white mb-4 flex items-center gap-3">
-                        <i class="fas fa-paint-brush text-orange-500"></i> Digital Design
-                    </h3>
-                    <p class="text-slate-300 leading-relaxed text-base">
-                        Create stunning digital designs and animations that engage users. From UI/UX design to interactive animations, I help bring your vision to life with creative visual solutions.
-                    </p>
+            <div
+                class="absolute inset-0 opacity-5 bg-[linear-gradient(to_right,#06b6d4_1px,transparent_1px),linear-gradient(to_bottom,#06b6d4_1px,transparent_1px)] bg-[size:3rem_3rem] pointer-events-none">
+            </div>
+
+            <div class="relative z-10 w-full mx-auto">
+
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-10">
+                    <div>
+                        <h2 class="text-3xl font-bold text-slate-800 mb-2 tracking-widest">WHAT I DO</h2>
+                        <h1
+                            class="text-cyan-400 text-sm font-bold pl-3 border-l-4 border-cyan-400 uppercase tracking-widest">
+                            Skills</h1>
+                    </div>
+
+                    <button id="skillsViewToggle"
+                        class="w-fit border border-cyan-500/30 bg-slate-900/80 hover:bg-slate-900 px-5 py-2.5 rounded-xl text-xs font-bold tracking-widest uppercase text-cyan-400 transition-all duration-300 flex items-center gap-2 shadow-lg">
+                        <i class="fas fa-th-large"></i>
+                        <span id="toggleText">Show Grid View</span>
+                    </button>
+                </div>
+
+                <div id="masterSkillsContainer"
+                    class="flex flex-col gap-6 w-full py-4 transition-all duration-500 ease-in-out">
+
+                    <div class="js-marquee-row flex gap-6 overflow-hidden select-none cursor-grab active:cursor-grabbing w-max"
+                        data-direction="-1">
+                        <div
+                            class="skill-card w-48 h-48 flex-shrink-0 bg-slate-900/60 backdrop-blur-md border border-cyan-500/10 rounded-xl flex flex-col items-center justify-center text-center p-4 shadow-xl transition-all duration-300 hover:scale-105 hover:border-orange-500/40 hover:bg-slate-900/90">
+                            <i class="skill-icon fab fa-js text-4xl text-yellow-500 mb-3"></i>
+                            <h3 class="skill-title text-lg font-bold text-white">JavaScript</h3>
+                            <p class="skill-desc text-[10px] text-orange-400/70 mt-1 tracking-wide">Dynamic Logic</p>
+                        </div>
+                        <div
+                            class="skill-card w-48 h-48 flex-shrink-0 bg-slate-900/60 backdrop-blur-md border border-cyan-500/10 rounded-xl flex flex-col items-center justify-center text-center p-4 shadow-xl transition-all duration-300 hover:scale-105 hover:border-cyan-400/40 hover:bg-slate-900/90">
+                            <i class="skill-icon fas fa-code text-4xl text-blue-400 mb-3"></i>
+                            <h3 class="skill-title text-lg font-bold text-white">TypeScript</h3>
+                            <p class="skill-desc text-[10px] text-cyan-400/70 mt-1 tracking-wide">Typed JavaScript</p>
+                        </div>
+                        <div
+                            class="skill-card w-48 h-48 flex-shrink-0 bg-slate-900/60 backdrop-blur-md border border-cyan-500/10 rounded-xl flex flex-col items-center justify-center text-center p-4 shadow-xl transition-all duration-300 hover:scale-105 hover:border-cyan-400/40 hover:bg-slate-900/90">
+                            <i class="skill-icon fab fa-react text-4xl text-cyan-400 mb-3"></i>
+                            <h3 class="skill-title text-lg font-bold text-white">React</h3>
+                            <p class="skill-desc text-[10px] text-cyan-400/70 mt-1 tracking-wide">Frontend Framework</p>
+                        </div>
+                        <div
+                            class="skill-card w-48 h-48 flex-shrink-0 bg-slate-900/60 backdrop-blur-md border border-cyan-500/10 rounded-xl flex flex-col items-center justify-center text-center p-4 shadow-xl transition-all duration-300 hover:scale-105 hover:border-cyan-400/40 hover:bg-slate-900/90">
+                            <i class="skill-icon fas fa-wand-magic-sparkles text-4xl text-yellow-400 mb-3"></i>
+                            <h3 class="skill-title text-lg font-bold text-white">GSAP</h3>
+                            <p class="skill-desc text-[10px] text-cyan-400/70 mt-1 tracking-wide">Web Animation</p>
+                        </div>
+                        <div
+                            class="skill-card w-48 h-48 flex-shrink-0 bg-slate-900/60 backdrop-blur-md border border-cyan-500/10 rounded-xl flex flex-col items-center justify-center text-center p-4 shadow-xl transition-all duration-300 hover:scale-105 hover:border-rose-400/40 hover:bg-slate-900/90">
+                            <i class="skill-icon fas fa-chart-pie text-4xl text-rose-400 mb-3"></i>
+                            <h3 class="skill-title text-lg font-bold text-white">Chart.js</h3>
+                            <p class="skill-desc text-[10px] text-rose-400/70 mt-1 tracking-wide">Data Visualization</p>
+                        </div>
+                        <div
+                            class="skill-card w-48 h-48 flex-shrink-0 bg-slate-900/60 backdrop-blur-md border border-cyan-500/10 rounded-xl flex flex-col items-center justify-center text-center p-4 shadow-xl transition-all duration-300 hover:scale-105 hover:border-cyan-400/40 hover:bg-slate-900/90">
+                            <i class="skill-icon fab fa-node-js text-4xl text-green-500 mb-3"></i>
+                            <h3 class="skill-title text-lg font-bold text-white">Node.js</h3>
+                            <p class="skill-desc text-[10px] text-cyan-400/70 mt-1 tracking-wide">Backend Runtime</p>
+                        </div>
+                        <div
+                            class="skill-card w-48 h-48 flex-shrink-0 bg-slate-900/60 backdrop-blur-md border border-cyan-500/10 rounded-xl flex flex-col items-center justify-center text-center p-4 shadow-xl transition-all duration-300 hover:scale-105 hover:border-gray-400/40 hover:bg-slate-900/90">
+                            <i class="skill-icon fas fa-server text-4xl text-gray-400 mb-3"></i>
+                            <h3 class="skill-title text-lg font-bold text-white">Express.js</h3>
+                            <p class="skill-desc text-[10px] text-cyan-400/70 mt-1 tracking-wide">Server Framework</p>
+                        </div>
+                        <div
+                            class="skill-card w-48 h-48 flex-shrink-0 bg-slate-900/60 backdrop-blur-md border border-cyan-500/10 rounded-xl flex flex-col items-center justify-center text-center p-4 shadow-xl transition-all duration-300 hover:scale-105 hover:border-indigo-400/40 hover:bg-slate-900/90">
+                            <i class="skill-icon fas fa-network-wired text-4xl text-indigo-400 mb-3"></i>
+                            <h3 class="skill-title text-lg font-bold text-white">Web APIs</h3>
+                            <p class="skill-desc text-[10px] text-indigo-400/70 mt-1 tracking-wide">RESTful Services</p>
+                        </div>
+                    </div>
+
+                    <div class="js-marquee-row flex gap-6 overflow-hidden select-none cursor-grab active:cursor-grabbing w-max"
+                        data-direction="1">
+                        <div
+                            class="skill-card w-48 h-48 flex-shrink-0 bg-slate-900/60 backdrop-blur-md border border-cyan-500/10 rounded-xl flex flex-col items-center justify-center text-center p-4 shadow-xl transition-all duration-300 hover:scale-105 hover:border-cyan-400/40 hover:bg-slate-900/90">
+                            <i class="skill-icon fab fa-git-alt text-4xl text-orange-500 mb-3"></i>
+                            <h3 class="skill-title text-lg font-bold text-white">Git</h3>
+                            <p class="skill-desc text-[10px] text-cyan-400/70 mt-1 tracking-wide">Version Control</p>
+                        </div>
+                        <div
+                            class="skill-card w-48 h-48 flex-shrink-0 bg-slate-900/60 backdrop-blur-md border border-cyan-500/10 rounded-xl flex flex-col items-center justify-center text-center p-4 shadow-xl transition-all duration-300 hover:scale-105 hover:border-purple-500/40 hover:bg-slate-900/90">
+                            <i class="skill-icon fab fa-github-alt text-4xl text-purple-400 mb-3"></i>
+                            <h3 class="skill-title text-lg font-bold text-white">GitHub</h3>
+                            <p class="skill-desc text-[10px] text-purple-400/70 mt-1 tracking-wide">Project Hosting</p>
+                        </div>
+                        <div
+                            class="skill-card w-48 h-48 flex-shrink-0 bg-slate-900/60 backdrop-blur-md border border-cyan-500/10 rounded-xl flex flex-col items-center justify-center text-center p-4 shadow-xl transition-all duration-300 hover:scale-105 hover:border-teal-400/40 hover:bg-slate-900/90">
+                            <i class="skill-icon fas fa-wind text-4xl text-teal-400 mb-3"></i>
+                            <h3 class="skill-title text-lg font-bold text-white">Tailwind CSS</h3>
+                            <p class="skill-desc text-[10px] text-cyan-400/70 mt-1 tracking-wide">Utility Styling</p>
+                        </div>
+                        <div
+                            class="skill-card w-48 h-48 flex-shrink-0 bg-slate-900/60 backdrop-blur-md border border-cyan-500/10 rounded-xl flex flex-col items-center justify-center text-center p-4 shadow-xl transition-all duration-300 hover:scale-105 hover:border-green-500/40 hover:bg-slate-900/90">
+                            <i class="skill-icon fas fa-database text-4xl text-green-500 mb-3"></i>
+                            <h3 class="skill-title text-lg font-bold text-white">MongoDB</h3>
+                            <p class="skill-desc text-[10px] text-green-400/70 mt-1 tracking-wide">NoSQL Database</p>
+                        </div>
+                        <div
+                            class="skill-card w-48 h-48 flex-shrink-0 bg-slate-900/60 backdrop-blur-md border border-cyan-500/10 rounded-xl flex flex-col items-center justify-center text-center p-4 shadow-xl transition-all duration-300 hover:scale-105 hover:border-red-500/40 hover:bg-slate-900/90">
+                            <i class="skill-icon fas fa-cubes text-4xl text-red-500 mb-3"></i>
+                            <h3 class="skill-title text-lg font-bold text-white">Mongoose</h3>
+                            <p class="skill-desc text-[10px] text-red-400/70 mt-1 tracking-wide">Data Modeling</p>
+                        </div>
+                        <div
+                            class="skill-card w-48 h-48 flex-shrink-0 bg-slate-900/60 backdrop-blur-md border border-cyan-500/10 rounded-xl flex flex-col items-center justify-center text-center p-4 shadow-xl transition-all duration-300 hover:scale-105 hover:border-blue-400/40 hover:bg-slate-900/90">
+                            <i class="skill-icon fas fa-table text-4xl text-blue-400 mb-3"></i>
+                            <h3 class="skill-title text-lg font-bold text-white">SQL</h3>
+                            <p class="skill-desc text-[10px] text-cyan-400/70 mt-1 tracking-wide">Relational Database
+                            </p>
+                        </div>
+                        <div
+                            class="skill-card w-48 h-48 flex-shrink-0 bg-slate-900/60 backdrop-blur-md border border-cyan-500/10 rounded-xl flex flex-col items-center justify-center text-center p-4 shadow-xl transition-all duration-300 hover:scale-105 hover:border-cyan-500/40 hover:bg-slate-900/90">
+                            <i class="skill-icon fab fa-docker text-4xl text-cyan-500 mb-3"></i>
+                            <h3 class="skill-title text-lg font-bold text-white">Docker</h3>
+                            <p class="skill-desc text-[10px] text-cyan-400/70 mt-1 tracking-wide">Containerization</p>
+                        </div>
+                        <div
+                            class="skill-card w-48 h-48 flex-shrink-0 bg-slate-900/60 backdrop-blur-md border border-cyan-500/10 rounded-xl flex flex-col items-center justify-center text-center p-4 shadow-xl transition-all duration-300 hover:scale-105 hover:border-purple-400/40 hover:bg-slate-900/90">
+                            <i class="skill-icon fab fa-figma text-4xl text-purple-400 mb-3"></i>
+                            <h3 class="skill-title text-lg font-bold text-white">Figma</h3>
+                            <p class="skill-desc text-[10px] text-purple-400/70 mt-1 tracking-wide">Interface Design</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-10">
+                    <a href="hemjay_cv.pdf" download
+                        class="inline-block bg-cyan-500 text-slate-950 px-8 py-3.5 rounded-xl font-bold text-sm uppercase hover:bg-cyan-400 transition-all shadow-lg shadow-cyan-500/10 tracking-wider">Download
+                        CV</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="timeline-preview" class="relative p-8 lg:p-16 overflow-hidden bg-slate-950 text-slate-100">
+            <!-- Radiant Electric Orange Glow clashing from the side -->
+            <div
+                class="absolute top-1/2 -left-40 w-96 h-96 bg-orange-600 rounded-full filter blur-[130px] opacity-15 pointer-events-none">
+            </div>
+
+            <div class="relative z-10 max-w-5xl mx-auto">
+                <!-- Section Headers updated to theme colors -->
+                <h2 class="text-slate-800 font-black tracking-widest text-4xl mb-2 uppercase">My Background</h2>
+                <h1
+                    class="text-cyan-400 text-sm font-bold tracking-widest uppercase mb-12 border-l-4 border-cyan-400 pl-3">
+                    Brief Bio</h1>
+
+                <!-- Content Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                    <!-- Education Card -->
+                    <div
+                        class="bg-slate-900/60 backdrop-blur-md border border-cyan-500/10 p-8 rounded-2xl shadow-2xl transition-all duration-300 hover:scale-[1.02] hover:border-cyan-400/40 hover:bg-slate-900/90">
+                        <div class="flex items-center gap-4 mb-5">
+                            <div
+                                class="w-11 h-11 bg-cyan-500/10 rounded-xl flex items-center justify-center text-cyan-400 text-lg border border-cyan-500/20">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-white tracking-wide">Education</h3>
+                        </div>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                            Graduate in Computer Science, specializing in core software systems, technical
+                            architectures, and scalable web frameworks.
+                        </p>
+                        <div class="text-cyan-400 font-mono text-xs uppercase tracking-widest font-bold">Kwara State
+                            University</div>
+                    </div>
+
+                    <!-- Experience Card -->
+                    <div
+                        class="bg-slate-900/60 backdrop-blur-md border border-cyan-500/10 p-8 rounded-2xl shadow-2xl transition-all duration-300 hover:scale-[1.02] hover:border-orange-500/40 hover:bg-slate-900/90">
+                        <div class="flex items-center gap-4 mb-5">
+                            <!-- Subtle orange variation for asymmetrical color accents -->
+                            <div
+                                class="w-11 h-11 bg-orange-500/10 rounded-xl flex items-center justify-center text-orange-500 text-lg border border-orange-500/20">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-white tracking-wide">Experience</h3>
+                        </div>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                            Proven track record engineering responsive digital solutions, modular full-stack
+                            applications, and robust client content systems.
+                        </p>
+                        <div class="text-orange-500 font-mono text-xs uppercase tracking-widest font-bold">Full-Stack
+                            Web Developer</div>
+                    </div>
+
+                </div>
+
+                <!-- Timeline Redirection Link -->
+                <div class="text-center mt-12">
+                    <a href="timeline.html"
+                        class="inline-flex items-center gap-2 text-cyan-400 font-bold uppercase text-xs tracking-widest border-b border-cyan-500/30 pb-1 hover:text-cyan-300 hover:border-cyan-400 transition-all group">
+                        Explore Full Interactive Timeline
+                        <i class="fas fa-arrow-right text-[10px] transition-transform group-hover:translate-x-1"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="services"
+            class="services-section p-8 lg:p-16 bg-slate-950 text-slate-100 relative overflow-hidden">
+
+
+            <!-- Electric Blue Light Engine -->
+            <div class="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] rounded-full bg-cyan-500 filter opacity-70 animate- pointer-events-none"
+                style="animation-delay: 1s;"></div>
+
+            <!-- Electric Orange Light Engine -->
+            <div class="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] rounded-full bg-orange-500 filter opacity-70 animate- pointer-events-none"
+                style="animation-delay: 3s;"></div>
+
+            <!-- The Collision Zone: High-vibrance intersecting layer creating a raw chemical glow -->
+            <div class="absolute inset-0 w-full h-full  pointer-events-none">
+                <div class="absolute top-1/4 left-1/3 w-[450px] h-[450px] rounded-full bg-cyan-400 filter  opacity-80">
+                </div>
+
+                <div
+                    class="absolute bottom-1/4 right-1/3 w-[450px] h-[450px] rounded-full bg-orange-500 filter opacity-80">
                 </div>
             </div>
 
-            <!-- Tech Consulting Tab -->
-            <div id="consulting" class="tab-content hidden animate-fadeIn">
-                <div class="bg-slate-900/50 p-8 lg:p-12 rounded-3xl border border-cyan-500/10 backdrop-blur-md shadow-2xl relative group hover:border-cyan-500/30 transition-colors">
-                    <h3 class="text-2xl font-bold text-white mb-4 flex items-center gap-3">
-                        <i class="fas fa-chart-line text-cyan-400"></i> Tech Consulting
-                    </h3>
-                    <p class="text-slate-300 leading-relaxed text-base">
-                        Guide your project with expert technical advice. I help choose the right tech stack, optimize performance, and implement best practices for scalable applications.
-                    </p>
+
+            <div class="relative z-10 max-w-5xl mx-auto">
+                <h2 class="text-slate-800 font-bold text-center tracking-widest text-xl uppercase mb-2">WHAT I OFFER
+                </h2>
+                <h1 class="text-cyan-400 text-5xl font-black text-center mb-16 tracking-wide">SERVICES</h1>
+
+                <!-- Tabs Navigation -->
+                <div class="service-tabs flex w-full justify-center mb-12">
+                    <div
+                        class="tab-buttons flex flex-wrap justify-center gap-3 bg-slate-900/80 p-2 rounded-2xl border border-cyan-500/10 backdrop-blur-md">
+                        <button
+                            class="tab-button w-40 active bg-cyan-500 text-slate-950 px-5 py-3 rounded-xl flex items-center justify-center gap-2 transition-all text-xs font-bold uppercase tracking-wider"
+                            onclick="switchTab(event, 'web-dev')">
+                            <i class="fas fa-code"></i> Web Dev
+                        </button>
+                        <button
+                            class="tab-button w-40 text-slate-400 px-5 py-3 rounded-xl flex items-center justify-center gap-2 transition-all hover:bg-slate-800 hover:text-white text-xs font-bold uppercase tracking-wider"
+                            onclick="switchTab(event, 'design')">
+                            <i class="fas fa-palette"></i> Design
+                        </button>
+                        <button
+                            class="tab-button w-40 text-slate-400 px-5 py-3 rounded-xl flex items-center justify-center gap-2 transition-all hover:bg-slate-800 hover:text-white text-xs font-bold uppercase tracking-wider"
+                            onclick="switchTab(event, 'consulting')">
+                            <i class="fas fa-lightbulb"></i> Consulting
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tab Contents Wrapper -->
+                <div class="relative max-w-3xl mx-auto">
+
+                    <!-- Web Development Tab -->
+                    <div id="web-dev" class="tab-content block animate-fadeIn">
+                        <div
+                            class="bg-slate-900/50 p-8 lg:p-12 rounded-3xl border border-cyan-500/10 backdrop-blur-md shadow-2xl relative group hover:border-cyan-500/30 transition-colors">
+                            <h3 class="text-2xl font-bold text-white mb-4 flex items-center gap-3">
+                                <i class="fas fa-laptop text-cyan-400"></i> Web Development
+                            </h3>
+                            <p class="text-slate-300 leading-relaxed text-base">
+                                Build responsive, fast-loading websites and web applications using modern technologies.
+                                I specialize in creating user-friendly interfaces with React, Node.js, and database
+                                integration.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Digital Design Tab -->
+                    <div id="design" class="tab-content hidden animate-fadeIn">
+                        <div
+                            class="bg-slate-900/50 p-8 lg:p-12 rounded-3xl border border-cyan-500/10 backdrop-blur-md shadow-2xl relative group hover:border-orange-500/30 transition-colors">
+                            <h3 class="text-2xl font-bold text-white mb-4 flex items-center gap-3">
+                                <i class="fas fa-paint-brush text-orange-500"></i> Digital Design
+                            </h3>
+                            <p class="text-slate-300 leading-relaxed text-base">
+                                Create stunning digital designs and animations that engage users. From UI/UX design to
+                                interactive animations, I help bring your vision to life with creative visual solutions.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Tech Consulting Tab -->
+                    <div id="consulting" class="tab-content hidden animate-fadeIn">
+                        <div
+                            class="bg-slate-900/50 p-8 lg:p-12 rounded-3xl border border-cyan-500/10 backdrop-blur-md shadow-2xl relative group hover:border-cyan-500/30 transition-colors">
+                            <h3 class="text-2xl font-bold text-white mb-4 flex items-center gap-3">
+                                <i class="fas fa-chart-line text-cyan-400"></i> Tech Consulting
+                            </h3>
+                            <p class="text-slate-300 leading-relaxed text-base">
+                                Guide your project with expert technical advice. I help choose the right tech stack,
+                                optimize performance, and implement best practices for scalable applications.
+                            </p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
+            <!-- Corrected Tab Switching Script for the Cyan Theme -->
+            <script>
+                function switchTab(event, tabId) {
+                    // Hide all content containers
+                    document.querySelectorAll('.tab-content').forEach(content => {
+                        content.classList.add('hidden');
+                    });
+
+                    // Revert all buttons back to their base inactive style
+                    document.querySelectorAll('.tab-button').forEach(btn => {
+                        btn.classList.remove('bg-cyan-500', 'text-slate-950', 'active');
+                        btn.classList.add('text-slate-400');
+                    });
+
+                    // Make target content container visible
+                    document.getElementById(tabId).classList.remove('hidden');
+
+                    // Apply vibrant active cyan class configurations to selected button
+                    event.currentTarget.classList.add('bg-cyan-500', 'text-slate-950', 'active');
+                    event.currentTarget.classList.remove('text-slate-400');
+                }
+            </script>
+
+        </section>
+
+        <section class="section-projects bg-slate-950 p-8 lg:p-16 relative overflow-hidden h-screen" id="projects">
+            <div
+                class="absolute -top-40 -left-40 w-96 h-96 bg-cyan-500 rounded-full filter blur-[120px] opacity-10 pointer-events-none">
+            </div>
+            <div
+                class="absolute bottom-0 right-0 w-80 h-80 bg-orange-600 rounded-full filter blur-[100px] opacity-10 pointer-events-none">
+            </div>
+
+            <div class="relative z-10 max-w-7xl mx-auto">
+                <h4 class="text-slate-800 font-bold text-center tracking-widest text-sm uppercase mb-2">WHAT I HAVE DONE
+                    SO FAR</h4>
+                <h2 class="text-cyan-400 text-5xl font-black text-center mb-16 tracking-wide">RECENT PROJECTS</h2>
+
+                <div id="recent-projects-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+                    <div
+                        class="group bg-slate-900/40 text-slate-100 rounded-3xl overflow-hidden shadow-2xl border border-cyan-500/10 transition-all duration-300 hover:scale-[1.02] hover:border-cyan-400/30 flex flex-col h-full backdrop-blur-md">
+                        <div
+                            class="relative aspect-video w-full overflow-hidden bg-slate-950 border-b border-cyan-500/10">
+                            <img src="project-image-placeholder.jpg" alt="Project Screenshot"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 opacity-80 group-hover:opacity-100" />
+                            <div class="absolute bottom-3 left-3 flex gap-2">
+                                <span
+                                    class="text-[10px] bg-slate-950 border border-cyan-400/20 text-cyan-400 px-2.5 py-1 rounded-md font-mono">React</span>
+                                <span
+                                    class="text-[10px] bg-slate-950 border border-orange-500/20 text-orange-400 px-2.5 py-1 rounded-md font-mono">Tailwind</span>
+                            </div>
+                        </div>
+
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3
+                                class="text-xl font-bold text-white mb-2 tracking-wide group-hover:text-cyan-400 transition-colors">
+                                Project Title</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed mb-6 flex-grow">
+                                A brief description of your digital creation, outlining the architectural problems
+                                solved, full-stack tools leveraged, and functional highlights.
+                            </p>
+
+                            <div
+                                class="flex items-center gap-4 mt-auto pt-4 border-t border-slate-800/60 text-xs uppercase tracking-wider font-bold">
+                                <a href="#" target="_blank"
+                                    class="text-cyan-400 hover:text-cyan-300 flex items-center gap-1.5 transition-colors">
+                                    Live Demo <i class="fas fa-external-link-alt text-[10px]"></i>
+                                </a>
+                                <a href="#" target="_blank"
+                                    class="text-slate-400 hover:text-white flex items-center gap-1.5 transition-colors">
+                                    Code <i class="fab fa-github text-sm"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="text-center mt-16">
+                    <a href="projects.html"
+                        class="bg-cyan-500 text-slate-950 px-10 py-4 rounded-xl font-bold text-sm uppercase hover:bg-cyan-400 transition-all shadow-lg shadow-cyan-500/10 tracking-wider inline-block">
+                        View All Projects
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section-contact bg-slate-950 relative p-8 lg:p-16 overflow-hidden">
+            <!-- Neon Background Grid Track Line Accent -->
+            <div
+                class="absolute inset-0 opacity-5 bg-[linear-gradient(to_right,#22d3ee_1px,transparent_1px),linear-gradient(to_bottom,#22d3ee_1px,transparent_1px)] bg-[size:4rem_4rem]">
+            </div>
+
+            <!-- Ambient Blur Background Lighting -->
+            <div
+                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-cyan-500 rounded-full filter blur-[150px] opacity-10 pointer-events-none">
+            </div>
+            <div
+                class="absolute bottom-0 right-10 w-64 h-64 bg-orange-600 rounded-full filter blur-[130px] opacity-10 pointer-events-none">
+            </div>
+
+            <div class="relative z-10 max-w-4xl mx-auto text-center">
+                <!-- Section Headers -->
+                <h4 class="text-slate-800 font-bold tracking-widest uppercase mb-2 text-sm">GET IN TOUCH</h4>
+                <h2 class="text-cyan-400 text-5xl font-black mb-6 tracking-wide">CONTACT ME</h2>
+                <p class="text-slate-300 max-w-xl mx-auto mb-12 text-base leading-relaxed">
+                    Have a project concept or a technical question? Let's collaborate to build something exceptional.
+                </p>
+
+                <!-- Information Contact Grid Deck -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left mb-12">
+                    <!-- Email Info Container Link -->
+                    <div
+                        class="bg-slate-900/40 backdrop-blur-md border border-cyan-500/10 p-6 rounded-2xl flex items-center gap-4 hover:border-cyan-500/30 transition-colors">
+                        <div
+                            class="w-12 h-12 bg-cyan-500/10 rounded-xl flex items-center justify-center text-cyan-400 text-xl border border-cyan-500/20">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h5 class="text-slate-500 text-xs font-bold uppercase tracking-wider mb-0.5">Email Me</h5>
+                            <p class="text-white font-medium text-sm sm:text-base">hello@yourdomain.com</p>
+                        </div>
+                    </div>
+
+                    <!-- Location Info Container Block -->
+                    <div
+                        class="bg-slate-900/40 backdrop-blur-md border border-cyan-500/10 p-6 rounded-2xl flex items-center gap-4 hover:border-orange-500/30 transition-colors">
+                        <div
+                            class="w-12 h-12 bg-orange-500/10 rounded-xl flex items-center justify-center text-orange-500 text-xl border border-orange-500/20">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h5 class="text-slate-500 text-xs font-bold uppercase tracking-wider mb-0.5">Location</h5>
+                            <p class="text-white font-medium text-sm sm:text-base">Osogbo, Nigeria</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Primary Call To Action Interface Link Trigger -->
+                <div class="inline-block">
+                    <a href="#contact"
+                        class="bg-cyan-500 text-slate-950 px-12 py-5 rounded-xl font-bold uppercase tracking-wider hover:bg-cyan-400 transition-all shadow-lg shadow-cyan-500/10 block md:inline-block text-sm">
+                        Open Contact Form
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <div class="fixed bottom-8 right-8 z-50 flex flex-col items-end gap-4">
+
+        <div id="contactPopup"
+            class="hidden w-80 md:w-96 bg-blue-950/40 backdrop-blur-xl border border-white/20 p-8 rounded-[32px] shadow-[0_20px_50px_rgba(0,0,0,0.4)] animate-popupEntry relative">
+            <span id="closePopup"
+                class="absolute top-5 right-5 text-white/60 hover:text-cyan-400 text-lg cursor-pointer transition-colors">
+                <i class="fas fa-times"></i>
+            </span>
+
+            <h3 class="text-2xl font-black text-white mb-6 tracking-wide">Contact Me</h3>
+
+            <form class="flex flex-col gap-4">
+                <div class="grid grid-cols-2 gap-3">
+                    <input type="text" placeholder="First Name" required
+                        class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white text-sm placeholder-white/40 focus:outline-none focus:border-cyan-400 focus:bg-white/15 transition-all">
+                    <input type="text" placeholder="Last Name" required
+                        class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white text-sm placeholder-white/40 focus:outline-none focus:border-cyan-400 focus:bg-white/15 transition-all">
+                </div>
+                <input type="email" placeholder="Email" required
+                    class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white text-sm placeholder-white/40 focus:outline-none focus:border-cyan-400 focus:bg-white/15 transition-all">
+                <textarea placeholder="Your Message" required rows="4"
+                    class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white text-sm placeholder-white/40 focus:outline-none focus:border-cyan-400 focus:bg-white/15 transition-all resize-none"></textarea>
+
+                <button type="submit"
+                    class="w-full bg-cyan-500 text-blue-950 font-bold py-3 rounded-xl uppercase tracking-wider hover:bg-cyan-400 transition-all shadow-[0_4px_20px_rgba(34,211,238,0.2)]">
+                    Send Message
+                </button>
+            </form>
+
+            <div class="mt-6 pt-6 border-t border-white/10 text-center">
+                <p class="text-white/50 text-xs font-bold uppercase tracking-widest mb-4">Or find me on</p>
+                <div class="flex justify-center gap-4 text-xl">
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub"
+                        class="text-white/60 hover:text-cyan-400 transition-colors"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
+                        class="text-white/60 hover:text-cyan-400 transition-colors"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter"
+                        class="text-white/60 hover:text-cyan-400 transition-colors"><i class="fab fa-twitter"></i></a>
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+                        class="text-white/60 hover:text-cyan-400 transition-colors"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="relative">
+            <div
+                class="absolute inset-0 bg-cyan-400 rounded-full filter blur-md animate-pulse opacity-40 pointer-events-none">
+            </div>
+            <button id="phoneButton"
+                class="relative w-16 h-16 bg-white/10 backdrop-blur-md border border-white/30 text-cyan-400 rounded-full flex items-center justify-center text-xl shadow-[0_10px_30px_rgba(0,0,0,0.3)] hover:scale-110 hover:bg-white/20 hover:text-white hover:border-white/50 transition-all duration-300 group"
+                aria-label="Open contact form" title="Contact">
+                <i class="fas fa-phone group-hover:rotate-12 transition-transform"></i>
+            </button>
         </div>
     </div>
 
-    <!-- Corrected Tab Switching Script for the Cyan Theme -->
     <script>
-        function switchTab(event, tabId) {
-            // Hide all content containers
-            document.querySelectorAll('.tab-content').forEach(content => {
-                content.classList.add('hidden');
-            });
-            
-            // Revert all buttons back to their base inactive style
-            document.querySelectorAll('.tab-button').forEach(btn => {
-                btn.classList.remove('bg-cyan-500', 'text-slate-950', 'active');
-                btn.classList.add('text-slate-400');
-            });
+        const phoneButton = document.getElementById('phoneButton');
+        const contactPopup = document.getElementById('contactPopup');
+        const closePopup = document.getElementById('closePopup');
 
-            // Make target content container visible
-            document.getElementById(tabId).classList.remove('hidden');
+        phoneButton.addEventListener('click', () => {
+            contactPopup.classList.toggle('hidden');
+        });
 
-            // Apply vibrant active cyan class configurations to selected button
-            event.currentTarget.classList.add('bg-cyan-500', 'text-slate-950', 'active');
-            event.currentTarget.classList.remove('text-slate-400');
-        }
+        closePopup.addEventListener('click', () => {
+            contactPopup.classList.add('hidden');
+        });
     </script>
 
     <style>
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(12px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes popupEntry {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
-        .animate-fadeIn {
-            animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+        .animate-popupEntry {
+            animation: popupEntry 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
     </style>
-</section>
 
-<section class="section-projects bg-slate-950 p-8 lg:p-16 relative overflow-hidden" id="projects">
-    <div class="absolute -top-40 -left-40 w-96 h-96 bg-cyan-500 rounded-full filter blur-[120px] opacity-10 pointer-events-none"></div>
-    <div class="absolute bottom-0 right-0 w-80 h-80 bg-orange-600 rounded-full filter blur-[100px] opacity-10 pointer-events-none"></div>
+    <footer class="w-full bg-slate-950/40 backdrop-blur-md border-t border-slate-900 py-10 px-6 relative z-10">
+        <div
+            class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
 
-    <div class="relative z-10 max-w-7xl mx-auto">
-        <h4 class="text-slate-800 font-bold text-center tracking-widest text-sm uppercase mb-2">WHAT I HAVE DONE SO FAR</h4>
-        <h2 class="text-cyan-400 text-5xl font-black text-center mb-16 tracking-wide">RECENT PROJECTS</h2>
+            <div class="flex flex-col gap-1">
+                <p class="text-white text-sm font-black tracking-widest uppercase">
+                    &copy; 2026 Hemjay. All rights reserved.
+                </p>
+                <p class="text-slate-500 text-[11px] font-medium tracking-wide">
+                    Handcrafted with Tailwind CSS & Native JavaScript.
+                </p>
+            </div>
 
-        <div id="recent-projects-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            
-            <div class="group bg-slate-900/40 text-slate-100 rounded-3xl overflow-hidden shadow-2xl border border-cyan-500/10 transition-all duration-300 hover:scale-[1.02] hover:border-cyan-400/30 flex flex-col h-full backdrop-blur-md">
-                <div class="relative aspect-video w-full overflow-hidden bg-slate-950 border-b border-cyan-500/10">
-                    <img src="project-image-placeholder.jpg" alt="Project Screenshot" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 opacity-80 group-hover:opacity-100" />
-                    <div class="absolute bottom-3 left-3 flex gap-2">
-                        <span class="text-[10px] bg-slate-950 border border-cyan-400/20 text-cyan-400 px-2.5 py-1 rounded-md font-mono">React</span>
-                        <span class="text-[10px] bg-slate-950 border border-orange-500/20 text-orange-400 px-2.5 py-1 rounded-md font-mono">Tailwind</span>
-                    </div>
-                </div>
-                
-                <div class="p-6 flex flex-col flex-grow">
-                    <h3 class="text-xl font-bold text-white mb-2 tracking-wide group-hover:text-cyan-400 transition-colors">Project Title</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed mb-6 flex-grow">
-                        A brief description of your digital creation, outlining the architectural problems solved, full-stack tools leveraged, and functional highlights.
-                    </p>
-                    
-                    <div class="flex items-center gap-4 mt-auto pt-4 border-t border-slate-800/60 text-xs uppercase tracking-wider font-bold">
-                        <a href="#" target="_blank" class="text-cyan-400 hover:text-cyan-300 flex items-center gap-1.5 transition-colors">
-                            Live Demo <i class="fas fa-external-link-alt text-[10px]"></i>
-                        </a>
-                        <a href="#" target="_blank" class="text-slate-400 hover:text-white flex items-center gap-1.5 transition-colors">
-                            Code <i class="fab fa-github text-sm"></i>
-                        </a>
-                    </div>
-                </div>
+            <div class="flex items-center gap-5 text-xl">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub"
+                    class="w-10 h-10 bg-slate-900/50 border border-cyan-500/10 rounded-xl flex items-center justify-center text-slate-400 hover:text-cyan-400 hover:border-cyan-400/40 hover:-translate-y-1 transition-all duration-300">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
+                    class="w-10 h-10 bg-slate-900/50 border border-cyan-500/10 rounded-xl flex items-center justify-center text-slate-400 hover:text-cyan-400 hover:border-cyan-400/40 hover:-translate-y-1 transition-all duration-300">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter"
+                    class="w-10 h-10 bg-slate-900/50 border border-cyan-500/10 rounded-xl flex items-center justify-center text-slate-400 hover:text-orange-500 hover:border-orange-500/40 hover:-translate-y-1 transition-all duration-300">
+                    <i class="fab fa-twitter"></i>
+                </a>
             </div>
 
         </div>
-
-        <div class="text-center mt-16">
-            <a href="projects.html" class="bg-cyan-500 text-slate-950 px-10 py-4 rounded-xl font-bold text-sm uppercase hover:bg-cyan-400 transition-all shadow-lg shadow-cyan-500/10 tracking-wider inline-block">
-                View All Projects
-            </a>
-        </div>
-    </div>
-</section>
-<section id="contact" class="section-contact bg-slate-950 relative p-8 lg:p-16 overflow-hidden">
-    <!-- Neon Background Grid Track Line Accent -->
-    <div class="absolute inset-0 opacity-5 bg-[linear-gradient(to_right,#22d3ee_1px,transparent_1px),linear-gradient(to_bottom,#22d3ee_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
-    
-    <!-- Ambient Blur Background Lighting -->
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-cyan-500 rounded-full filter blur-[150px] opacity-10 pointer-events-none"></div>
-    <div class="absolute bottom-0 right-10 w-64 h-64 bg-orange-600 rounded-full filter blur-[130px] opacity-10 pointer-events-none"></div>
-
-    <div class="relative z-10 max-w-4xl mx-auto text-center">
-        <!-- Section Headers -->
-        <h4 class="text-slate-800 font-bold tracking-widest uppercase mb-2 text-sm">GET IN TOUCH</h4>
-        <h2 class="text-cyan-400 text-5xl font-black mb-6 tracking-wide">CONTACT ME</h2>
-        <p class="text-slate-300 max-w-xl mx-auto mb-12 text-base leading-relaxed">
-            Have a project concept or a technical question? Let's collaborate to build something exceptional.
-        </p>
-
-        <!-- Information Contact Grid Deck -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left mb-12">
-            <!-- Email Info Container Link -->
-            <div class="bg-slate-900/40 backdrop-blur-md border border-cyan-500/10 p-6 rounded-2xl flex items-center gap-4 hover:border-cyan-500/30 transition-colors">
-                <div class="w-12 h-12 bg-cyan-500/10 rounded-xl flex items-center justify-center text-cyan-400 text-xl border border-cyan-500/20">
-                    <i class="fas fa-envelope"></i>
-                </div>
-                <div>
-                    <h5 class="text-slate-500 text-xs font-bold uppercase tracking-wider mb-0.5">Email Me</h5>
-                    <p class="text-white font-medium text-sm sm:text-base">hello@yourdomain.com</p>
-                </div>
-            </div>
-
-            <!-- Location Info Container Block -->
-            <div class="bg-slate-900/40 backdrop-blur-md border border-cyan-500/10 p-6 rounded-2xl flex items-center gap-4 hover:border-orange-500/30 transition-colors">
-                <div class="w-12 h-12 bg-orange-500/10 rounded-xl flex items-center justify-center text-orange-500 text-xl border border-orange-500/20">
-                    <i class="fas fa-map-marker-alt"></i>
-                </div>
-                <div>
-                    <h5 class="text-slate-500 text-xs font-bold uppercase tracking-wider mb-0.5">Location</h5>
-                    <p class="text-white font-medium text-sm sm:text-base">Osogbo, Nigeria</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Primary Call To Action Interface Link Trigger -->
-        <div class="inline-block">
-            <a href="#contact" class="bg-cyan-500 text-slate-950 px-12 py-5 rounded-xl font-bold uppercase tracking-wider hover:bg-cyan-400 transition-all shadow-lg shadow-cyan-500/10 block md:inline-block text-sm">
-                Open Contact Form
-            </a>
-        </div>
-    </div>
-</section>
-</main>
+    </footer>
 
 
-<div class="fixed bottom-8 right-8 z-50 flex flex-col items-end gap-4">
-    
-    <div id="contactPopup" class="hidden w-80 md:w-96 bg-blue-950/40 backdrop-blur-xl border border-white/20 p-8 rounded-[32px] shadow-[0_20px_50px_rgba(0,0,0,0.4)] animate-popupEntry relative">
-        <span id="closePopup" class="absolute top-5 right-5 text-white/60 hover:text-cyan-400 text-lg cursor-pointer transition-colors">
-            <i class="fas fa-times"></i>
-        </span>
-        
-        <h3 class="text-2xl font-black text-white mb-6 tracking-wide">Contact Me</h3>
-        
-        <form class="flex flex-col gap-4">
-            <div class="grid grid-cols-2 gap-3">
-                <input type="text" placeholder="First Name" required class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white text-sm placeholder-white/40 focus:outline-none focus:border-cyan-400 focus:bg-white/15 transition-all">
-                <input type="text" placeholder="Last Name" required class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white text-sm placeholder-white/40 focus:outline-none focus:border-cyan-400 focus:bg-white/15 transition-all">
-            </div>
-            <input type="email" placeholder="Email" required class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white text-sm placeholder-white/40 focus:outline-none focus:border-cyan-400 focus:bg-white/15 transition-all">
-            <textarea placeholder="Your Message" required rows="4" class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white text-sm placeholder-white/40 focus:outline-none focus:border-cyan-400 focus:bg-white/15 transition-all resize-none"></textarea>
-            
-            <button type="submit" class="w-full bg-cyan-500 text-blue-950 font-bold py-3 rounded-xl uppercase tracking-wider hover:bg-cyan-400 transition-all shadow-[0_4px_20px_rgba(34,211,238,0.2)]">
-                Send Message
-            </button>
-        </form>
-        
-        <div class="mt-6 pt-6 border-t border-white/10 text-center">
-            <p class="text-white/50 text-xs font-bold uppercase tracking-widest mb-4">Or find me on</p>
-            <div class="flex justify-center gap-4 text-xl">
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="text-white/60 hover:text-cyan-400 transition-colors"><i class="fab fa-github"></i></a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="text-white/60 hover:text-cyan-400 transition-colors"><i class="fab fa-linkedin"></i></a>
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter" class="text-white/60 hover:text-cyan-400 transition-colors"><i class="fab fa-twitter"></i></a>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="text-white/60 hover:text-cyan-400 transition-colors"><i class="fab fa-instagram"></i></a>
-            </div>
-        </div>
-    </div>
-
-    <div class="relative">
-        <div class="absolute inset-0 bg-cyan-400 rounded-full filter blur-md animate-pulse opacity-40 pointer-events-none"></div>
-        <button id="phoneButton" class="relative w-16 h-16 bg-white/10 backdrop-blur-md border border-white/30 text-cyan-400 rounded-full flex items-center justify-center text-xl shadow-[0_10px_30px_rgba(0,0,0,0.3)] hover:scale-110 hover:bg-white/20 hover:text-white hover:border-white/50 transition-all duration-300 group" aria-label="Open contact form" title="Contact">
-            <i class="fas fa-phone group-hover:rotate-12 transition-transform"></i>
-        </button>
-    </div>
-</div>
-
-<script>
-    const phoneButton = document.getElementById('phoneButton');
-    const contactPopup = document.getElementById('contactPopup');
-    const closePopup = document.getElementById('closePopup');
-
-    phoneButton.addEventListener('click', () => {
-        contactPopup.classList.toggle('hidden');
-    });
-
-    closePopup.addEventListener('click', () => {
-        contactPopup.classList.add('hidden');
-    });
-</script>
-
-<style>
-    @keyframes popupEntry {
-        from { opacity: 0; transform: translateY(20px) scale(0.95); }
-        to { opacity: 1; transform: translateY(0) scale(1); }
-    }
-    .animate-popupEntry {
-        animation: popupEntry 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
-</style>
-
-<footer class="w-full bg-slate-950/40 backdrop-blur-md border-t border-slate-900 py-10 px-6 relative z-10">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
-        
-        <div class="flex flex-col gap-1">
-            <p class="text-white text-sm font-black tracking-widest uppercase">
-                &copy; 2026 Hemjay. All rights reserved.
-            </p>
-            <p class="text-slate-500 text-[11px] font-medium tracking-wide">
-                Handcrafted with Tailwind CSS & Native JavaScript.
-            </p>
-        </div>
-        
-        <div class="flex items-center gap-5 text-xl">
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="w-10 h-10 bg-slate-900/50 border border-cyan-500/10 rounded-xl flex items-center justify-center text-slate-400 hover:text-cyan-400 hover:border-cyan-400/40 hover:-translate-y-1 transition-all duration-300">
-                <i class="fab fa-github"></i>
-            </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="w-10 h-10 bg-slate-900/50 border border-cyan-500/10 rounded-xl flex items-center justify-center text-slate-400 hover:text-cyan-400 hover:border-cyan-400/40 hover:-translate-y-1 transition-all duration-300">
-                <i class="fab fa-linkedin"></i>
-            </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter" class="w-10 h-10 bg-slate-900/50 border border-cyan-500/10 rounded-xl flex items-center justify-center text-slate-400 hover:text-orange-500 hover:border-orange-500/40 hover:-translate-y-1 transition-all duration-300">
-                <i class="fab fa-twitter"></i>
-            </a>
-        </div>
-        
-    </div>
-</footer>
-  
- 
 
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-     <script src="animation.js"></script>
-     <script src="project-data.js"></script>
-    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Draggable.min.js"></script>
+
+    <script src="project-data.js" defer></script>
+
+    <script src="animation.js" defer></script>
+
+    <script src="script.js" defer></script>
 
 </body>
 
 
 </html>
-

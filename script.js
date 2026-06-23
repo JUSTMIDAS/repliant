@@ -43,27 +43,212 @@ if (document.readyState === 'loading') {
     initPage();
 }
 
-// Trigger scroll event for dynamic content — removed immediate forced dispatch to reduce work
 
 
+document.addEventListener("DOMContentLoaded", () => {
+    // Collect all elements with the class 'nav-group' into an array list
+    const navGroups = document.querySelectorAll(".nav-group");
 
- 
+    navGroups.forEach((group) => {
+        // Find the dropdown that sits inside THIS specific group container
+        const dropdown = group.querySelector(".nav-dropdown");
+        if (!dropdown) return;
 
+        group.addEventListener("click", (event) => {
+            event.stopPropagation();
+            
+            // Close any other open dropdowns first to avoid overlapping layout clashing
+            document.querySelectorAll(".nav-dropdown").forEach((d) => {
+                if (d !== dropdown) d.style.display = "none";
+            });
 
-
-// SKILLS VIEW TOGGLE & GRID POPULATIon
-function toggleSkillsView(view) {
-    const carouselViews = document.querySelectorAll('.carousel-view');
-    const gridViews = document.querySelectorAll('.grid-view');
-    const buttons = document.querySelectorAll('.view-toggle-btn');
-
-    carouselViews.forEach(el => el.classList.toggle('hidden', view !== 'carousel'));
-    gridViews.forEach(el => el.classList.toggle('hidden', view !== 'grid'));
-
-    buttons.forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.view === view);
+            // Toggle the display state of this specific clicked dropdown
+            const isCurrentlyOpen = dropdown.style.display === "flex";
+            dropdown.style.display = isCurrentlyOpen ? "none" : "flex";
+        });
     });
-}
+
+    // Close all menus instantly if the user clicks anywhere else on the screen
+    document.addEventListener("click", () => {
+        document.querySelectorAll(".nav-dropdown").forEach((d) => {
+            d.style.display = "none";
+        });
+    });
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const viewButton = document.getElementById('skillsViewToggle');
+    const masterContainer = document.getElementById('masterSkillsContainer');
+    const rows = document.querySelectorAll('.js-marquee-row');
+    const textLabel = document.getElementById('toggleText');
+
+    let isGridView = false;
+    let animationFrameId;
+
+    const AUTO_SPEED = 2.0; 
+    let rowStates = [];
+
+    rows.forEach((row, rowIndex) => {
+        const originalCards = Array.from(row.children);
+        
+        rowStates.push({
+            currentX: 0,
+            isDragging: false,
+            startX: 0,
+            direction: parseInt(row.getAttribute('data-direction')) || -1,
+            originalCards: originalCards, 
+            maxDistance: 0
+        });
+    });
+
+    function initMarqueeView() {
+        if (isGridView) return;
+
+        rowStates.forEach((state, rowIndex) => {
+            const row = rows[rowIndex];
+            
+            row.innerHTML = '';
+            
+            state.originalCards.forEach(card => row.appendChild(card));
+            
+            state.originalCards.forEach(card => {
+                const clone = card.cloneNode(true);
+                clone.classList.add('js-cloned-card'); 
+                row.appendChild(clone);
+            });
+
+            const firstCard = state.originalCards[0];
+            const cardWidth = firstCard.offsetWidth;
+            const gapSpace = 24; 
+            state.maxDistance = (cardWidth + gapSpace) * state.originalCards.length;
+
+            row.style.width = 'max-content';
+            row.style.display = 'flex';
+            row.style.transform = `translate3d(${state.currentX}px, 0px, 0px)`;
+
+            const startDrag = (clientX) => {
+                if (isGridView) return;
+                state.isDragging = true;
+                state.startX = clientX - state.currentX;
+            };
+
+            const doDrag = (clientX) => {
+                if (!state.isDragging || isGridView) return;
+                state.currentX = clientX - state.startX;
+            };
+
+            const endDrag = () => {
+                state.isDragging = false;
+            };
+
+            row.addEventListener('mousedown', (e) => startDrag(e.clientX));
+            window.addEventListener('mousemove', (e) => { if(state.isDragging) doDrag(e.clientX); });
+            window.addEventListener('mouseup', endDrag);
+
+            row.addEventListener('touchstart', (e) => startDrag(e.touches[0].clientX), { passive: true });
+            row.addEventListener('touchmove', (e) => doDrag(e.touches[0].clientX), { passive: true });
+            row.addEventListener('touchend', endDrag);
+        });
+
+        if (!animationFrameId) {
+            updatePositions();
+        }
+    }
+
+    function updatePositions() {
+        if (!isGridView) {
+            rows.forEach((row, i) => {
+                const state = rowStates[i];
+
+                if (!state.isDragging) {
+                    state.currentX += AUTO_SPEED * state.direction;
+                }
+
+                if (state.currentX <= -state.maxDistance) {
+                    state.currentX += state.maxDistance;
+                    if (state.isDragging) state.startX -= state.maxDistance;
+                } else if (state.currentX >= 0) {
+                    state.currentX -= state.maxDistance;
+                    if (state.isDragging) state.startX += state.maxDistance;
+                }
+
+                row.style.transform = `translate3d(${state.currentX}px, 0px, 0px)`;
+            });
+        }
+        animationFrameId = requestAnimationFrame(updatePositions);
+    }
+
+    initMarqueeView();
+
+    if (viewButton && masterContainer && textLabel) {
+        viewButton.addEventListener('click', () => {
+            isGridView = !isGridView;
+            masterContainer.style.opacity = '0';
+
+            setTimeout(() => {
+                if (isGridView) {
+                    if (animationFrameId) {
+                        cancelAnimationFrame(animationFrameId);
+                        animationFrameId = null;
+                    }
+
+                    rows.forEach((row) => {
+                        row.removeAttribute('style'); 
+                        row.classList.remove('flex', 'gap-6', 'overflow-hidden', 'cursor-grab', 'active:cursor-grabbing', 'w-max');
+                        row.classList.add('contents');
+
+                        const clones = row.querySelectorAll('.js-cloned-card');
+                        clones.forEach(clone => clone.remove());
+                    });
+
+                    masterContainer.classList.remove('flex-col', 'gap-6');
+                    masterContainer.classList.add('flex-row', 'flex-wrap', 'justify-center', 'gap-4', 'sm:gap-6');
+
+                    const cards = masterContainer.querySelectorAll('.skill-card');
+                    cards.forEach(card => {
+                        card.classList.remove('flex-shrink-0', 'w-48', 'h-48');
+                        card.classList.add('w-[calc(50%-0.5rem)]', 'sm:w-48', 'aspect-square', 'p-4');
+                    });
+
+                    textLabel.textContent = 'Show Sliding View';
+                } else {
+                    masterContainer.classList.remove('flex-row', 'flex-wrap', 'justify-center', 'gap-4', 'sm:gap-6');
+                    masterContainer.classList.add('flex-col', 'gap-6');
+
+                    rows.forEach(row => {
+                        row.classList.remove('contents');
+                        row.classList.add('flex', 'gap-6', 'overflow-hidden', 'cursor-grab', 'active:cursor-grabbing', 'w-max');
+                    });
+
+                    const cards = masterContainer.querySelectorAll('.skill-card');
+                    cards.forEach(card => {
+                        card.classList.remove('w-[calc(50%-0.5rem)]', 'sm:w-48', 'aspect-square');
+                        card.classList.add('w-48', 'h-48', 'flex-shrink-0', 'p-4');
+                    });
+
+                    initMarqueeView();
+                    textLabel.textContent = 'Show Grid View';
+                }
+                masterContainer.style.opacity = '1';
+            }, 250);
+        });
+    }
+
+    window.addEventListener('resize', () => {
+        if (!isGridView) initMarqueeView();
+    });
+});
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -114,27 +299,7 @@ icons.forEach(icon => {
     icon.classList.add('floating');
 });
 
-// Global debounced scroll handler to reveal/hide skill sections and update scroll position
-let _scrollTimeout = null;
-function handleScrollVisibility() {
-    const windowHeight = window.innerHeight;
-    skillsSections.forEach(section => {
-        const rect = section.getBoundingClientRect();
-        const shouldShow = rect.top < windowHeight - 100 && rect.bottom > 0;
-        section.querySelectorAll('.section-title, .section-heading, .skill-card, .cv-button').forEach(element => {
-            element.classList.toggle('visible', shouldShow);
-        });
-    });
-    lastScrollTop = window.pageYOffset || 0;
-}
 
-window.addEventListener('scroll', () => {
-    if (_scrollTimeout) clearTimeout(_scrollTimeout);
-    _scrollTimeout = setTimeout(handleScrollVisibility, 60);
-});
-
-// Run once on load
-handleScrollVisibility();
 
 
 // ============================================
@@ -202,7 +367,7 @@ function setProjectCategory(category) {
     });
 }
 
-   function displayRecent() {
+function displayRecent() {
     const list = document.getElementById('recent-projects-list');
     if (!list) {
         console.error("Could not find the element with ID 'recent-projects-list'");
@@ -214,6 +379,9 @@ function setProjectCategory(category) {
         return;
     }
 
+    // 1. Uniform dashboard grid spacing for the recent projects container
+    list.className = "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 w-full max-w-4xl mx-auto px-4 py-6";
+
     const recent = [...myProjects]
         .sort((a, b) => new Date(b.date) - new Date(a.date))
         .slice(0, 2);
@@ -222,18 +390,44 @@ function setProjectCategory(category) {
 
     recent.forEach(proj => {
         const card = document.createElement('div');
-        card.className = 'project-card';
+        
+        // 2. Premium card styling following your reference dashboard interface
+        card.className = "project-card bg-[#121212] border border-slate-800 rounded-3xl overflow-hidden shadow-xl flex flex-col justify-between transition-all duration-300 hover:border-slate-700 hover:-translate-y-1";
         card.setAttribute('data-tech', proj.tech || '');
         card.setAttribute('data-date', proj.date);
         
-        const imageSrc = proj.image;
+        // 3. Process the tech stack text string into clean, individual array badges
+        const techBadges = proj.stackText 
+            ? proj.stackText.split(',').map(tech => `<span class="bg-slate-900 border border-slate-800 text-slate-400 text-[11px] font-medium px-3 py-1 rounded-full">${tech.trim()}</span>`).join('')
+            : '';
         
+        // 4. Inject the crisp layout containing the image showcase, top links, and tags
         card.innerHTML = `
-            <div class="project-link">
-                <img src="${imageSrc}" alt="${proj.title}" loading="lazy" onerror="this.src='IMG_2040.png'">
-                <h3>${proj.title}</h3>
-                <p>${proj.description}</p>
-                <a href="${proj.url}" class="demo-link" target="_blank">View Live/ Demo</a>
+            <div>
+                <div class="w-full h-48 relative overflow-hidden bg-slate-950 border-b border-slate-900">
+                    <img src="${proj.image}" alt="${proj.title}" loading="lazy" onerror="this.src='IMG_2040.png'" class="w-full h-full object-cover">
+                </div>
+                
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-3">
+                        <h3 class="text-xl font-bold text-slate-100 tracking-tight">${proj.title}</h3>
+                        
+                        <div class="flex items-center gap-3 text-slate-400">
+                            <a href="${proj.url}" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-400 transition-colors text-sm">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="${proj.url}" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-400 transition-colors text-sm">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6 line-clamp-3">${proj.description}</p>
+                    
+                    <div class="flex flex-wrap gap-1.5 pt-2">
+                        ${techBadges}
+                    </div>
+                </div>
             </div>
         `;
         list.appendChild(card);
@@ -241,17 +435,15 @@ function setProjectCategory(category) {
     
     window.dispatchEvent(new Event('scroll'));
 }
-
               
-
-
-
 
 // 2. Base Template Card Injection Loop
 function renderProjectGrid(projectsToRender) {
     const targetGrid = document.getElementById('all-projects-list');
     if (!targetGrid) return;
 
+    // 1. Uniform grid system with standard, consistent spacing gaps
+    targetGrid.className = "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl mx-auto px-4 py-12";
     targetGrid.innerHTML = "";
 
     if (projectsToRender.length === 0) {
@@ -261,34 +453,48 @@ function renderProjectGrid(projectsToRender) {
 
     projectsToRender.forEach(project => {
         const cardWrapper = document.createElement('div');
-        cardWrapper.className = "project-card bg-white/10 backdrop-blur-md border border-cyan-400 rounded-[30px] overflow-hidden shadow-lg flex flex-col justify-between transition-transform duration-300 hover:-translate-y-1";
+        
+        // 2. Rigid, professional card styling following your reference picture
+        cardWrapper.className = "project-card bg-[#121212] border border-slate-800 rounded-3xl overflow-hidden shadow-xl flex flex-col justify-between transition-all duration-300 hover:border-slate-700 hover:-translate-y-1";
         cardWrapper.setAttribute('data-category', project.category || 'all');
         
+        // 3. Process the tech stack text string into clean, individual array badges
+        const techBadges = project.stackText 
+            ? project.stackText.split(',').map(tech => `<span class="bg-slate-900 border border-slate-800 text-slate-400 text-[11px] font-medium px-3 py-1 rounded-full">${tech.trim()}</span>`).join('')
+            : '';
+
+        // 4. Inject the premium structure with top action icons and bottom badges
         cardWrapper.innerHTML = `
             <div>
-                <div class="w-full h-48  relative overflow-hidden  border-gray-50">
+                <div class="w-full h-48 relative overflow-hidden bg-slate-950 border-b border-slate-900">
                     <img src="${project.image}" alt="${project.title}" onerror="this.src='https://via.placeholder.com/400x200?text=${encodeURIComponent(project.title)}'" class="w-full h-full object-cover">
-                    
                 </div>
-                <div class="p-6 ">
-                    <h3 class="text-xl font-black text-cyan-400 uppercase tracking-wide mb-2">${project.title}</h3>
-                    <p class="text-slate-300 text-sm leading-relaxed mb-4">${project.description}</p>
-                    <p class="text-xs font-semibold text-cyan-300 font-bold">
-                        <strong class="text-slate-700 font-bold">Stack:</strong> ${project.stackText}
-                    </p>
+                
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-3">
+                        <h3 class="text-xl font-bold text-slate-100 tracking-tight">${project.title}</h3>
+                        
+                        <div class="flex items-center gap-3 text-slate-400">
+                            <a href="${project.url}" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-400 transition-colors text-sm">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="${project.url}" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-400 transition-colors text-sm">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6 line-clamp-3">${project.description}</p>
+                    
+                    <div class="flex flex-wrap gap-1.5 pt-2">
+                        ${techBadges}
+                    </div>
                 </div>
             </div>
-            <div class="p-6 pt-0 mt-auto flex justify-center md:justify-start">
-    <a href="${project.url}" class="inline-flex items-center justify-center w-full sm:w-44 bg-slate-950 border border-cyan-500/20 hover:border-cyan-400 text-cyan-400 text-xs font-black uppercase tracking-widest py-3.5 px-4 rounded-xl transition-all duration-300 text-center shadow-lg hover:shadow-cyan-500/10" target="_blank" rel="noopener noreferrer">
-        View Project Live
-    </a>
-</div>
         `;
         targetGrid.appendChild(cardWrapper);
     });
 }
-
-
 
 // 3. Global Window Event Handlers (Prevents inline HTML crashes)
 window.filterProjects = function(techCriterion) {
@@ -436,139 +642,6 @@ skillsSections.forEach(section => {
     });
 });
 
-// CASE STUDIES
-function showCaseStudy(projectTitle) {
-    const modal = document.querySelector('#caseStudyModal');
-    const content = document.querySelector('#caseStudyContent');
-
-    const details = {
-        'E-Commerce Platform': {
-            problem: "Low conversion rates on mobile devices due to slow image loading.",
-            solution: "Implemented lazy-loading and WebP image compression, reducing load time by 60%.",
-            hurdle: "Integrating secure payment gateways with complex tax calculations."
-        },
-        'Task Management App': {
-            problem: "Real-time updates were causing excessive server load.",
-            solution: "Optimized WebSocket emissions and implemented Redis for state caching.",
-            hurdle: "Maintaining data synchronization across multiple concurrent users."
-        },
-        'Portfolio Website': {
-            problem: "Static content led to poor user engagement.",
-            solution: "Added interactive animations and dynamic content loading.",
-            hurdle: "Ensuring cross-browser compatibility for animations."
-        },
-        'Social Media Dashboard': {
-            problem: "Inefficient API calls leading to slow data retrieval.",
-            solution: "Implemented caching and optimized query structures.",
-            hurdle: "Handling rate limits from social media APIs."
-        },
-        'Weather App': {
-            problem: "Inaccurate forecasts due to API limitations.",
-            solution: "Integrated multiple weather APIs for better accuracy.",
-            hurdle: "Parsing and normalizing data from different sources."
-        },
-        'Blog Platform': {
-            problem: "Poor SEO performance affecting visibility.",
-            solution: "Implemented meta tags, sitemaps, and optimized content structure.",
-            hurdle: "Balancing user experience with SEO requirements."
-        },
-        'Chat Application': {
-            problem: "High latency in message delivery.",
-            solution: "Upgraded to WebSocket for real-time communication.",
-            hurdle: "Managing connection stability and fallbacks."
-        },
-        'Inventory Management System': {
-            problem: "Manual data entry errors causing discrepancies.",
-            solution: "Automated data import and validation processes.",
-            hurdle: "Integrating with existing legacy systems."
-        },
-        'Fitness Tracker': {
-            problem: "Battery drain from constant tracking.",
-            solution: "Optimized algorithms for efficient data collection.",
-            hurdle: "Ensuring accuracy while reducing power consumption."
-        },
-        'Event Booking System': {
-            problem: "Concurrent bookings leading to overbooking.",
-            solution: "Implemented transaction locks and queue management.",
-            hurdle: "Handling high traffic during peak booking times."
-        }
-    };
-
-    const data = details[projectTitle] || { problem: "N/A", solution: "N/A", hurdle: "N/A" };
-
-    content.innerHTML = `
-        <h2>Case Study: ${projectTitle}</h2>
-        <div class="case-study-grid">
-            <div class="case-study-box">
-                <h4><i class="fas fa-exclamation-triangle"></i> The Problem</h4>
-                <p>${data.problem}</p>
-            </div>
-            <div class="case-study-box">
-                <h4><i class="fas fa-check-circle"></i> The Solution</h4>
-                <p>${data.solution}</p>
-            </div>
-        </div>
-        <div class="case-study-box" style="margin-top:20px; border-left-color: #e74c3c;">
-            <h4><i class="fas fa-mountain"></i> The Technical Hurdle</h4>
-            <p>${data.hurdle}</p>
-        </div>
-    `;
-
-    modal.classList.add('active');
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    // Case study modal close
-    const closeCaseStudyBtn = document.querySelector('#closeCaseStudy');
-    if (closeCaseStudyBtn) {
-        closeCaseStudyBtn.addEventListener('click', () => {
-            document.querySelector('#caseStudyModal').classList.remove('active');
-        });
-    }
-
-    // Contact popup handlers
-    const phoneButton = document.querySelector('#phoneButton');
-    const contactPopup = document.querySelector('#contactPopup');
-    const closePopupBtn = document.querySelector('.contact-popup .close-popup');
-
-    // Floating phone button opens centered popup
-    if (phoneButton && contactPopup) {
-        phoneButton.addEventListener('click', () => {
-            contactPopup.classList.add('active');
-            history.replaceState(null, '', '#contact');
-        });
-    }
-
-    // Open contact popup when `#contact` links are clicked (do not modify URL hash)
-    document.querySelectorAll('a[href="#contact"]').forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            if (contactPopup) {
-                contactPopup.classList.add('active');
-            }
-        });
-    });
-
-    // If page loaded with #contact hash, open popup
-    if (location.hash === '#contact' && contactPopup) {
-        contactPopup.classList.add('active');
-    }
-
-    if (closePopupBtn) {
-        closePopupBtn.addEventListener('click', () => {
-            contactPopup.classList.remove('active');
-        });
-    }
-
-    // Close popup when clicking outside
-    if (contactPopup) {
-        contactPopup.addEventListener('click', (e) => {
-            if (e.target === contactPopup) {
-                contactPopup.classList.remove('active');
-            }
-        });
-    }
-});
 
 
 // SERVICES TAB SWITCHING
