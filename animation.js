@@ -175,23 +175,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // project preview
 document.addEventListener('DOMContentLoaded', () => {
     const projectsSection = document.getElementById('projects');
     
     if (projectsSection) {
-        const ambientGlows = projectsSection.querySelectorAll('.bg-cyan-500, .bg-orange-600');
+        // Scopes the query to absolute containers to avoid grabbing the button tag
+        const ambientGlows = projectsSection.querySelectorAll('div.absolute.bg-cyan-500, div.absolute.bg-orange-600');
         const topHeader = projectsSection.querySelector('h4');
         const mainHeader = projectsSection.querySelector('h2');
+        const projectGridContainer = document.getElementById('recent-projects-list');
         const projectGridItems = projectsSection.querySelectorAll('#recent-projects-list > div');
-        const primaryButton = projectsSection.querySelector('.text-center');
 
         const setInitialStates = () => {
-            gsap.set(ambientGlows, { opacity: 0, scale: 0.5 });
-            gsap.set(topHeader, { opacity: 0, y: -20 });
-            gsap.set(mainHeader, { opacity: 0, y: -30 });
-            gsap.set(projectGridItems, { opacity: 0, y: 50, scale: 0.95 });
-            gsap.set(primaryButton, { opacity: 0, y: 30 });
+            gsap.set(projectGridContainer, { perspective: 1200 });
+            gsap.set(ambientGlows, { opacity: 0, scale: 1.5, rotation: -30 });
+            gsap.set(topHeader, { opacity: 0, x: -80 });
+            gsap.set(mainHeader, { opacity: 0, x: 80 });
+            gsap.set(projectGridItems, { 
+                opacity: 0, 
+                y: 60, 
+                rotationX: -30, 
+                transformOrigin: "top center" 
+            });
         };
 
         setInitialStates();
@@ -199,29 +220,96 @@ document.addEventListener('DOMContentLoaded', () => {
         const clearTimeline = gsap.timeline({ paused: true });
 
         clearTimeline
-            .to(ambientGlows, { opacity: 0.1, scale: 1, duration: 0.9, ease: "power2.out" })
-            .to(topHeader, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, "-=0.6")
-            .to(mainHeader, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, "-=0.4")
-            .to(projectGridItems, { opacity: 1, y: 0, scale: 1, stagger: 0.15, duration: 0.6, ease: "power2.out" })
-            .to(primaryButton, { opacity: 1, y: 0, duration: 0.4, ease: "power1.out" }, "-=0.3");
+            .to(ambientGlows, { opacity: 0.1, scale: 1, rotation: 0, duration: 0.4, ease: "power2.out" })
+            .to(topHeader, { opacity: 1, x: 0, duration: 0.3, ease: "power3.out" }, "-=0.3")
+            .to(mainHeader, { opacity: 1, x: 0, duration: 0.3, ease: "power3.out" }, "-=0.2")
+            .to(projectGridItems, { 
+                opacity: 1, 
+                y: 0, 
+                rotationX: 0, 
+                stagger: 0.08, 
+                duration: 0.4, 
+                ease: "power2.out" 
+            }, "-=0.1");
 
         ScrollTrigger.create({
             trigger: projectsSection,
-            start: "top 80%",
-            end: "bottom top", 
+            start: "top 95%",
+            end: "bottom+=1000 top", 
             onEnter: () => clearTimeline.play(),
             onLeave: () => clearTimeline.reverse(),
             onEnterBack: () => clearTimeline.play(),
             onLeaveBack: () => clearTimeline.reverse(),
             invalidateOnRefresh: true
         });
-
-        // Forces GSAP to recalculate positions once all project images load
-        window.addEventListener('load', () => {
-            ScrollTrigger.refresh();
-        });
     }
 });
+
+// contact 
+const initContactAnimation = () => {
+    gsap.registerPlugin(ScrollTrigger);
+    const contactSection = document.getElementById('contact');
+    
+    if (!contactSection) return;
+
+    const gridTrack = contactSection.querySelector('.inset-0');
+    
+    // Forces explicit array conversion to guarantee proper iteration
+    const ambientGlows = Array.from(contactSection.querySelectorAll('.pointer-events-none'));
+    const topHeader = contactSection.querySelector('h4');
+    const mainHeader = contactSection.querySelector('h2');
+    const descriptionText = contactSection.querySelector('p');
+    
+    // Forces explicit array conversion for the staggered cards
+    const infoCards = Array.from(contactSection.querySelectorAll('.grid > div'));
+
+    gsap.set(gridTrack, { opacity: 0 });
+    gsap.set(ambientGlows, { opacity: 0, scale: 0.6 });
+    gsap.set(topHeader, { opacity: 0, y: -20 });
+    gsap.set(mainHeader, { opacity: 0, y: -30 });
+    gsap.set(descriptionText, { opacity: 0, y: 20 });
+    gsap.set(infoCards, { opacity: 0, y: 40, scale: 0.95 });
+
+    const clearTimeline = gsap.timeline({ paused: true });
+
+    clearTimeline
+        .to(gridTrack, { opacity: 0.05, duration: 0.6 })
+        .to(ambientGlows, { opacity: 0.1, scale: 1, duration: 0.6, ease: "power2.out" }, "-=0.4")
+        .to(topHeader, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, "-=0.3")
+        .to(mainHeader, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, "-=0.2")
+        .to(descriptionText, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, "-=0.1")
+        .to(infoCards, { opacity: 1, y: 0, scale: 1, stagger: 0.1, duration: 0.4, ease: "power2.out" }, "-=0.2");
+
+    ScrollTrigger.create({
+        trigger: contactSection,
+        start: "top 90%",
+        end: "bottom+=400 top",
+        onEnter: () => clearTimeline.play(),
+        onLeave: () => clearTimeline.reverse(),
+        onEnterBack: () => clearTimeline.play(),
+        onLeaveBack: () => clearTimeline.reverse(),
+        invalidateOnRefresh: true
+    });
+};
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initContactAnimation);
+} else {
+    initContactAnimation();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
