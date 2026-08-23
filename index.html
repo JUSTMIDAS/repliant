@@ -103,6 +103,7 @@
             }
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 
 <body class="bg-slate-950 w-screen overflow-x-hidden m-0">
@@ -251,7 +252,7 @@
 
             <div class="flex items-center gap-4">
                 <!-- Updated Logo to match theme -->
-                <div class="nav-logo text-2xl font-black tracking-widest text-cyan-400">ReP</div>
+                <div class="nav-logo text-2xl font-black tracking-widest text-cyan-400">REPL</div>
 
                 <button class="theme-toggle text-cyan-400 text-lg hover:scale-110 transition-transform" type="button"
                     onclick="toggleTheme()" aria-label="Toggle theme">
@@ -276,14 +277,14 @@
                 class="hidden w-full md:w-auto md:flex flex-col md:flex-row items-center gap-4 md:gap-8 text-slate-200 uppercase tracking-wider text-xs mt-4 md:mt-0">
                 <a href="#services" class="block py-2 md:py-0 hover:text-cyan-400 transition-colors">Services</a>
 
-                <div class="nav-group relative group py-2 md:py-0 w-full md:w-auto text-center md:text-left">
+                <div class="nav-group relative group py-2 md:py-0 w-auto text-center md:text-left">
                     <a href="#projects"
                         class="cursor-pointer hover:text-cyan-400 transition-colors flex items-center justify-center md:justify-start gap-1 select-none">
                         project <i class="fas fa-chevron-down text-[10px] text-cyan-400"></i>
                     </a>
 
                     <div
-                        class="nav-dropdown md:absolute top-full left-0 mt-2 w-full md:w-40 bg-slate-900 border border-cyan-500/20 text-slate-200 rounded-xl shadow-2xl hidden group-hover:flex flex-col p-2 gap-1 z-20">
+                        class="nav-dropdown md:absolute top-full left-0 mt-2 min-w-auto  bg-slate-900 border border-cyan-500/20 text-slate-200 rounded-xl shadow-2xl hidden group-hover:flex flex-col p-2 gap-1 z-20">
                         <a href="projects.html"
                             class="hover:bg-cyan-500/10 hover:text-cyan-400 px-3 py-2 rounded-lg transition-colors">projects</a>
                         <a href="projects.html#testimonials"
@@ -293,14 +294,14 @@
 
                 <a href="#contact" class="block py-2 md:py-0 hover:text-cyan-400 transition-colors">Contact</a>
 
-                <div class="nav-group relative group py-2 md:py-0 w-full md:w-auto text-center md:text-left">
+                <div class="nav-group relative group py-2 md:py-0 w-auto md:w-auto text-center md:text-left">
                     <a href="#timeline-preview"
                         class="cursor-pointer hover:text-cyan-400 transition-colors flex items-center justify-center md:justify-start gap-1 select-none">
                         experience <i class="fas fa-chevron-down text-[10px] text-cyan-400"></i>
                     </a>
 
                     <div
-                        class="nav-dropdown md:absolute top-full left-0 md:left-50 mt-2 w-full md:w-40 bg-slate-900 border border-cyan-500/20 text-slate-200 rounded-xl shadow-2xl hidden group-hover:flex flex-col p-2 gap-1 z-20">
+                        class="nav-dropdown md:absolute top-full left-0 md:left-50 mt-2  min-w-auto bg-slate-900 border border-cyan-500/20 text-slate-200 rounded-xl shadow-2xl hidden group-hover:flex flex-col p-2 gap-1 z-20">
                         <a href="timeline.html#education"
                             class="hover:bg-cyan-500/10 hover:text-cyan-400 px-3 py-2 rounded-lg transition-colors">Education</a>
                         <a href="timeline.html#experience"
@@ -404,16 +405,14 @@
                 <div class="w-full">
                     <ul
                         class="social-links-list flex flex-wrap gap-6 md:gap-8 justify-center items-center text-xs font-bold tracking-widest uppercase text-slate-400 font-mono">
-                        <li><a href="https://github.com" target="_blank" rel="noopener noreferrer"
+                        <li><a href="https://github.com/REPLIANT" target="_blank" rel="noopener noreferrer"
                                 class="hover:text-cyan-400 transition-colors duration-300">GitHub</a></li>
-                        <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
+                        <li><a href="https://www.linkedin.com/in/ijadunola-abdulmujeeb-70439b289/" target="_blank" rel="noopener noreferrer"
                                 class="hover:text-cyan-400 transition-colors duration-300">LinkedIn</a></li>
-                        <li><a href="https://twitter.com" target="_blank" rel="noopener noreferrer"
-                                class="hover:text-orange-500 transition-colors duration-300">Twitter</a></li>
-                        <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
+                       
+                        <li><a href="https://instagram.com/repliant1" target="_blank" rel="noopener noreferrer"
                                 class="hover:text-orange-500 transition-colors duration-300">Instagram</a></li>
-                    </ul>
-                </div>
+                    </ul> 
             </div>
         </section>
 
@@ -505,11 +504,18 @@
 
                     <div class="js-marquee-row flex gap-6 overflow-hidden select-none cursor-grab active:cursor-grabbing w-max"
                         data-direction="1">
+
                         <div
                             class="skill-card w-48 h-48 flex-shrink-0 bg-slate-900/60 backdrop-blur-md border border-cyan-500/10 rounded-xl flex flex-col items-center justify-center text-center p-4 shadow-xl transition-all duration-300 hover:scale-105 hover:border-cyan-400/40 hover:bg-slate-900/90">
                             <i class="skill-icon fab fa-git-alt text-4xl text-orange-500 mb-3"></i>
                             <h3 class="skill-title text-lg font-bold text-white">Git</h3>
                             <p class="skill-desc text-[10px] text-cyan-400/70 mt-1 tracking-wide">Version Control</p>
+                        </div>
+                        <div
+                            class="skill-card w-48 h-48 flex-shrink-0 bg-slate-900/60 backdrop-blur-md border border-cyan-500/10 rounded-xl flex flex-col items-center justify-center text-center p-4 shadow-xl transition-all duration-300 hover:scale-105 hover:border-cyan-400/40 hover:bg-slate-900/90">
+                            <i class="skill-icon fab fa-git-alt text-4xl text-orange-500 mb-3"></i>
+                            <h3 class="skill-title text-lg font-bold text-white">Emailjs</h3>
+                            <p class="skill-desc text-[10px] text-cyan-400/70 mt-1 tracking-wide">Email Integration</p>
                         </div>
                         <div
                             class="skill-card w-48 h-48 flex-shrink-0 bg-slate-900/60 backdrop-blur-md border border-cyan-500/10 rounded-xl flex flex-col items-center justify-center text-center p-4 shadow-xl transition-all duration-300 hover:scale-105 hover:border-purple-500/40 hover:bg-slate-900/90">
@@ -631,129 +637,150 @@
             </div>
         </section>
 
-        <section id="services"
-            class="services-section p-8 lg:p-16 bg-slate-950 text-slate-100 relative overflow-hidden">
+     <section id="services"
+    class="services-section p-8 lg:p-16 bg-slate-950 text-slate-100 relative overflow-hidden">
 
 
-            <!-- Electric Blue Light Engine -->
-            <div class="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] rounded-full bg-cyan-500 filter animate- pointer-events-none"
-                style="animation-delay: 1s;"></div>
+    <!-- Electric Blue Light Engine -->
+    <div class="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] rounded-full bg-cyan-500 filter animate- pointer-events-none"
+        style="animation-delay: 1s;"></div>
 
-            <!-- Electric Orange Light Engine -->
-            <div class="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] rounded-full bg-orange-500 filter animate- pointer-events-none"
-                style="animation-delay: 3s;"></div>
+    <!-- Electric Orange Light Engine -->
+    <div class="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] rounded-full bg-orange-500 filter animate- pointer-events-none"
+        style="animation-delay: 3s;"></div>
 
-            <!-- The Collision Zone: High-vibrance intersecting layer creating a raw chemical glow -->
-            <div class="absolute inset-0 w-full h-full  pointer-events-none">
-                <div class="absolute top-1/4 left-1/3 w-[450px] h-[450px] rounded-full bg-cyan-400 filter  ">
-                </div>
+    <!-- The Collision Zone: High-vibrance intersecting layer creating a raw chemical glow -->
+    <div class="absolute inset-0 w-full h-full  pointer-events-none">
+        <div class="absolute top-1/4 left-1/3 w-[450px] h-[450px] rounded-full bg-cyan-400 filter  ">
+        </div>
 
+        <div
+            class="absolute bottom-1/4 right-1/3 w-[450px] h-[450px] rounded-full bg-orange-500 filter ">
+        </div>
+    </div>
+
+
+    <div class="relative z-10 max-w-5xl mx-auto">
+        <h2 class="text-slate-800 font-bold text-center tracking-widest text-xl uppercase mb-2">WHAT I OFFER
+        </h2>
+        <h1 class="text-cyan-400 text-5xl font-black text-center mb-16 tracking-wide">SERVICES</h1>
+
+        <!-- Tabs Navigation -->
+        <div class="service-tabs flex w-full justify-center mb-12">
+            <div
+                class="tab-buttons flex flex-wrap justify-center gap-3 bg-slate-900/80 p-2 rounded-2xl border border-cyan-500/10 backdrop-blur-md">
+                <button
+                    class="tab-button w-40 active bg-cyan-500 text-slate-950 px-5 py-3 rounded-xl flex items-center justify-center gap-2 transition-all text-xs font-bold uppercase tracking-wider"
+                    data-tab="web-design">
+                    <i class="fas fa-pen-ruler"></i> Web Design
+                </button>
+                <button
+                    class="tab-button w-40 text-slate-400 px-5 py-3 rounded-xl flex items-center justify-center gap-2 transition-all hover:bg-slate-800 hover:text-white text-xs font-bold uppercase tracking-wider"
+                    data-tab="development">
+                    <i class="fas fa-code"></i> Development
+                </button>
+                <button
+                    class="tab-button w-40 text-slate-400 px-5 py-3 rounded-xl flex items-center justify-center gap-2 transition-all hover:bg-slate-800 hover:text-white text-xs font-bold uppercase tracking-wider"
+                    data-tab="digital-art">
+                    <i class="fas fa-palette"></i> Digital Art
+                </button>
+                <button
+                    class="tab-button w-40 text-slate-400 px-5 py-3 rounded-xl flex items-center justify-center gap-2 transition-all hover:bg-slate-800 hover:text-white text-xs font-bold uppercase tracking-wider"
+                    data-tab="consulting">
+                    <i class="fas fa-lightbulb"></i> Consulting
+                </button>
+            </div>
+        </div>
+
+        <!-- Tab Contents Wrapper -->
+        <div class="relative max-w-3xl mx-auto">
+
+            <!-- Web Design Tab -->
+            <div id="web-design" class="tab-content block animate-fadeIn">
                 <div
-                    class="absolute bottom-1/4 right-1/3 w-[450px] h-[450px] rounded-full bg-orange-500 filter ">
+                    class="bg-slate-900/50 p-8 lg:p-12 rounded-3xl border border-cyan-500/10 backdrop-blur-md shadow-2xl relative group hover:border-cyan-500/30 transition-colors">
+                    <h3 class="text-2xl font-bold text-white mb-4 flex items-center gap-3">
+                        <i class="fas fa-pen-ruler text-cyan-400"></i> Web Design
+                    </h3>
+                    <p class="text-slate-300 leading-relaxed text-base mb-6">
+                        I design interfaces that feel like they belong to the brand, not a template — wireframed with
+                        intent, styled with a real type and color system, and built to hold up on every screen size.
+                    </p>
+                    <ul class="grid sm:grid-cols-2 gap-3 text-sm text-slate-300">
+                        <li class="flex items-center gap-2"><i class="fas fa-object-group text-cyan-400 w-4"></i> UI/UX design & wireframing</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-layer-group text-cyan-400 w-4"></i> Custom visual identity systems</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-mobile-screen-button text-cyan-400 w-4"></i> Fully responsive layouts</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-shapes text-cyan-400 w-4"></i> High-fidelity interactive prototypes</li>
+                    </ul>
                 </div>
             </div>
 
-
-            <div class="relative z-10 max-w-5xl mx-auto">
-                <h2 class="text-slate-800 font-bold text-center tracking-widest text-xl uppercase mb-2">WHAT I OFFER
-                </h2>
-                <h1 class="text-cyan-400 text-5xl font-black text-center mb-16 tracking-wide">SERVICES</h1>
-
-                <!-- Tabs Navigation -->
-                <div class="service-tabs flex w-full justify-center mb-12">
-                    <div
-                        class="tab-buttons flex flex-wrap justify-center gap-3 bg-slate-900/80 p-2 rounded-2xl border border-cyan-500/10 backdrop-blur-md">
-                        <button
-                            class="tab-button w-40 active bg-cyan-500 text-slate-950 px-5 py-3 rounded-xl flex items-center justify-center gap-2 transition-all text-xs font-bold uppercase tracking-wider"
-                            onclick="switchTab(event, 'web-dev')">
-                            <i class="fas fa-code"></i> Web Dev
-                        </button>
-                        <button
-                            class="tab-button w-40 text-slate-400 px-5 py-3 rounded-xl flex items-center justify-center gap-2 transition-all hover:bg-slate-800 hover:text-white text-xs font-bold uppercase tracking-wider"
-                            onclick="switchTab(event, 'design')">
-                            <i class="fas fa-palette"></i> Design
-                        </button>
-                        <button
-                            class="tab-button w-40 text-slate-400 px-5 py-3 rounded-xl flex items-center justify-center gap-2 transition-all hover:bg-slate-800 hover:text-white text-xs font-bold uppercase tracking-wider"
-                            onclick="switchTab(event, 'consulting')">
-                            <i class="fas fa-lightbulb"></i> Consulting
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Tab Contents Wrapper -->
-                <div class="relative max-w-3xl mx-auto">
-
-                    <!-- Web Development Tab -->
-                    <div id="web-dev" class="tab-content block animate-fadeIn">
-                        <div
-                            class="bg-slate-900/50 p-8 lg:p-12 rounded-3xl border border-cyan-500/10 backdrop-blur-md shadow-2xl relative group hover:border-cyan-500/30 transition-colors">
-                            <h3 class="text-2xl font-bold text-white mb-4 flex items-center gap-3">
-                                <i class="fas fa-laptop text-cyan-400"></i> Web Development
-                            </h3>
-                            <p class="text-slate-300 leading-relaxed text-base">
-                                Build responsive, fast-loading websites and web applications using modern technologies.
-                                I specialize in creating user-friendly interfaces with React, Node.js, and database
-                                integration.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Digital Design Tab -->
-                    <div id="design" class="tab-content hidden animate-fadeIn">
-                        <div
-                            class="bg-slate-900/50 p-8 lg:p-12 rounded-3xl border border-cyan-500/10 backdrop-blur-md shadow-2xl relative group hover:border-orange-500/30 transition-colors">
-                            <h3 class="text-2xl font-bold text-white mb-4 flex items-center gap-3">
-                                <i class="fas fa-paint-brush text-orange-500"></i> Digital Design
-                            </h3>
-                            <p class="text-slate-300 leading-relaxed text-base">
-                                Create stunning digital designs and animations that engage users. From UI/UX design to
-                                interactive animations, I help bring your vision to life with creative visual solutions.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Tech Consulting Tab -->
-                    <div id="consulting" class="tab-content hidden animate-fadeIn">
-                        <div
-                            class="bg-slate-900/50 p-8 lg:p-12 rounded-3xl border border-cyan-500/10 backdrop-blur-md shadow-2xl relative group hover:border-cyan-500/30 transition-colors">
-                            <h3 class="text-2xl font-bold text-white mb-4 flex items-center gap-3">
-                                <i class="fas fa-chart-line text-cyan-400"></i> Tech Consulting
-                            </h3>
-                            <p class="text-slate-300 leading-relaxed text-base">
-                                Guide your project with expert technical advice. I help choose the right tech stack,
-                                optimize performance, and implement best practices for scalable applications.
-                            </p>
-                        </div>
-                    </div>
-
+            <!-- Development Tab -->
+            <div id="development" class="tab-content hidden animate-fadeIn">
+                <div
+                    class="bg-slate-900/50 p-8 lg:p-12 rounded-3xl border border-cyan-500/10 backdrop-blur-md shadow-2xl relative group hover:border-cyan-500/30 transition-colors">
+                    <h3 class="text-2xl font-bold text-white mb-4 flex items-center gap-3">
+                        <i class="fas fa-code text-cyan-400"></i> Development
+                    </h3>
+                    <p class="text-slate-300 leading-relaxed text-base mb-6">
+                        Full-stack builds that ship production-ready — React and Node on the front and back, real
+                        databases, and cinematic GSAP motion woven through the experience instead of bolted on top.
+                    </p>
+                    <ul class="grid sm:grid-cols-2 gap-3 text-sm text-slate-300">
+                        <li class="flex items-center gap-2"><i class="fas fa-server text-cyan-400 w-4"></i> Full-stack apps (React/Node/MongoDB)</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-wand-magic-sparkles text-cyan-400 w-4"></i> Cinematic GSAP animation systems</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-gauge-high text-cyan-400 w-4"></i> Admin dashboards & CMS tooling</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-cart-shopping text-cyan-400 w-4"></i> Booking & e-commerce systems</li>
+                    </ul>
                 </div>
             </div>
 
-            <!-- Corrected Tab Switching Script for the Cyan Theme -->
-            <script>
-                function switchTab(event, tabId) {
-                    // Hide all content containers
-                    document.querySelectorAll('.tab-content').forEach(content => {
-                        content.classList.add('hidden');
-                    });
+            <!-- Digital Art Tab -->
+            <div id="digital-art" class="tab-content hidden animate-fadeIn">
+                <div
+                    class="bg-slate-900/50 p-8 lg:p-12 rounded-3xl border border-orange-500/10 backdrop-blur-md shadow-2xl relative group hover:border-orange-500/30 transition-colors">
+                    <h3 class="text-2xl font-bold text-white mb-4 flex items-center gap-3">
+                        <i class="fas fa-palette text-orange-500"></i> Digital Art
+                    </h3>
+                    <p class="text-slate-300 leading-relaxed text-base mb-6">
+                        Original illustration and concept work built to be a site's centerpiece, not filler —
+                        characters, worlds, and hero art with a painted, deliberate hand.
+                    </p>
+                    <ul class="grid sm:grid-cols-2 gap-3 text-sm text-slate-300">
+                        <li class="flex items-center gap-2"><i class="fas fa-user-astronaut text-orange-400 w-4"></i> Character & concept art</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-brush text-orange-400 w-4"></i> Digital painting & illustration</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-mountain-sun text-orange-400 w-4"></i> Custom hero & background artwork</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-icons text-orange-400 w-4"></i> Brand mascots & visual identity art</li>
+                    </ul>
+                </div>
+            </div>
 
-                    // Revert all buttons back to their base inactive style
-                    document.querySelectorAll('.tab-button').forEach(btn => {
-                        btn.classList.remove('bg-cyan-500', 'text-slate-950', 'active');
-                        btn.classList.add('text-slate-400');
-                    });
+            <!-- Tech Consulting Tab -->
+            <div id="consulting" class="tab-content hidden animate-fadeIn">
+                <div
+                    class="bg-slate-900/50 p-8 lg:p-12 rounded-3xl border border-cyan-500/10 backdrop-blur-md shadow-2xl relative group hover:border-cyan-500/30 transition-colors">
+                    <h3 class="text-2xl font-bold text-white mb-4 flex items-center gap-3">
+                        <i class="fas fa-lightbulb text-cyan-400"></i> Tech Consulting
+                    </h3>
+                    <p class="text-slate-300 leading-relaxed text-base mb-6">
+                        Guidance for teams that need a second set of eyes — the right stack, a faster load time,
+                        and a plan that scales past launch day.
+                    </p>
+                    <ul class="grid sm:grid-cols-2 gap-3 text-sm text-slate-300">
+                        <li class="flex items-center gap-2"><i class="fas fa-diagram-project text-cyan-400 w-4"></i> Tech stack & architecture guidance</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-bolt text-cyan-400 w-4"></i> Performance optimization</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-clipboard-check text-cyan-400 w-4"></i> Design system audits</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-arrow-up-right-dots text-cyan-400 w-4"></i> Scalability planning</li>
+                    </ul>
+                </div>
+            </div>
 
-                    // Make target content container visible
-                    document.getElementById(tabId).classList.remove('hidden');
+        </div>
+    </div>
 
-                    // Apply vibrant active cyan class configurations to selected button
-                    event.currentTarget.classList.add('bg-cyan-500', 'text-slate-950', 'active');
-                    event.currentTarget.classList.remove('text-slate-400');
-                }
-            </script>
+</section>
 
-        </section>
+
 
         <section class="section-projects bg-slate-950 p-8 lg:p-16 relative overflow-hidden max-h-[80vh]" id="projects">
             <div
@@ -892,34 +919,32 @@
 
             <h3 class="text-2xl font-black text-white mb-6 tracking-wide">Contact Me</h3>
 
-            <form class="flex flex-col gap-4">
-                <div class="grid grid-cols-2 gap-3">
-                    <input type="text" placeholder="First Name" required
-                        class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white text-sm placeholder-white/40 focus:outline-none focus:border-cyan-400 focus:bg-white/15 transition-all">
-                    <input type="text" placeholder="Last Name" required
-                        class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white text-sm placeholder-white/40 focus:outline-none focus:border-cyan-400 focus:bg-white/15 transition-all">
-                </div>
-                <input type="email" placeholder="Email" required
-                    class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white text-sm placeholder-white/40 focus:outline-none focus:border-cyan-400 focus:bg-white/15 transition-all">
-                <textarea placeholder="Your Message" required rows="4"
-                    class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white text-sm placeholder-white/40 focus:outline-none focus:border-cyan-400 focus:bg-white/15 transition-all resize-none"></textarea>
+          <form id="contactForm" class="flex flex-col gap-4">
+    <div class="grid grid-cols-2 gap-3">
+        <input type="text" name="first_name" placeholder="First Name" required
+            class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white text-sm placeholder-white/40 focus:outline-none focus:border-cyan-400 focus:bg-white/15 transition-all">
+        <input type="text" name="last_name" placeholder="Last Name" required
+            class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white text-sm placeholder-white/40 focus:outline-none focus:border-cyan-400 focus:bg-white/15 transition-all">
+    </div>
+    <input type="email" name="email" placeholder="Email" required
+        class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white text-sm placeholder-white/40 focus:outline-none focus:border-cyan-400 focus:bg-white/15 transition-all">
+    <textarea name="message" placeholder="Your Message" required rows="4"
+        class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white text-sm placeholder-white/40 focus:outline-none focus:border-cyan-400 focus:bg-white/15 transition-all resize-none"></textarea>
 
-                <button type="submit"
-                    class="w-full bg-cyan-500 text-blue-950 font-bold py-3 rounded-xl uppercase tracking-wider hover:bg-cyan-400 transition-all shadow-[0_4px_20px_rgba(34,211,238,0.2)]">
-                    Send Message
-                </button>
-            </form>
-
+    <button type="submit" id="contactSubmitBtn"
+        class="w-full bg-cyan-500 text-blue-950 font-bold py-3 rounded-xl uppercase tracking-wider hover:bg-cyan-400 transition-all shadow-[0_4px_20px_rgba(34,211,238,0.2)]">
+        Send Message
+    </button>
+</form>
             <div class="mt-6 pt-6 border-t border-white/10 text-center">
                 <p class="text-white/50 text-xs font-bold uppercase tracking-widest mb-4">Or find me on</p>
                 <div class="flex justify-center gap-4 text-xl">
-                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub"
+                    <a href="https://github.com/REPLIANT" target="_blank" rel="noopener noreferrer" aria-label="GitHub"
                         class="text-white/60 hover:text-cyan-400 transition-colors"><i class="fab fa-github"></i></a>
-                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
+                    <a href="https://www.linkedin.com/in/ijadunola-abdulmujeeb-70439b289/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
                         class="text-white/60 hover:text-cyan-400 transition-colors"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter"
-                        class="text-white/60 hover:text-cyan-400 transition-colors"><i class="fab fa-twitter"></i></a>
-                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+                  
+                    <a href="https://instagram.com/repliant1" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
                         class="text-white/60 hover:text-cyan-400 transition-colors"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>

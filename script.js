@@ -169,6 +169,10 @@
                 });
             }
 
+
+
+            
+
             function toggleIcons() {
                 document.querySelectorAll('.icon').forEach((icon) => icon.classList.toggle('disabled'));
             }
@@ -588,48 +592,54 @@ function initProjectCatalog() {
             window.toggleProjects = toggleProjects;
             window.toggleIcons = toggleIcons;
             window.toggleTheme = toggleTheme;
-            window.switchTab = switchTab;
+           
 
 
 
 
             
 
-            // =========================================================
-            // SERVICES SECTION
-            // =========================================================
-            function switchTab(event, tabId) {
-                event.preventDefault();
+   // SERVICES SECTION
 
-                const tabButtons = document.querySelectorAll('.tab-button');
-                const tabContents = document.querySelectorAll('.tab-content');
+function activateTab(button) {
+    const tabId = button.dataset.tab;
+    const activeTab = document.getElementById(tabId);
+    if (!activeTab) return;
 
-                tabButtons.forEach((btn) => btn.classList.remove('active'));
-                tabContents.forEach((content) => content.classList.remove('active'));
+    document.querySelectorAll('.tab-button').forEach((btn) => {
+        btn.classList.remove('bg-cyan-500', 'text-slate-950', 'active');
+        btn.classList.add('text-slate-400');
+    });
+    document.querySelectorAll('.tab-content').forEach((content) => content.classList.add('hidden'));
 
-                event.target.closest('.tab-button').classList.add('active');
-                const activeTab = document.getElementById(tabId);
+    button.classList.add('bg-cyan-500', 'text-slate-950', 'active');
+    button.classList.remove('text-slate-400');
+    activeTab.classList.remove('hidden');
 
-                if (activeTab) {
-                    activeTab.classList.add('active');
-                    activeTab.querySelectorAll('.service-category').forEach((category, index) => {
-                        category.classList.remove('visible');
-                        setTimeout(() => {
-                            category.classList.add('visible');
-                        }, index * 150);
-                    });
-                }
-            }
+    activeTab.querySelectorAll('.service-category').forEach((category, index) => {
+        category.classList.remove('visible');
+        setTimeout(() => {
+            category.classList.add('visible');
+        }, index * 150);
+    });
+}
 
-            function initServiceTabs() {
-                const firstTab = document.querySelector('.tab-button.active');
-                if (firstTab) {
-                    firstTab.click();
-                }
-            }
+document.querySelectorAll('.tab-button').forEach((btn) => {
+    btn.addEventListener('click', (event) => {
+        event.preventDefault();
+        activateTab(btn);
+    });
+});
+
+function initServiceTabs() {
+    const firstTab = document.querySelector('.tab-button.active');
+    if (firstTab) activateTab(firstTab);
+}
+
+document.addEventListener('DOMContentLoaded', initServiceTabs);
 
 
-              // contact popup functionality
+     //contact popup functionality
             
          function initContactPopup() {
     const phoneButton = document.getElementById('phoneButton');
@@ -661,3 +671,41 @@ function initProjectCatalog() {
 }
             // Legacy dropdown and older skills carousel code are intentionally left out because the active pages use the simpler mobile-menu and marquee implementations above.
             window.dispatchEvent(new Event('scroll'));
+
+
+
+            // CONTACT FORM — EmailJS
+(function () {
+    emailjs.init('eAsoBQ4IWOvJez1MK'); // from Account → General
+
+    const contactForm = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('contactSubmitBtn');
+
+    if (!contactForm) return;
+
+    contactForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
+
+        emailjs.sendForm('service_m6ptlzo', 'template_45of4cw', contactForm)
+            .then(() => {
+                submitBtn.textContent = 'Sent!';
+                contactForm.reset();
+                setTimeout(() => {
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }, 2500);
+            })
+            .catch((error) => {
+                console.error('EmailJS error:', error);
+                submitBtn.textContent = 'Failed — try again';
+                submitBtn.disabled = false;
+                setTimeout(() => {
+                    submitBtn.textContent = originalText;
+                }, 2500);
+            });
+    });
+})();
