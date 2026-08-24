@@ -32,10 +32,9 @@
                 initServiceTabs();
                 initContactPopup();
 
-                if (Array.isArray(myProjects)) {
+                if (typeof myProjects !== 'undefined' && Array.isArray(myProjects)) {
                     activeProjectsList = [...myProjects];
                 }
-
                 if (document.querySelector('#all-projects-list')) {
                     renderProjectGrid(activeProjectsList);
                 }

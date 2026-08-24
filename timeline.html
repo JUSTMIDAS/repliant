@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="./dist/output.css">
     <script src="https://cdn.tailwindcss.com"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,6 +16,9 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Bad+Script&family=Dancing+Script:wght@400..700&family=Marck+Script&family=Tangerine:wght@400;700&display=swap"
         rel="stylesheet">
+       
+        <link rel="icon" type="image/png" href="projectfolder/favicon.png">
+   
 
     <style>
         /* Force hardware compositing directly on the scrolling layer */
@@ -192,6 +195,11 @@
             class="nav-menu w-full max-w-7xl flex flex-wrap items-center justify-between px-6 text-sm text-white font-bold">
             <div class="flex items-center gap-4">
                 <div class="nav-logo text-2xl font-black tracking-widest text-cyan-400">HISTORY</div>
+             <button
+                class="icon-toggle-button text-xs text-cyan-400 px-3 py-1 rounded-lg hover:bg-cyan-400 hover:text-slate-950 transition-all"
+                type="button" onclick="toggleIcons()" aria-label="Toggle icons" title="Toggle icons">
+                <i class="fas fa-cog"></i>
+            </button>
             </div>
 
             <button id="menuToggle" class="hamburger md:hidden text-cyan-400 text-xl focus:outline-none" type="button"
@@ -400,48 +408,50 @@
 
     </main>
 
-     <div class="fixed bottom-8 right-8 z-50 flex flex-col items-end gap-4">
-
+    <div class="fixed bottom-8 right-8 z-50 flex flex-col items-end gap-4">
+    
         <div id="contactPopup"
             class="hidden w-80 md:w-96 bg-blue-950/40 backdrop-blur-xl border border-white/20 p-8 rounded-[32px] shadow-[0_20px_50px_rgba(0,0,0,0.4)] animate-popupEntry relative">
             <span id="closePopup"
                 class="absolute top-5 right-5 text-white/60 hover:text-cyan-400 text-lg cursor-pointer transition-colors">
                 <i class="fas fa-times"></i>
             </span>
-
+    
             <h3 class="text-2xl font-black text-white mb-6 tracking-wide">Contact Me</h3>
-
-          <form id="contactForm" class="flex flex-col gap-4">
-    <div class="grid grid-cols-2 gap-3">
-        <input type="text" name="first_name" placeholder="First Name" required
-            class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white text-sm placeholder-white/40 focus:outline-none focus:border-cyan-400 focus:bg-white/15 transition-all">
-        <input type="text" name="last_name" placeholder="Last Name" required
-            class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white text-sm placeholder-white/40 focus:outline-none focus:border-cyan-400 focus:bg-white/15 transition-all">
-    </div>
-    <input type="email" name="email" placeholder="Email" required
-        class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white text-sm placeholder-white/40 focus:outline-none focus:border-cyan-400 focus:bg-white/15 transition-all">
-    <textarea name="message" placeholder="Your Message" required rows="4"
-        class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white text-sm placeholder-white/40 focus:outline-none focus:border-cyan-400 focus:bg-white/15 transition-all resize-none"></textarea>
-
-    <button type="submit" id="contactSubmitBtn"
-        class="w-full bg-cyan-500 text-blue-950 font-bold py-3 rounded-xl uppercase tracking-wider hover:bg-cyan-400 transition-all shadow-[0_4px_20px_rgba(34,211,238,0.2)]">
-        Send Message
-    </button>
-</form>
+    
+            <form id="contactForm" class="flex flex-col gap-4">
+                <div class="grid grid-cols-2 gap-3">
+                    <input type="text" name="first_name" placeholder="First Name" required
+                        class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white text-sm placeholder-white/40 focus:outline-none focus:border-cyan-400 focus:bg-white/15 transition-all">
+                    <input type="text" name="last_name" placeholder="Last Name" required
+                        class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white text-sm placeholder-white/40 focus:outline-none focus:border-cyan-400 focus:bg-white/15 transition-all">
+                </div>
+                <input type="email" name="email" placeholder="Email" required
+                    class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white text-sm placeholder-white/40 focus:outline-none focus:border-cyan-400 focus:bg-white/15 transition-all">
+                <textarea name="message" placeholder="Your Message" required rows="4"
+                    class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white text-sm placeholder-white/40 focus:outline-none focus:border-cyan-400 focus:bg-white/15 transition-all resize-none"></textarea>
+    
+                <button type="submit" id="contactSubmitBtn"
+                    class="w-full bg-cyan-500 text-blue-950 font-bold py-3 rounded-xl uppercase tracking-wider hover:bg-cyan-400 transition-all shadow-[0_4px_20px_rgba(34,211,238,0.2)]">
+                    Send Message
+                </button>
+            </form>
             <div class="mt-6 pt-6 border-t border-white/10 text-center">
                 <p class="text-white/50 text-xs font-bold uppercase tracking-widest mb-4">Or find me on</p>
                 <div class="flex justify-center gap-4 text-xl">
                     <a href="https://github.com/REPLIANT" target="_blank" rel="noopener noreferrer" aria-label="GitHub"
                         class="text-white/60 hover:text-cyan-400 transition-colors"><i class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/ijadunola-abdulmujeeb-70439b289/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
+                    <a href="https://www.linkedin.com/in/ijadunola-abdulmujeeb-70439b289/" target="_blank"
+                        rel="noopener noreferrer" aria-label="LinkedIn"
                         class="text-white/60 hover:text-cyan-400 transition-colors"><i class="fab fa-linkedin"></i></a>
-                  
-                    <a href="https://instagram.com/repliant1" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
-                        class="text-white/60 hover:text-cyan-400 transition-colors"><i class="fab fa-instagram"></i></a>
+    
+                    <a href="https://instagram.com/repliant1" target="_blank" rel="noopener noreferrer"
+                        aria-label="Instagram" class="text-white/60 hover:text-cyan-400 transition-colors"><i
+                            class="fab fa-instagram"></i></a>
                 </div>
             </div>
         </div>
-
+    
         <div class="relative">
             <div
                 class="absolute inset-0 bg-cyan-400 rounded-full filter blur-md animate-pulse opacity-40 pointer-events-none">

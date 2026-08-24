@@ -7,6 +7,9 @@
     <title>Projects - Repliant.Dev</title>
     <link rel="stylesheet" href="./dist/output.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <link rel="icon" type="image/png" href="projectfolder/favicon.png">
+
     
     <style>
         /* Floating Background Asset Animators */
@@ -67,42 +70,167 @@
 </head>
 
 <body class="bg-slate-900 text-slate-800 font-sans antialiased overflow-x-hidden max-w-screen relative min-h-screen">
-    
-    <!-- Floating Icon Canvas Background -->
-    <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden" id="home">
-        <div class="absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
 
-        <div class="bg-icon text-red-500" style="top: 10%; left: 10%; --x-move: 10px; --y-move: -20px; --duration: 7s;"><i class="fas fa-lightbulb"></i></div>
-        <div class="bg-icon text-green-600" style="top: 20%; left: 70%; --x-move: -20px; --y-move: 15px; --duration: 9s;"><i class="fas fa-smile"></i></div>
-        <div class="bg-icon text-orange-500" style="top: 30%; left: 30%; --x-move: 25px; --y-move: -10px; --duration: 6s;"><i class="fas fa-bolt"></i></div>
-        <div class="bg-icon text-blue-500" style="top: 40%; left: 80%; --x-move: -15px; --y-move: -25px; --duration: 8s;"><i class="fas fa-paper-plane"></i></div>
-        <div class="bg-icon text-violet-600" style="top: 50%; left: 20%; --x-move: 20px; --y-move: 20px; --duration: 10s;"><i class="fas fa-lightbulb"></i></div>
-        <div class="bg-icon text-slate-400" style="top: 60%; left: 60%; --x-move: -25px; --y-move: -15px; --duration: 7s;"><i class="fas fa-smile"></i></div>
-        <div class="bg-icon text-pink-500" style="top: 70%; left: 40%; --x-move: 15px; --y-move: 30px; --duration: 9s;"><i class="fas fa-paper-plane"></i></div>
-        <div class="bg-icon text-blue-900" style="top: 80%; left: 90%; --x-move: -10px; --y-move: -20px; --duration: 6s;"><i class="fas fa-bolt"></i></div>
-        <div class="bg-icon text-cyan-600" style="top: 15%; left: 25%; --x-move: 15px; --y-move: -15px; --duration: 8s;"><i class="fas fa-code"></i></div>
-        <div class="bg-icon text-slate-500" style="top: 25%; left: 85%; --x-move: -20px; --y-move: 25px; --duration: 7s;"><i class="fas fa-laptop"></i></div>
-        <div class="bg-icon text-slate-400" style="top: 35%; left: 15%; --x-move: 30px; --y-move: -15px; --duration: 9s;"><i class="fas fa-cogs"></i></div>
-        <div class="bg-icon text-cyan-700" style="top: 45%; left: 75%; --x-move: -15px; --y-move: 20px; --duration: 11s;"><i class="fas fa-rocket"></i></div>
-        <div class="bg-icon text-blue-600" style="top: 55%; left: 35%; --x-move: 20px; --y-move: -20px; --duration: 6s;"><i class="fas fa-cloud"></i></div>
-        <div class="bg-icon text-emerald-600" style="top: 65%; left: 95%; --x-move: -10px; --y-move: 15px; --duration: 8s;"><i class="fas fa-database"></i></div>
-        <div class="bg-icon text-purple-600" style="top: 75%; left: 20%; --x-move: 25px; --y-move: -25px; --duration: 9s;"><i class="fas fa-terminal"></i></div>
-        <div class="bg-icon text-cyan-600" style="top: 85%; left: 50%; --x-move: 15px; --y-move: -15px; --duration: 7s;"><i class="fas fa-globe"></i></div>
+    <div class="container absolute" id="home">
+        <div class="icons">
+            <div class="icon" style="top: 10%; left: 10%; --x-move: 15px; --y-move: -20px; --duration: 6s;"><i
+                    class="fas fa-lightbulb text-red-500 font-bold"></i></div>
+            <div class="icon" style="top: 20%; left: 70%; --x-move: -25px; --y-move: 15px; --duration: 8s;"><i
+                    class="fas fa-smile text-green-500"></i></div>
+            <div class="icon" style="top: 30%; left: 30%; --x-move: 20px; --y-move: -10px; --duration: 5s;"><i
+                    class="fas fa-bolt text-orange-500"></i></div>
+            <div class="icon" style="top: 40%; left: 80%; --x-move: -15px; --y-move: -25px; --duration: 7s;"><i
+                    class="fas fa-paper-plane text-blue-500"></i></div>
+            <div class="icon" style="top: 50%; left: 20%; --x-move: 30px; --y-move: 20px; --duration: 9s;"><i
+                    class="fas fa-lightbulb text-violet-500"></i></div>
+            <div class="icon" style="top: 60%; left: 60%; --x-move: -20px; --y-move: -15px; --duration: 6s;"><i
+                    class="fas fa-smile text-white"></i></div>
+            <div class="icon" style="top: 70%; left: 40%; --x-move: 15px; --y-move: 25px; --duration: 8s;"><i
+                    class="fas fa-paper-plane text-pink-500"></i></div>
+            <div class="icon" style="top: 80%; left: 90%; --x-move: -10px; --y-move: -30px; --duration: 5s;"><i
+                    class="fas fa-bolt text-blue-900"></i></div>
+            <div class="icon" style="top: 15%; left: 25%; --x-move: 25px; --y-move: -15px; --duration: 7s;"><i
+                    class="fas fa-code"></i></div>
+            <div class="icon" style="top: 25%; left: 85%; --x-move: -20px; --y-move: 20px; --duration: 6s;"><i
+                    class="fas fa-laptop"></i></div>
+            <div class="icon" style="top: 35%; left: 15%; --x-move: 15px; --y-move: -25px; --duration: 8s;"><i
+                    class="fas fa-cogs"></i></div>
+            <div class="icon" style="top: 45%; left: 75%; --x-move: -30px; --y-move: 10px; --duration: 9s;"><i
+                    class="fas fa-rocket"></i></div>
+            <div class="icon" style="top: 55%; left: 35%; --x-move: 20px; --y-move: -20px; --duration: 5s;"><i
+                    class="fas fa-cloud"></i></div>
+            <div class="icon" style="top: 65%; left: 95%; --x-move: -15px; --y-move: 15px; --duration: 7s;"><i
+                    class="fas fa-database"></i></div>
+            <div class="icon" style="top: 75%; left: 20%; --x-move: 25px; --y-move: -25px; --duration: 8s;"><i
+                    class="fas fa-terminal"></i></div>
+    
+            <a href="https://www.google.com/search?q=osogbo" target="_blank" rel="noopener noreferrer"
+                class="interactive-link">
+                <div class="icon" style="top: 85%; left: 50%; --x-move: 10px; --y-move: -15px; --duration: 6s;"><i
+                        class="fas fa-globe text-cyan-400"></i></div>
+            </a>
+        </div>
+    
+        <style>
+            .container {
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                width: 100vw !important;
+                height: 100vh !important;
+                z-index: 11;
+                /* Lower than dropdowns/modals but above flat backgrounds */
+                pointer-events: none;
+                background: transparent;
+                display: block !important;
+            }
+    
+            .icons {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+            }
+    
+            .icon {
+                position: absolute;
+                opacity: 0.25;
+                /* Subtle backdrop appearance */
+                transition: opacity 0.3s ease, transform 0.3s ease;
+                transform-origin: center;
+                animation: float var(--duration, 6s) ease-in-out infinite;
+            }
+    
+            /* Re-enable touch/click mechanics exclusively for links */
+            .interactive-link {
+                pointer-events: auto !important;
+                cursor: pointer;
+            }
+    
+            .interactive-link .icon:hover {
+                opacity: 1 !important;
+                scale: 1.2;
+            }
+    
+            .icon.disabled {
+                opacity: 0 !important;
+                animation: none !important;
+            }
+    
+            @keyframes float {
+                0% {
+                    transform: translate(0, 0) scale(0.9);
+                }
+    
+                50% {
+                    transform: translate(var(--x-move, 10px), var(--y-move, -10px)) scale(1.05);
+                }
+    
+                100% {
+                    transform: translate(0, 0) scale(0.9);
+                }
+            }
+    
+            #projects,
+            .collision-zone,
+            .absolute.rounded-full {
+                content-visibility: auto;
+                /* Browser skips rendering them when off-screen */
+                transform: translate3d(0, 0, 0);
+                /* Forces GPU isolation */
+                will-change: transform;
+            }
+    
+    
+            @keyframes hyperPulse {
+                0% {
+                    transform: scale(0.9) translateZ(0);
+                }
+    
+                50% {
+                    transform: scale(1.1) translateZ(0);
+                }
+    
+                100% {
+                    transform: scale(0.9) translateZ(0);
+                }
+            }
+    
+    
+            .optimized-pulse-glow {
+                /* Instantly isolates the element onto its own GPU layer */
+                will-change: transform;
+                backface-visibility: hidden;
+                perspective: 1000px;
+    
+                /* Triggers the hardware-composited animation loop */
+                animation: hyperPulse 10s ease-in-out infinite;
+            }
+        </style>
     </div>
 
-    <!-- Ambient Visual Glow Engines Container -->
+
+
+    
     <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
         <!-- Electric Blue Light Engine -->
         <div class="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] rounded-full bg-cyan-500 filter blur-[120px] opacity-40 animate-pulse" style="animation-delay: 1s;"></div>
         <!-- Electric Orange Light Engine -->
         <div class="absolute bottom-[10%] right-[10%] w-[600px] h-[600px] rounded-full bg-orange-500 filter blur-[120px] opacity-40 animate-pulse" style="animation-delay: 3s;"></div>
     </div>
+    
+   
 
     <!-- Global Application Header -->
     <header class="z-50 h-auto min-h-24 bg-slate-950/40 backdrop-blur-md sticky top-0 w-full p-4 border-b border-cyan-500/10 flex items-center justify-center">
         <nav class="nav-menu w-full max-w-7xl flex flex-wrap items-center justify-between px-6 text-sm text-white font-bold">
             <div class="flex items-center gap-4">
                 <div class="nav-logo text-2xl font-black tracking-widest text-cyan-400">Portfolio</div>
+                <button
+                    class="icon-toggle-button text-xs text-cyan-400 px-3 py-1 rounded-lg hover:bg-cyan-400 hover:text-slate-950 transition-all"
+                    type="button" onclick="toggleIcons()" aria-label="Toggle icons" title="Toggle icons">
+                    <i class="fas fa-cog"></i>
+                </button>
             </div>
 
             <button id="menuToggle" class="hamburger md:hidden text-cyan-400 text-xl focus:outline-none" type="button" aria-label="Open navigation">
@@ -136,6 +264,21 @@
     <h2 class="text-white text-4xl sm:text-5xl font-black mb-6 tracking-wide uppercase">
         ARCHITECTURAL <span class="text-transparent bg-clip-text bg-gradient-to-r select-none from-cyan-400 to-cyan-600">FOLIO</span>
     </h2>
+    <p class="text-slate-400 text-sm sm:text-base leading-relaxed font-medium max-w-3xl mb-6">
+        An exploratory index of web applications, custom platforms, and production-ready systems. Each
+        deployment details full-stack tool integration, performance benchmarks, and interface design systems.
+<div class="max-w-3xl border-l-4 pl-8 text-xs text-slate-500 leading-relaxed space-y-2" style="border-left-color: #67e8f9 !important; border-left-style: solid !important;">
+   
+  
+  
+  
+        <p>
+            The software deployments listed below utilize standalone, sanitized cloud sandbox environments (such as GitHub Pages or edge previews) to preserve structural integrity.
+        </p>
+        <p>
+            To protect active client privacy agreements, shield proprietary source logic from public firewalls, and prevent dead-link friction due to client-side hosting lifecycle expirations, Some live production domains are restricted. Also some interactive components displayed here function as high-fidelity conceptual proposals or architectural blueprints verifying production-grade engineering capabilities.
+        </p>
+    </div>
 </div>
 
         <!-- Project Catalog Grid Section -->
@@ -224,59 +367,63 @@
         </section>
     </main>
 
-     <div class="fixed bottom-8 right-8 z-50 flex flex-col items-end gap-4">
-
-        <div id="contactPopup"
-            class="hidden w-80 md:w-96 bg-blue-950/40 backdrop-blur-xl border border-white/20 p-8 rounded-[32px] shadow-[0_20px_50px_rgba(0,0,0,0.4)] animate-popupEntry relative">
-            <span id="closePopup"
-                class="absolute top-5 right-5 text-white/60 hover:text-cyan-400 text-lg cursor-pointer transition-colors">
-                <i class="fas fa-times"></i>
-            </span>
-
-            <h3 class="text-2xl font-black text-white mb-6 tracking-wide">Contact Me</h3>
-
-          <form id="contactForm" class="flex flex-col gap-4">
-    <div class="grid grid-cols-2 gap-3">
-        <input type="text" name="first_name" placeholder="First Name" required
-            class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white text-sm placeholder-white/40 focus:outline-none focus:border-cyan-400 focus:bg-white/15 transition-all">
-        <input type="text" name="last_name" placeholder="Last Name" required
-            class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white text-sm placeholder-white/40 focus:outline-none focus:border-cyan-400 focus:bg-white/15 transition-all">
-    </div>
-    <input type="email" name="email" placeholder="Email" required
-        class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white text-sm placeholder-white/40 focus:outline-none focus:border-cyan-400 focus:bg-white/15 transition-all">
-    <textarea name="message" placeholder="Your Message" required rows="4"
-        class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white text-sm placeholder-white/40 focus:outline-none focus:border-cyan-400 focus:bg-white/15 transition-all resize-none"></textarea>
-
-    <button type="submit" id="contactSubmitBtn"
-        class="w-full bg-cyan-500 text-blue-950 font-bold py-3 rounded-xl uppercase tracking-wider hover:bg-cyan-400 transition-all shadow-[0_4px_20px_rgba(34,211,238,0.2)]">
-        Send Message
-    </button>
-</form>
-            <div class="mt-6 pt-6 border-t border-white/10 text-center">
-                <p class="text-white/50 text-xs font-bold uppercase tracking-widest mb-4">Or find me on</p>
-                <div class="flex justify-center gap-4 text-xl">
-                    <a href="https://github.com/REPLIANT" target="_blank" rel="noopener noreferrer" aria-label="GitHub"
-                        class="text-white/60 hover:text-cyan-400 transition-colors"><i class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/ijadunola-abdulmujeeb-70439b289/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
-                        class="text-white/60 hover:text-cyan-400 transition-colors"><i class="fab fa-linkedin"></i></a>
-                  
-                    <a href="https://instagram.com/repliant1" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
-                        class="text-white/60 hover:text-cyan-400 transition-colors"><i class="fab fa-instagram"></i></a>
+        <div class="fixed bottom-8 right-8 z-50 flex flex-col items-end gap-4">
+        
+            <div id="contactPopup"
+                class="hidden w-80 md:w-96 bg-blue-950/40 backdrop-blur-xl border border-white/20 p-8 rounded-[32px] shadow-[0_20px_50px_rgba(0,0,0,0.4)] animate-popupEntry relative">
+                <span id="closePopup"
+                    class="absolute top-5 right-5 text-white/60 hover:text-cyan-400 text-lg cursor-pointer transition-colors">
+                    <i class="fas fa-times"></i>
+                </span>
+        
+                <h3 class="text-2xl font-black text-white mb-6 tracking-wide">Contact Me</h3>
+        
+                <form id="contactForm" class="flex flex-col gap-4">
+                    <div class="grid grid-cols-2 gap-3">
+                        <input type="text" name="first_name" placeholder="First Name" required
+                            class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white text-sm placeholder-white/40 focus:outline-none focus:border-cyan-400 focus:bg-white/15 transition-all">
+                        <input type="text" name="last_name" placeholder="Last Name" required
+                            class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white text-sm placeholder-white/40 focus:outline-none focus:border-cyan-400 focus:bg-white/15 transition-all">
+                    </div>
+                    <input type="email" name="email" placeholder="Email" required
+                        class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white text-sm placeholder-white/40 focus:outline-none focus:border-cyan-400 focus:bg-white/15 transition-all">
+                    <textarea name="message" placeholder="Your Message" required rows="4"
+                        class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white text-sm placeholder-white/40 focus:outline-none focus:border-cyan-400 focus:bg-white/15 transition-all resize-none"></textarea>
+        
+                    <button type="submit" id="contactSubmitBtn"
+                        class="w-full bg-cyan-500 text-blue-950 font-bold py-3 rounded-xl uppercase tracking-wider hover:bg-cyan-400 transition-all shadow-[0_4px_20px_rgba(34,211,238,0.2)]">
+                        Send Message
+                    </button>
+                </form>
+                <div class="mt-6 pt-6 border-t border-white/10 text-center">
+                    <p class="text-white/50 text-xs font-bold uppercase tracking-widest mb-4">Or find me on</p>
+                    <div class="flex justify-center gap-4 text-xl">
+                        <a href="https://github.com/REPLIANT" target="_blank" rel="noopener noreferrer" aria-label="GitHub"
+                            class="text-white/60 hover:text-cyan-400 transition-colors"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/ijadunola-abdulmujeeb-70439b289/" target="_blank"
+                            rel="noopener noreferrer" aria-label="LinkedIn"
+                            class="text-white/60 hover:text-cyan-400 transition-colors"><i class="fab fa-linkedin"></i></a>
+        
+                        <a href="https://instagram.com/repliant1" target="_blank" rel="noopener noreferrer"
+                            aria-label="Instagram" class="text-white/60 hover:text-cyan-400 transition-colors"><i
+                                class="fab fa-instagram"></i></a>
+                    </div>
                 </div>
             </div>
+        
+            <div class="relative">
+                <div
+                    class="absolute inset-0 bg-cyan-400 rounded-full filter blur-md animate-pulse opacity-40 pointer-events-none">
+                </div>
+                <button id="phoneButton"
+                    class="relative w-16 h-16 bg-white/10 backdrop-blur-md border border-white/30 text-cyan-400 rounded-full flex items-center justify-center text-xl shadow-[0_10px_30px_rgba(0,0,0,0.3)] hover:scale-110 hover:bg-white/20 hover:text-white hover:border-white/50 transition-all duration-300 group"
+                    aria-label="Open contact form" title="Contact">
+                    <i class="fas fa-phone group-hover:rotate-12 transition-transform"></i>
+                </button>
+            </div>
         </div>
 
-        <div class="relative">
-            <div
-                class="absolute inset-0 bg-cyan-400 rounded-full filter blur-md animate-pulse opacity-40 pointer-events-none">
-            </div>
-            <button id="phoneButton"
-                class="relative w-16 h-16 bg-white/10 backdrop-blur-md border border-white/30 text-cyan-400 rounded-full flex items-center justify-center text-xl shadow-[0_10px_30px_rgba(0,0,0,0.3)] hover:scale-110 hover:bg-white/20 hover:text-white hover:border-white/50 transition-all duration-300 group"
-                aria-label="Open contact form" title="Contact">
-                <i class="fas fa-phone group-hover:rotate-12 transition-transform"></i>
-            </button>
-        </div>
-    </div>
+
 
     
     <footer class="w-full bg-slate-950/40 backdrop-blur-md border-t border-slate-900 py-10 px-6 relative z-10">

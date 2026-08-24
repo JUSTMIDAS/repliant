@@ -6,7 +6,7 @@ const myProjects = [
         category: "web",
         date: "2026-10-20",
         image: "projectfolder/ironpulse.png",
-        url: "https://justmidas.github.io/ironpulse-/",
+        url: "https://repliant.github.io/ironpulse-/",
         host: "Vercel",
         stackText: "html, css, tailwind, expressjs, javascript"
     },
