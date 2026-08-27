@@ -528,13 +528,13 @@
 
                             <div class="p-6">
                                 <div class="flex items-center justify-between mb-3">
-                                    <h3 class="text-xl font-bold text-slate-100 tracking-tight">${project.title}</h3>
+                                    <h3 class="text-xl font-bold text-slate-100 capitalize tracking-tight">${project.title}</h3>
 
                                     <div class="flex items-center gap-3 text-slate-400">
                                         <a href="${project.url}" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-400 transition-colors text-sm">
                                             <i class="fab fa-github"></i>
                                         </a>
-                                        <a href="${project.url}" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-400 transition-colors text-sm">
+                                        <a href="${project.liveurl}" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-400 transition-colors text-sm">
                                             <i class="fas fa-external-link-alt"></i>
                                         </a>
                                     </div>
